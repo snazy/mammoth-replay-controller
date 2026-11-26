@@ -1,0 +1,72 @@
+{
+  "groups": {
+    "main": {
+      "total_exec_s": {
+        "reference": {
+          "n": 0,
+          "median": null
+        },
+        "mammoth": {
+          "n": 0,
+          "median": null
+        }
+      },
+      "critical_path_s": {
+        "reference": {
+          "n": 0,
+          "median": null
+        },
+        "mammoth": {
+          "n": 0,
+          "median": null
+        }
+      },
+      "cache_s": {
+        "reference": {
+          "n": 0,
+          "median": null
+        },
+        "mammoth": {
+          "n": 0,
+          "median": null
+        }
+      }
+    },
+    "pr": {
+      "total_exec_s": {
+        "reference": {
+          "n": 0,
+          "median": null
+        },
+        "mammoth": {
+          "n": 0,
+          "median": null
+        }
+      },
+      "critical_path_s": {
+        "reference": {
+          "n": 0,
+          "median": null
+        },
+        "mammoth": {
+          "n": 0,
+          "median": null
+        }
+      },
+      "cache_s": {
+        "reference": {
+          "n": 0,
+          "median": null
+        },
+        "mammoth": {
+          "n": 0,
+          "median": null
+        }
+      }
+    }
+  },
+  "variants": [
+    "reference",
+    "mammoth"
+  ]
+}

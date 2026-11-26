@@ -1,0 +1,33 @@
+{
+ "applied_events": 0,
+ "at": "2026-11-26T21:21:28Z",
+ "current": "smoke/seed",
+ "exceptions": [],
+ "finished": false,
+ "not_before": null,
+ "notes": [
+  "create_ref reference smoke/seed failed: POST /repos/snazy/nessie-mammoth-reference/git/refs: HTTP 403: {\"message\":\"Resource not accessible by personal access token\",\"documentation_url\":\"https://docs.github.com/rest/git/refs#create-a-reference\",\"status\":\"403\"}"
+ ],
+ "paused": false,
+ "planned_actions": [
+  {
+   "event": "smoke/seed",
+   "ref": "heads/main",
+   "repo": "snazy/nessie-mammoth-reference",
+   "sha": "5ea04c2a7bcc6f7bc24c11954d017218d1300322",
+   "type": "create_ref",
+   "variant": "reference"
+  },
+  {
+   "event": "smoke/seed",
+   "ref": "heads/main",
+   "repo": "snazy/nessie-mammoth-prototype",
+   "sha": "bc89b0f86d1624b918b3b84f72560debce040200",
+   "type": "create_ref",
+   "variant": "mammoth"
+  }
+ ],
+ "profile": "nessie",
+ "total_events": 47,
+ "waiting": []
+}
