@@ -1,0 +1,93 @@
+{
+  "name": "nessie",
+  "upstream": {
+    "repo": "projectnessie/nessie",
+    "branch": "main"
+  },
+  "identity": {
+    "name": "Mammoth Replay",
+    "email": "mammoth-replay@invalid"
+  },
+  "variants": {
+    "reference": {
+      "repo": "snazy/nessie-mammoth-reference",
+      "overlay_layers": ["nessie/reference"]
+    },
+    "mammoth": {
+      "repo": "snazy/nessie-mammoth-prototype",
+      "overlay_layers": ["nessie/mammoth"]
+    }
+  },
+  "overlay": {
+    "keep": [".github/workflows/ci.yml", ".github/actions"],
+    "common_layers": ["nessie/common"]
+  },
+  "workflow": {
+    "file": "ci.yml",
+    "name": "CI build",
+    "push_paths_ignore": [
+      "LICENSE",
+      "NOTICE",
+      "**.md",
+      "!site/**",
+      ".github/renovate.json5",
+      ".github/workflows/release*.yml",
+      ".github/workflows/check*.yml",
+      ".idea/**",
+      ".editorconfig"
+    ]
+  },
+  "jobs": {
+    "producers": [
+      "code-checks",
+      "test",
+      "test-quarkus",
+      "int-test",
+      "int-test-stores",
+      "int-test-integrations",
+      "int-test-quarkus-server",
+      "int-test-quarkus-tool",
+      "int-test-quarkus-events"
+    ],
+    "aggregator": "store-cache",
+    "other_measured": ["determine-jobs", "docker-testing", "site"],
+    "conditional": ["docker-testing", "store-cache"],
+    "excluded": ["nesqueit"]
+  },
+  "controller": {
+    "max_reruns": 2,
+    "min_event_spacing_minutes": 300,
+    "run_visibility_timeout_minutes": 30,
+    "run_max_duration_minutes": 360
+  },
+  "campaigns": [
+    {
+      "id": "smoke",
+      "events": [
+        {"id": "seed", "type": "seed", "upstream": "f400e1dfdd"},
+        {"id": "main-01", "type": "main", "upstream": "cc135c7088", "rerun_job": "code-checks"},
+        {"id": "pr-02", "type": "pr", "upstream": "1c580838f9", "push_after": false}
+      ]
+    },
+    {
+      "id": "scored",
+      "events": [
+        {"id": "clear-caches", "type": "gate", "action": "delete-caches-and-artifacts"},
+        {"id": "seed", "type": "seed", "upstream": "f400e1dfdd"},
+        {
+          "type": "range",
+          "after": "f400e1dfdd",
+          "to": "4acc20c1d8",
+          "pr": [
+            "00ca4d77fa",
+            "01872b10e1",
+            "5f96e26fde",
+            "cfdbd5a90e",
+            "b4b891bbee",
+            "5b58912049"
+          ]
+        }
+      ]
+    }
+  ]
+}

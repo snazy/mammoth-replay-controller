@@ -1,0 +1,459 @@
+diff --git a/.github/actions/ci-incr-build-cache-prepare/action.yml b/.github/actions/ci-incr-build-cache-prepare/action.yml
+deleted file mode 100644
+index c12544d..0000000
+--- a/.github/actions/ci-incr-build-cache-prepare/action.yml
++++ /dev/null
+@@ -1,87 +0,0 @@
+-name: 'Incremental Gradle build cache prepare'
+-description: 'Prepare to save incremental Gradle build cache'
+-inputs:
+-  cache-read-only:
+-    description: 'Gradle cache read only'
+-    default: 'true'
+-  java-version:
+-    description: 'Java version'
+-    default: '21'
+-  job-id:
+-    description: 'Job name to prefer'
+-    default: 'nessie-ci'
+-  job-instance:
+-    description: 'Job instance to prefer'
+-    default: 'ci'
+-runs:
+-  using: "composite"
+-  steps:
+-    - name: Prep env
+-      shell: bash
+-      run: |
+-        echo "GRADLE_BUILD_ACTION_CACHE_KEY_ENVIRONMENT=java-${{ inputs.java-version }}" >> ${GITHUB_ENV}
+-        echo "GRADLE_BUILD_ACTION_CACHE_KEY_JOB=${{ inputs.job-id }}" >> ${GITHUB_ENV}
+-        if [[ -n "${{ inputs.no-daemon }}" ]] ; then
+-          echo "G_DAEMON_FLAG=--no-daemon" >> ${GITHUB_ENV}
+-        fi
+-        if [[ -n "${{ inputs.job-instance }}" ]] ; then
+-          echo "GRADLE_BUILD_ACTION_CACHE_KEY_JOB_INSTANCE=${{ inputs.job-instance }}" >> ${GITHUB_ENV}
+-        fi
+-
+-    - name: Configure Gradle cache retention settings
+-      # Without these settings, the Gradle Setup action will evict effectively all "restored incremental" entries,
+-      # as it will remove all cache entries created before the start-time of the "Store Gradle Cache" job.
+-      # The total size of GitHub caches for each repository is limited to 10GB, which means that we have to use
+-      # more aggressive retention settings to keep the size of the Gradle cache stored in GitHub at an appropriate
+-      # size.
+-      shell: bash
+-      run: |
+-        mkdir -p ~/.gradle/init.d
+-        cat > ~/.gradle/init.d/cache-settings.gradle.kts <<!
+-        beforeSettings {
+-          caches {
+-            releasedWrappers.setRemoveUnusedEntriesAfterDays(5)
+-            snapshotWrappers.setRemoveUnusedEntriesAfterDays(1)
+-            downloadedResources.setRemoveUnusedEntriesAfterDays(2)
+-            createdResources.setRemoveUnusedEntriesAfterDays(5)
+-            buildCache.setRemoveUnusedEntriesAfterDays(5)
+-          }
+-        }
+-        !
+-
+-    - name: Gradle / Setup
+-      uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+-      with:
+-        cache-read-only: ${{ inputs.cache-read-only }}
+-        validate-wrappers: false
+-
+-    - name: Gradle / Init
+-      shell: bash
+-      run: ./gradlew -h
+-
+-    - name: Download existing workflow artifacts
+-      uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+-      # Just in case, don't know the exact inner workings of Gradle's build cache and whether
+-      # the download-action complains about duplicate files.
+-      continue-on-error: true
+-      with:
+-        path: ~/downloaded-artifacts/
+-
+-    - name: Extract caches
+-      shell: bash
+-      run: |
+-        echo "::group::Gradle build cache / add incremental updates"
+-        mkdir -p ~/.gradle/caches/
+-
+-        if [[ -d ~/downloaded-artifacts/ ]] ; then
+-          find ~/downloaded-artifacts/ -type f -name "ci-gradle-caches-*-${{ inputs.java-version }}.tar" | while read arch ; do
+-            echo "Adding archive content from $arch ..."
+-            (cd ~/.gradle/caches/ ; tar xf $arch --atime-preserve)
+-          done
+-        else
+-          echo "No previous build cache artifacts downloaded."
+-        fi
+-        
+-        date +%s > ~/caches-prepared-at-epoch
+-
+-        echo "::endgroup::"
+diff --git a/.github/actions/ci-incr-build-cache-save/action.yml b/.github/actions/ci-incr-build-cache-save/action.yml
+deleted file mode 100644
+index 10d3d0b..0000000
+--- a/.github/actions/ci-incr-build-cache-save/action.yml
++++ /dev/null
+@@ -1,53 +0,0 @@
+-name: 'Save incremental Gradle caches'
+-description: 'Save incremental Gradle caches'
+-inputs:
+-  job-name:
+-    description: 'job name'
+-  java-version:
+-    description: 'Java version'
+-    default: '21'
+-runs:
+-  using: "composite"
+-  steps:
+-    - name: Prepare Gradle caches archive
+-      shell: bash
+-      run: |
+-        if [[ -d ~/.gradle/caches/ ]] ; then
+-          echo "::group::Gradle caches / identify updated cache items"
+-
+-          cd ~/.gradle/caches/
+-
+-          echo "Gradle caches/ contains $(find . -type f | wc -l) files"
+-          # Identify the added and changed files in caches/.
+-
+-          echo "Identifying changed/added files..."
+-          AGE_SECS=$(($(date +%s) - $(cat ~/caches-prepared-at-epoch)))
+-          echo "Build started ~ $AGE_SECS seconds ago"
+-          AGE_MINS=$(($AGE_SECS / 60 + 1))
+-          echo " ... assuming that is ~ $AGE_MINS minutes"
+-          # This lists all relevant files that have been created or modified during by the Gradle
+-          # runs of the current job.
+-          find . -mmin -$AGE_MINS -type f '(' \
+-            -path './[0-9]*/kotlin-dsl/*' -or \
+-            -path './jars-*/*' -or \
+-            -path './modules-*/files-*/*' -or \
+-            -path './build-cache-*/*' \
+-            ')' | grep -v '[.]lock$'  > ~/ci-gradle-caches-diff || true
+-          echo "Identified $(wc -l < ~/ci-gradle-caches-diff) changed/added files in caches/"
+-
+-          # Only call 'tar', if there is some difference
+-          # Note: actions/upload-artifact takes care of compressing the artifact, no need to bug the CPU here
+-          echo "Creating artifact (if necessary)..."
+-          if [[ -s ~/ci-gradle-caches-diff ]] ; then
+-            tar --create --ignore-failed-read --file ~/ci-gradle-caches-${{ inputs.job-name }}-${{ inputs.java-version }}.tar -T ~/ci-gradle-caches-diff
+-            ls -al ~/ci-gradle-caches-${{ inputs.job-name }}-${{ inputs.java-version }}.tar
+-          fi
+-          echo "::endgroup::"
+-        fi
+-    - name: Archive incremental Gradle caches
+-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+-      with:
+-        name: ci-gradle-caches-${{ inputs.job-name }}-${{ inputs.java-version }}
+-        path: ~/ci-gradle-caches-${{ inputs.job-name }}-${{ inputs.java-version }}.tar
+-        if-no-files-found: ignore
+-        retention-days: 1
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 3bff421..4135d90 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -65,9 +65,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -114,12 +117,6 @@ jobs:
+           job: code-checks
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'code-checks'
+-
+   test:
+     name: CI Test
+     runs-on: ubuntu-24.04
+@@ -131,9 +128,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -168,12 +168,6 @@ jobs:
+           job: test
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'test'
+-
+   test-quarkus:
+     name: CI Test Quarkus
+     runs-on: ubuntu-24.04
+@@ -185,9 +179,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -231,12 +228,6 @@ jobs:
+           job: test-quarkus
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'test-quarkus'
+-
+   int-test:
+     name: CI intTest
+     runs-on: ubuntu-24.04
+@@ -250,9 +241,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -298,12 +292,6 @@ jobs:
+           job: int-test
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'int-test'
+-
+   int-test-stores:
+     name: CI intTest versioned/stores
+     runs-on: ubuntu-24.04
+@@ -315,9 +303,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -351,12 +342,6 @@ jobs:
+           job: int-test-stores
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'int-test-stores'
+-
+   int-test-integrations:
+     name: CI intTest integrations
+     runs-on: ubuntu-24.04
+@@ -373,9 +358,12 @@ jobs:
+           # Need Java 17 in addition to the default Java 21
+           additional-java-version: 17
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -405,12 +393,6 @@ jobs:
+           job: int-test-integrations
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'int-test-integrations'
+-
+   int-test-quarkus-server:
+     name: CI intTest Quarkus Server
+     runs-on: ubuntu-24.04
+@@ -422,9 +404,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -460,12 +445,6 @@ jobs:
+           job: int-test-quarkus-server
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'int-test-quarkus-server'
+-
+   int-test-quarkus-tool:
+     name: CI intTest Admin Tool
+     runs-on: ubuntu-24.04
+@@ -477,9 +456,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -515,12 +497,6 @@ jobs:
+           job: int-test-quarkus-tool
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'int-test-quarkus-tool'
+-
+   int-test-quarkus-events:
+     name: CI intTest Quarkus Events
+     runs-on: ubuntu-24.04
+@@ -532,9 +508,12 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (distributed worker)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-worker
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -570,12 +549,6 @@ jobs:
+           job: int-test-quarkus-events
+           cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+-      - name: Save partial Gradle build cache
+-        uses: ./.github/actions/ci-incr-build-cache-save
+-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+-        with:
+-          job-name: 'int-test-quarkus-events'
+-
+   determine-jobs:
+     name: CI Determine jobs
+     runs-on: ubuntu-24.04
+@@ -781,9 +754,13 @@ jobs:
+           echo "DOCKER_SERVER_ADMIN_IMAGE=${DOCKER_REGISTRY}:5000/nessie-server-admin-testing" >> ${GITHUB_ENV}
+           echo "DOCKER_CLI_IMAGE=${DOCKER_REGISTRY}:5000/nessie-cli-testing" >> ${GITHUB_ENV}
+ 
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (read-only)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: standalone
++          read-only: 'true'
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -988,9 +965,13 @@ jobs:
+         uses: ./.github/actions/setup-runner
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+-      - name: Prepare Gradle build cache
++      - name: Mammoth Gradle cache (read-only)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
++        with:
++          config-file: .github/mammoth-gradle.yml
++          job-mode: standalone
++          read-only: 'true'
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin
+@@ -1048,13 +1029,13 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+ 
+-      - name: Collect partial Gradle build caches
++      - name: Mammoth Gradle cache (aggregator)
+         id: gradle-cache
+-        uses: ./.github/actions/ci-incr-build-cache-prepare
++        uses: buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1
+         with:
+-          cache-read-only: false
+-
+-      # Note: the "Post ..."-step cleans up stale cache entries and archives the updated build cache.
++          config-file: .github/mammoth-gradle.yml
++          job-mode: distributed-aggregator
++          dependent-jobs: code-checks, test, test-quarkus, int-test, int-test-stores, int-test-integrations, int-test-quarkus-server, int-test-quarkus-tool, int-test-quarkus-events
+ 
+       - name: Replay telemetry / begin
+         uses: ./.github/actions/replay-telemetry-begin

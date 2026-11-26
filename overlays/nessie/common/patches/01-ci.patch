@@ -1,0 +1,445 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index a129cf4..3bff421 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -66,8 +66,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / Compile
+         run: |
+           ./gradlew \
+@@ -103,6 +107,13 @@ jobs:
+       - name: Gradle / build tools integration tests
+         run: ./gradlew buildToolsIntegrationTest --continue
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: code-checks
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -121,8 +132,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / test
+         run: |
+           ./gradlew \
+@@ -146,6 +161,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: test
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -164,8 +186,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / Test Quarkus Server
+         run: |
+           ./gradlew :nessie-quarkus:test --scan
+@@ -198,6 +224,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: test-quarkus
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -218,8 +251,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / intTest
+         run: |
+           echo "::group::Collect :nessie-versioned-storage projects"
+@@ -254,6 +291,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: int-test
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -272,8 +316,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / intTest versioned/stores
+         run: |
+           echo "::group::Collect :nessie-versioned-storage projects"
+@@ -296,6 +344,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: int-test-stores
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -319,8 +374,12 @@ jobs:
+           additional-java-version: 17
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / intTest integrations
+         run: |
+           echo "::group::Collect :nessie-spark-extensions projects"
+@@ -339,6 +398,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: int-test-integrations
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -357,8 +423,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / intTest Quarkus Server
+         run:
+           ./gradlew :nessie-quarkus:intTest --scan
+@@ -383,6 +453,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: int-test-quarkus-server
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -401,8 +478,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / intTest Admin Tool
+         run:
+           ./gradlew :nessie-server-admin-tool:intTest --scan
+@@ -427,6 +508,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: int-test-quarkus-tool
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -445,8 +533,12 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Gradle / intTest Quarkus Events
+         run:
+           ./gradlew :nessie-events-quarkus:intTest --scan
+@@ -471,6 +563,13 @@ jobs:
+             **/build/test-results/*
+           retention-days: 7
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: int-test-quarkus-events
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+       - name: Save partial Gradle build cache
+         uses: ./.github/actions/ci-incr-build-cache-save
+         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+@@ -683,8 +782,12 @@ jobs:
+           echo "DOCKER_CLI_IMAGE=${DOCKER_REGISTRY}:5000/nessie-cli-testing" >> ${GITHUB_ENV}
+ 
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+ 
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
+       - name: Docker images publishing
+         run: |
+           tools/dockerbuild/build-push-images.sh \
+@@ -868,133 +971,12 @@ jobs:
+             --helm-extra-set-args "--set=image.repository=${DOCKER_IMAGE} --set=image.tag=${DOCKER_VERSION}" \
+             --debug --charts ./helm/nessie
+ 
+-  nesqueit:
+-    name: CI NesQuEIT
+-    runs-on: ubuntu-24.04
+-    timeout-minutes: 60
+-    needs:
+-      - determine-jobs
+-    # Only run NesQuEIT tests for PRs, if requested. This job can easily run for 30+ minutes.
+-    if: github.event_name == 'pull_request' && needs.determine-jobs.outputs.nesqueit == 'true'
+-    env:
+-      NESSIE_DIR: included-builds/nessie
+-      NESSIE_PATCH_REPOSITORY: 'snazy/nessie'
+-      NESSIE_PATCH_BRANCH: 'integ-bump/iceberg'
+-      NESQUEIT_REPOSITORY: projectnessie/query-engine-integration-tests
+-      NESQUEIT_BRANCH: main
+-      ICEBERG_DIR: included-builds/iceberg
+-      ICEBERG_MAIN_REPOSITORY: apache/iceberg
+-      ICEBERG_MAIN_BRANCH: main
+-      ICEBERG_PATCH_REPOSITORY: snazy/iceberg
+-      ICEBERG_PATCH_BRANCH: iceberg-nesqueit
+-      SPARK_LOCAL_IP: localhost
+-    steps:
+-      - name: Prepare Git
+-        run: |
+-          git config --global user.email "integrations-testing@projectnessie.org"
+-          git config --global user.name "Integrations Testing [Bot]"
+-
+-      - name: Checkout NeQuEIT repo
+-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+-        with:
+-          repository: ${{env.NESQUEIT_REPOSITORY}}
+-          ref: ${{env.NESQUEIT_BRANCH}}
+-
+-      - name: Free disk space
+-        uses: ./.github/actions/free-disk-space
+-
+-      - name: Setup runner
+-        uses: ./.github/actions/setup-runner
+-        with:
+-          more-memory: 'true'
+-
+-      - name: Checkout and patch Nessie PR
+-        uses: ./.github/actions/patch-git
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
+         with:
+-          name: Nessie
+-          local-dir: ${{env.NESSIE_DIR}}
+-          main-repository: ${{ env.GITHUB_REPOSITORY }}
+-          patch-repository: ${{env.NESSIE_PATCH_REPOSITORY}}
+-          patch-branch: ${{env.NESSIE_PATCH_BRANCH}}
+-          work-branch: nessie-integration-patched
+-
+-      - name: Checkout and patch Iceberg
+-        uses: ./.github/actions/patch-git
+-        with:
+-          name: Nessie
+-          local-dir: ${{env.ICEBERG_DIR}}
+-          main-repository: ${{env.ICEBERG_MAIN_REPOSITORY}}
+-          main-branch: ${{env.ICEBERG_MAIN_BRANCH}}
+-          patch-repository: ${{env.ICEBERG_PATCH_REPOSITORY}}
+-          patch-branch: ${{env.ICEBERG_PATCH_BRANCH}}
+-          work-branch: iceberg-integration-patched
+-
+-      - name: Gradle 9 prereq
+-        # Gradle 9 requires a project's directory to exist, even if it's empty.
+-        run: mkdir "${{env.ICEBERG_DIR}}/bom"
+-
+-      # Setup Gradle properties, heap requirements are for the "Integration test w/ Nessie".
+-      - name: Setup gradle.properties
+-        run: |
+-          mkdir -p ~/.gradle
+-          echo "org.gradle.jvmargs=-Xms2g -Xmx6g -XX:MaxMetaspaceSize=768m -Dfile.encoding=UTF-8" >> ~/.gradle/gradle.properties
+-          echo "org.gradle.vfs.watch=false" >> ~/.gradle/gradle.properties
+-
+-      - name: Setup JDK
+-        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6
+-        with:
+-          distribution: 'temurin'
+-          # Java 17 or 21 required for Nessie build, Java 17 required for Iceberg build, Java 11 required for Flink & Presto
+-          java-version: | 
+-            11
+-            17
+-            21
+-
+-      - name: Setup Gradle
+-        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+-        with:
+-          cache-read-only: true
+-          validate-wrappers: false
+-
+-      - name: Iceberg Nessie test
+-        run: ./gradlew :iceberg:iceberg-nessie:test --scan
+-
+-      - name: Nessie Spark 3.4 / 2.13 Extensions test
+-        run: |
+-          ./gradlew \
+-            -DscalaVersion=2.13 \
+-            :nessie:nessie-iceberg:nessie-spark-extensions-3.4_2.13:test \
+-            :nessie:nessie-iceberg:nessie-spark-extensions-3.4_2.13:intTest \
+-            --continue \
+-            --scan
+-
+-      - name: Nessie Spark 3.5 / 2.13 Extensions test
+-        run: |
+-          ./gradlew \
+-            -DscalaVersion=2.13 \
+-            :nessie:nessie-iceberg:nessie-spark-extensions-3.5_2.13:test \
+-            :nessie:nessie-iceberg:nessie-spark-extensions-3.5_2.13:intTest \
+-            --continue \
+-            --scan
+-
+-      #- name: Publish Nessie + Iceberg to local Maven repo
+-      #  run: ./gradlew publishLocal --scan
+-      #
+-      #- name: Gather locally published versions
+-      #  run: |
+-      #    NESSIE_VERSION="$(cat included-builds/nessie/version.txt)"
+-      #    ICEBERG_VERSION="$(cat included-builds/iceberg/build/iceberg-build.properties | grep '^git.build.version=' | cut -d= -f2)"
+-      #    echo "NESSIE_VERSION=${NESSIE_VERSION}" >> ${GITHUB_ENV}
+-      #    echo "ICEBERG_VERSION=${ICEBERG_VERSION}" >> ${GITHUB_ENV}
+-      #    cat <<! >> $GITHUB_STEP_SUMMARY
+-      #    ## Published versions
+-      #    | Published Nessie version | Published Iceberg version |
+-      #    | ------------------------ | ------------------------- |
+-      #    | ${NESSIE_VERSION}        | ${ICEBERG_VERSION}        |
+-      #    !
+-
+-      - name: Tools & Integrations tests
+-        run: ./gradlew intTest --continue --scan
++          job: docker-testing
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
+ 
+   site:
+     name: CI Website
+@@ -1007,7 +989,11 @@ jobs:
+       - name: Setup Java, Gradle
+         uses: ./.github/actions/dev-tool-java
+       - name: Prepare Gradle build cache
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
++
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
+       - name: Setup Python
+         uses: ./.github/actions/dev-tool-python
+         with:
+@@ -1029,6 +1015,13 @@ jobs:
+           publish_dir: ./site/site
+           cname: projectnessie.org
+ 
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: site
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
++
+   store-cache:
+     # Store the Gradle cache to GH cache as soon as all relevant Nessie/Gradle jobs have finished.
+     name: CI Store Cache
+@@ -1056,8 +1049,19 @@ jobs:
+         uses: ./.github/actions/dev-tool-java
+ 
+       - name: Collect partial Gradle build caches
++        id: gradle-cache
+         uses: ./.github/actions/ci-incr-build-cache-prepare
+         with:
+           cache-read-only: false
+ 
+       # Note: the "Post ..."-step cleans up stale cache entries and archives the updated build cache.
++
++      - name: Replay telemetry / begin
++        uses: ./.github/actions/replay-telemetry-begin
++
++      - name: Replay telemetry / end
++        if: always()
++        uses: ./.github/actions/replay-telemetry-end
++        with:
++          job: store-cache
++          cache-outputs: ${{ toJSON(steps.gradle-cache.outputs) }}
