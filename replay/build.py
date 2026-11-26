@@ -63,6 +63,52 @@ def triggers_push(changed: list[str], paths_ignore: list[str]) -> bool:
     return any(not is_ignored(p, paths_ignore) for p in changed)
 
 
+# --- workflow job graph ---------------------------------------------------------------------
+
+
+def parse_workflow_jobs(text: str) -> dict[str, dict]:
+    """Job IDs with display name and `needs`, from a workflow file's top-level job layout."""
+    jobs: dict[str, dict] = {}
+    lines = text.splitlines()
+    try:
+        start = lines.index("jobs:") + 1
+    except ValueError as e:
+        raise BuildError("workflow has no top-level 'jobs:'") from e
+    current = None
+    in_needs = False
+    for line in lines[start:]:
+        m = re.match(r"^  ([A-Za-z0-9_-]+):\s*$", line)
+        if m:
+            current = m.group(1)
+            jobs[current] = {"name": current, "needs": []}
+            in_needs = False
+            continue
+        if current is None:
+            continue
+        if re.match(r"^    \S", line):
+            in_needs = False
+            nm = re.match(r"^    name:\s*(.+?)\s*$", line)
+            if nm:
+                jobs[current]["name"] = nm.group(1).strip("'\"")
+            nd = re.match(r"^    needs:\s*(.*)$", line)
+            if nd:
+                rest = nd.group(1).strip()
+                if rest.startswith("["):
+                    jobs[current]["needs"] = [x.strip() for x in rest.strip("[]").split(",") if x.strip()]
+                elif rest:
+                    jobs[current]["needs"] = [rest]
+                else:
+                    in_needs = True
+            continue
+        if in_needs:
+            item = re.match(r"^      - ([A-Za-z0-9_-]+)\s*$", line)
+            if item:
+                jobs[current]["needs"].append(item.group(1))
+            elif line.strip() and not line.strip().startswith("#"):
+                in_needs = False
+    return jobs
+
+
 # --- overlays --------------------------------------------------------------------------------
 
 
@@ -224,6 +270,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
     dropped: dict[str, dict] = {}
     overlay_trees = {}
     tips = {}
+    workflow_jobs: dict | None = None
 
     for variant, vcfg in profile["variants"].items():
         repo = repos[variant]
@@ -232,7 +279,13 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
             layers = [overlay_base / name for name in [*ov.get("common_layers", []), *vcfg["overlay_layers"]]]
             materialize_overlay(upstream, seed_sha, ov["keep"], layers, Path(tmp))
             ovl = overlay_tree(repo, Path(tmp))
+            wf = Path(tmp) / OVERLAY_ROOT / "workflows" / profile["workflow"]["file"]
+            jobs = parse_workflow_jobs(wf.read_text()) if wf.exists() else {}
         overlay_trees[variant] = ovl
+        if workflow_jobs is None:
+            workflow_jobs = jobs
+        elif jobs != workflow_jobs:
+            raise BuildError(f"{variant}: workflow job names or needs differ from the other variant")
 
         tip: str | None = None
         tip_tree: str | None = None
@@ -265,6 +318,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
                 sha = commit(repo, tree, tip, replay_message(meta["subject"], pe["upstream"], pe["campaign"], pe["id"]), meta["committer_date"], identity)
                 pe["sha"][variant] = sha
                 pe["branch"] = f"replay/{pe['campaign']}/{pe['id']}"
+                pe["title"] = sanitize_subject(meta["subject"])
                 pending_pr = pe if pe.get("push_after", False) else None
         tips[variant] = tip
 
@@ -291,7 +345,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
         "upstream": {"repo": profile["upstream"]["repo"], "seed": seed_sha},
         "variants": {v: {"repo": c["repo"], "overlay_tree": overlay_trees[v]} for v, c in profile["variants"].items()},
         "settings": profile["controller"],
-        "workflow": profile["workflow"],
+        "workflow": {**profile["workflow"], "jobs": workflow_jobs},
         "jobs": profile["jobs"],
         "events": final_events,
         "dropped": list(dropped.values()),

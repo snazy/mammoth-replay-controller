@@ -58,7 +58,18 @@
     "max_reruns": 2,
     "min_event_spacing_minutes": 300,
     "run_visibility_timeout_minutes": 30,
-    "run_max_duration_minutes": 360
+    "run_max_duration_minutes": 360,
+    "on_unknown_failure": "pause",
+    "failure_patterns": {
+      "flaky_tests": [],
+      "infrastructure": []
+    },
+    "cache_steps": {
+      "reference": ["Prepare Gradle build cache", "Collect partial Gradle build caches", "Save partial Gradle build cache"],
+      "mammoth": ["Mammoth Gradle cache (distributed worker)", "Mammoth Gradle cache (aggregator)", "Mammoth Gradle cache (read-only)"]
+    },
+    "warmup_events": 3,
+    "representative_events": ["scored/seed", "scored/main-06", "scored/pr-05", "scored/pr-20", "scored/main-20", "scored/main-21"]
   },
   "campaigns": [
     {

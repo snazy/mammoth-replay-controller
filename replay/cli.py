@@ -2,7 +2,9 @@
 
 import argparse
 import json
+import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 from . import build
@@ -45,6 +47,59 @@ def print_plan(plan: dict) -> None:
             print(f"  staging {v} {ref} -> {sha[:10]}")
 
 
+def cmd_tick(args: argparse.Namespace) -> int:
+    from .controller import load_plan, tick
+    from .decide import Env
+    from .github import GitHubApi
+
+    token = os.environ.get("REPLAY_GITHUB_TOKEN")
+    if not token:
+        print("REPLAY_GITHUB_TOKEN is not set", file=sys.stderr)
+        return 2
+    env = Env(
+        now=datetime.now(timezone.utc),
+        paused=os.environ.get("REPLAY_PAUSED", "").strip().lower() in ("1", "true", "yes"),
+        released_gates=frozenset(g.strip() for g in os.environ.get("REPLAY_RELEASED_GATES", "").split(",") if g.strip()),
+    )
+    d, notes = tick(load_plan(Path(args.plan)), GitHubApi(token), Path(args.data), env)
+    print((Path(args.data) / "status.md").read_text())
+    return 1 if d.exceptions else 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    path = Path(args.data) / "status.md"
+    print(path.read_text() if path.exists() else "no status yet")
+    return 0
+
+
+def cmd_report(args: argparse.Namespace) -> int:
+    from .controller import load_plan
+    from .report import write_report
+
+    summary = write_report(load_plan(Path(args.plan)), Path(args.data), Path(args.out))
+    print(json.dumps(summary, indent=2))
+    return 0
+
+
+def cmd_show_plan(args: argparse.Namespace) -> int:
+    from .controller import load_plan
+
+    plan = load_plan(Path(args.plan))
+    print_plan(plan)
+    print()
+    print("Remote mutations per variant, in order (each waits for both variants' CI and the spacing):")
+    for e in plan["events"]:
+        key = f"{e['campaign']}/{e['id']}"
+        if e["type"] == "gate":
+            print(f"  {key}: wait for release, then delete all Actions caches and artifacts")
+        elif e["type"] in ("seed", "main"):
+            extra = f", then rerun job {e['rerun_job']}" if e.get("rerun_job") else ""
+            print(f"  {key}: move main to the replay commit{extra}")
+        else:
+            print(f"  {key}: create branch {e['branch']}, open PR against main, close it after CI")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="replay")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -55,5 +110,20 @@ def main(argv: list[str] | None = None) -> int:
     bp.add_argument("--out", required=True)
     bp.add_argument("--write-staging-refs", action="store_true", help="point local staging tags at the plan's commits")
     bp.set_defaults(func=cmd_build_plan)
+    tp = sub.add_parser("tick", help="one controller tick against GitHub (needs REPLAY_GITHUB_TOKEN)")
+    tp.add_argument("--plan", required=True)
+    tp.add_argument("--data", required=True)
+    tp.set_defaults(func=cmd_tick)
+    sp = sub.add_parser("status", help="print the last status (offline)")
+    sp.add_argument("--data", required=True)
+    sp.set_defaults(func=cmd_status)
+    rp = sub.add_parser("report", help="write the report from collected evidence (offline)")
+    rp.add_argument("--plan", required=True)
+    rp.add_argument("--data", required=True)
+    rp.add_argument("--out", required=True)
+    rp.set_defaults(func=cmd_report)
+    pp = sub.add_parser("show-plan", help="print the plan and its mutation sequence (offline)")
+    pp.add_argument("--plan", required=True)
+    pp.set_defaults(func=cmd_show_plan)
     args = p.parse_args(argv)
     return args.func(args)
