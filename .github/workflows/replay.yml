@@ -1,0 +1,83 @@
+# Drives the Mammoth replay experiment: one controller tick per run.
+#
+# Inputs (repository settings of this controller repo):
+#   secrets.REPLAY_TOKEN           fine-grained token for the two replay repos
+#   vars.REPLAY_PAUSED             'true' stops all mutations (evidence collection continues)
+#   vars.REPLAY_RELEASED_GATES     comma-separated gate keys, e.g. 'scored/clear-caches'
+#
+# Evidence, status and the report are committed to the 'data' branch with this workflow's
+# GITHUB_TOKEN; such pushes don't trigger workflows.
+
+name: Replay tick
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+    inputs:
+      command:
+        description: 'tick (default) or preflight (read-only checks)'
+        type: choice
+        options: [tick, preflight]
+        default: tick
+
+permissions:
+  contents: write
+
+concurrency:
+  group: replay-tick
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout controller
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          path: controller
+
+      - name: Checkout data branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: data
+
+      - name: Controller tick
+        id: tick
+        working-directory: controller
+        env:
+          REPLAY_GITHUB_TOKEN: ${{ secrets.REPLAY_TOKEN }}
+          REPLAY_PAUSED: ${{ vars.REPLAY_PAUSED }}
+          REPLAY_RELEASED_GATES: ${{ vars.REPLAY_RELEASED_GATES }}
+          REPLAY_COMMAND: ${{ inputs.command }}
+        run: |
+          if [[ "${REPLAY_COMMAND}" == "preflight" ]]; then
+            python3 -m replay preflight --plan plans/nessie.json
+          else
+            python3 -m replay tick --plan plans/nessie.json --data ../data/nessie
+          fi
+
+      - name: Report
+        if: always() && inputs.command != 'preflight'
+        working-directory: controller
+        run: python3 -m replay report --plan plans/nessie.json --data ../data/nessie --out ../data/nessie/report > /dev/null
+
+      - name: Job summary
+        if: always()
+        run: cat data/nessie/status.md >> "${GITHUB_STEP_SUMMARY}" || true
+
+      - name: Commit evidence
+        if: always() && inputs.command != 'preflight'
+        working-directory: data
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no evidence changes"
+            exit 0
+          fi
+          git -c user.name="replay-controller" -c user.email="replay-controller@invalid" \
+            commit -q -m "Replay tick ${GITHUB_RUN_ID}"
+          git push -q origin HEAD:data

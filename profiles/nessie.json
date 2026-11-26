@@ -56,7 +56,7 @@
   },
   "controller": {
     "max_reruns": 2,
-    "min_event_spacing_minutes": 300,
+    "min_event_spacing_minutes": 240,
     "run_visibility_timeout_minutes": 30,
     "run_max_duration_minutes": 360,
     "on_unknown_failure": "pause",

@@ -105,6 +105,25 @@ class GitHubApi:
             page += 1
         return out[:limit]
 
+    # --- repositories ------------------------------------------------------------------------
+
+    def get_repo(self, repo: str) -> dict | None:
+        try:
+            return self._request("GET", f"/repos/{repo}")
+        except GitHubError as e:
+            if e.status == 404:
+                return None
+            raise
+
+    def commit_exists(self, repo: str, sha: str) -> bool:
+        try:
+            self._request("GET", f"/repos/{repo}/commits/{sha}")
+            return True
+        except GitHubError as e:
+            if e.status in (404, 422):
+                return False
+            raise
+
     # --- refs --------------------------------------------------------------------------------
 
     def get_ref(self, repo: str, ref: str) -> str | None:

@@ -100,6 +100,21 @@ def cmd_show_plan(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_preflight(args: argparse.Namespace) -> int:
+    from .controller import load_plan
+    from .github import GitHubApi
+    from .preflight import preflight
+
+    token = os.environ.get("REPLAY_GITHUB_TOKEN")
+    if not token:
+        print("REPLAY_GITHUB_TOKEN is not set", file=sys.stderr)
+        return 2
+    results = preflight(load_plan(Path(args.plan)), GitHubApi(token))
+    for level, msg in results:
+        print(f"{level:<4} {msg}")
+    return 1 if any(level == "FAIL" for level, _ in results) else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="replay")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -125,5 +140,8 @@ def main(argv: list[str] | None = None) -> int:
     pp = sub.add_parser("show-plan", help="print the plan and its mutation sequence (offline)")
     pp.add_argument("--plan", required=True)
     pp.set_defaults(func=cmd_show_plan)
+    fp = sub.add_parser("preflight", help="read-only launch checks against GitHub (needs REPLAY_GITHUB_TOKEN)")
+    fp.add_argument("--plan", required=True)
+    fp.set_defaults(func=cmd_preflight)
     args = p.parse_args(argv)
     return args.func(args)

@@ -1,0 +1,688 @@
+{
+  "schema": 1,
+  "profile": "nessie",
+  "upstream": {
+    "repo": "projectnessie/nessie",
+    "seed": "f400e1dfddd6336f30a54c688529d4d70bcfc607"
+  },
+  "variants": {
+    "reference": {
+      "repo": "snazy/nessie-mammoth-reference",
+      "overlay_tree": "c8fea95bc42a9f3f7c3be58788105a6741334855"
+    },
+    "mammoth": {
+      "repo": "snazy/nessie-mammoth-prototype",
+      "overlay_tree": "503e3b4413fec7e8c5019a725849d0c9bcf74809"
+    }
+  },
+  "settings": {
+    "max_reruns": 2,
+    "min_event_spacing_minutes": 240,
+    "run_visibility_timeout_minutes": 30,
+    "run_max_duration_minutes": 360,
+    "on_unknown_failure": "pause",
+    "failure_patterns": {
+      "flaky_tests": [],
+      "infrastructure": []
+    },
+    "cache_steps": {
+      "reference": [
+        "Prepare Gradle build cache",
+        "Collect partial Gradle build caches",
+        "Save partial Gradle build cache"
+      ],
+      "mammoth": [
+        "Mammoth Gradle cache (distributed worker)",
+        "Mammoth Gradle cache (aggregator)",
+        "Mammoth Gradle cache (read-only)"
+      ]
+    },
+    "warmup_events": 3,
+    "representative_events": [
+      "scored/seed",
+      "scored/main-06",
+      "scored/pr-05",
+      "scored/pr-20",
+      "scored/main-20",
+      "scored/main-21"
+    ]
+  },
+  "workflow": {
+    "file": "ci.yml",
+    "name": "CI build",
+    "push_paths_ignore": [
+      "LICENSE",
+      "NOTICE",
+      "**.md",
+      "!site/**",
+      ".github/renovate.json5",
+      ".github/workflows/release*.yml",
+      ".github/workflows/check*.yml",
+      ".idea/**",
+      ".editorconfig"
+    ],
+    "jobs": {
+      "code-checks": {
+        "name": "CI Code Checks et al",
+        "needs": []
+      },
+      "test": {
+        "name": "CI Test",
+        "needs": []
+      },
+      "test-quarkus": {
+        "name": "CI Test Quarkus",
+        "needs": []
+      },
+      "int-test": {
+        "name": "CI intTest",
+        "needs": []
+      },
+      "int-test-stores": {
+        "name": "CI intTest versioned/stores",
+        "needs": []
+      },
+      "int-test-integrations": {
+        "name": "CI intTest integrations",
+        "needs": []
+      },
+      "int-test-quarkus-server": {
+        "name": "CI intTest Quarkus Server",
+        "needs": []
+      },
+      "int-test-quarkus-tool": {
+        "name": "CI intTest Admin Tool",
+        "needs": []
+      },
+      "int-test-quarkus-events": {
+        "name": "CI intTest Quarkus Events",
+        "needs": []
+      },
+      "determine-jobs": {
+        "name": "CI Determine jobs",
+        "needs": []
+      },
+      "docker-testing": {
+        "name": "CI Docker and Helm checks",
+        "needs": [
+          "determine-jobs"
+        ]
+      },
+      "site": {
+        "name": "CI Website",
+        "needs": []
+      },
+      "store-cache": {
+        "name": "CI Store Cache",
+        "needs": [
+          "code-checks",
+          "test",
+          "test-quarkus",
+          "int-test",
+          "int-test-stores",
+          "int-test-integrations",
+          "int-test-quarkus-server",
+          "int-test-quarkus-tool",
+          "int-test-quarkus-events"
+        ]
+      }
+    }
+  },
+  "jobs": {
+    "producers": [
+      "code-checks",
+      "test",
+      "test-quarkus",
+      "int-test",
+      "int-test-stores",
+      "int-test-integrations",
+      "int-test-quarkus-server",
+      "int-test-quarkus-tool",
+      "int-test-quarkus-events"
+    ],
+    "aggregator": "store-cache",
+    "other_measured": [
+      "determine-jobs",
+      "docker-testing",
+      "site"
+    ],
+    "conditional": [
+      "docker-testing",
+      "store-cache"
+    ],
+    "excluded": [
+      "nesqueit"
+    ]
+  },
+  "events": [
+    {
+      "campaign": "smoke",
+      "id": "seed",
+      "type": "seed",
+      "upstream": "f400e1dfddd6336f30a54c688529d4d70bcfc607",
+      "sha": {
+        "reference": "5ea04c2a7bcc6f7bc24c11954d017218d1300322",
+        "mammoth": "bc89b0f86d1624b918b3b84f72560debce040200"
+      }
+    },
+    {
+      "campaign": "smoke",
+      "id": "main-01",
+      "type": "main",
+      "upstream": "cc135c7088157e4eea2a383e84d64bf1bcf018c2",
+      "rerun_job": "code-checks",
+      "sha": {
+        "reference": "5bd350d972a3ad010f6df9db2ab05daea20e384e",
+        "mammoth": "0e8776d153d81ceca167d36c270326a0f53dd9f5"
+      }
+    },
+    {
+      "campaign": "smoke",
+      "id": "pr-02",
+      "type": "pr",
+      "upstream": "1c580838f913e0ade60a95ff37f498e4cbe93b34",
+      "push_after": false,
+      "sha": {
+        "reference": "ea8346c81eb5951615e99f984f79c7a1c11a8f86",
+        "mammoth": "8b9c1a7cfe03345258d7aa05a46d0f22a024cc41"
+      },
+      "branch": "replay/smoke/pr-02",
+      "title": "Update quay.io/keycloak/keycloak Docker tag to v26.8.0 (PR 13111)"
+    },
+    {
+      "campaign": "scored",
+      "id": "clear-caches",
+      "type": "gate",
+      "action": "delete-caches-and-artifacts",
+      "sha": {}
+    },
+    {
+      "campaign": "scored",
+      "id": "seed",
+      "type": "seed",
+      "upstream": "f400e1dfddd6336f30a54c688529d4d70bcfc607",
+      "sha": {
+        "reference": "d6cdbe395384ce45422a7f32aba965e4b25b1f76",
+        "mammoth": "4f22e7b66b140eb1b6375bb05ddd759b17a78a48"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-01",
+      "type": "main",
+      "upstream": "cc135c7088157e4eea2a383e84d64bf1bcf018c2",
+      "sha": {
+        "reference": "620cb25631e40a02b0861e1498e1b5e695cd7186",
+        "mammoth": "dcb783e34b5dac8adfa7436ff20925592a597588"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-02",
+      "type": "main",
+      "upstream": "1c580838f913e0ade60a95ff37f498e4cbe93b34",
+      "sha": {
+        "reference": "6deb6637e6b6180b4662951ac7c5e75266b893bb",
+        "mammoth": "6ea78b9d9d4d87a4f99fb84e710ec0b5d0422c78"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "pr-03",
+      "type": "pr",
+      "upstream": "00ca4d77faf37102bf034d3260417e64b79ce38b",
+      "push_after": true,
+      "sha": {
+        "reference": "64e76c3b5d982fd9699297821a8d17129b689e8d",
+        "mammoth": "8470b5dd25e11e2b9907a5c83edfb8fb7750c04c"
+      },
+      "branch": "replay/scored/pr-03",
+      "title": "feat(helm): add optional Nessie GC CronJob (PR 12643)"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-03",
+      "type": "main",
+      "upstream": "00ca4d77faf37102bf034d3260417e64b79ce38b",
+      "sha": {
+        "reference": "64e76c3b5d982fd9699297821a8d17129b689e8d",
+        "mammoth": "8470b5dd25e11e2b9907a5c83edfb8fb7750c04c"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-04",
+      "type": "main",
+      "upstream": "68157f0785f8227ab091a30d8f133186b9e7e6f7",
+      "sha": {
+        "reference": "9aee9c0fcb2edf30fda0bc391d2250a88d2c167e",
+        "mammoth": "3b03d24ee5dec69914bfa05964f078712dff0559"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "pr-05",
+      "type": "pr",
+      "upstream": "01872b10e126d6fd2015f38ec92c2d3b5b9b42f7",
+      "push_after": true,
+      "sha": {
+        "reference": "db5c1449b74f7dab7031e8e0ec14eda771531d36",
+        "mammoth": "9793a767b210c64d29031a9480c335a04a83cd36"
+      },
+      "branch": "replay/scored/pr-05",
+      "title": "Update dependency com.github.dasniko:testcontainers-keycloak to v4.4.0 (PR 13116)"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-05",
+      "type": "main",
+      "upstream": "01872b10e126d6fd2015f38ec92c2d3b5b9b42f7",
+      "sha": {
+        "reference": "db5c1449b74f7dab7031e8e0ec14eda771531d36",
+        "mammoth": "9793a767b210c64d29031a9480c335a04a83cd36"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-06",
+      "type": "main",
+      "upstream": "da07c8495748be60582267a04bc2ad52ee688d92",
+      "sha": {
+        "reference": "cac60d3908a3945d4bc8aaeaafbb4bcc9a3cd1ff",
+        "mammoth": "9a0df588481a059b4d026b447a27c125ce208c28"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-07",
+      "type": "main",
+      "upstream": "387744ed6fa3142d4ec71eed678b66c9eac0170b",
+      "sha": {
+        "reference": "7a87d76da3c83ace203897be888bff3e5d5b5f9e",
+        "mammoth": "d5a5a96b54c893205fb98e755a1fbcf455f48f11"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-08",
+      "type": "main",
+      "upstream": "16a700433e8bf68c96fae785c8ffb301f27b3369",
+      "sha": {
+        "reference": "ddc1f0830849b931c9069392e5cb119cab79f861",
+        "mammoth": "cd391e1776c2298a0fad2cadc207128f63f9b407"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-09",
+      "type": "main",
+      "upstream": "12b3e4e356304702764c006d6bacc2d3e6e97ad4",
+      "sha": {
+        "reference": "fe67b5e18955b56fcefbf722e67b0c66f4d79e0b",
+        "mammoth": "7325758305c67dc6075ee5458b4fd3b35b3a998c"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-10",
+      "type": "main",
+      "upstream": "82138512cd4e6d2665ed842aa6de446fbd6bd8b6",
+      "sha": {
+        "reference": "f1d20e404945372978b6652eac4af05ec06a59a5",
+        "mammoth": "90d3853c9a159f992da8f4398bb74223a7c3dcb6"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-11",
+      "type": "main",
+      "upstream": "df541558c7a1423aa925785e51807b7936ac0ffd",
+      "sha": {
+        "reference": "85dfd8d97bdc2c2138790ee56c71197936f03287",
+        "mammoth": "bd8af75978dca5ca770f1c2cfc4f80fed7c8a0cd"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "pr-12",
+      "type": "pr",
+      "upstream": "5f96e26fdea14ff54061a318b922b719dbaa1019",
+      "push_after": true,
+      "sha": {
+        "reference": "ec8b5e642e1bc04594af42f4eb4821f58834530e",
+        "mammoth": "e0729f18536c6c4d94767b04cab6b2914222df5b"
+      },
+      "branch": "replay/scored/pr-12",
+      "title": "Support custom S3 virtual-host request signing (PR 12865)"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-12",
+      "type": "main",
+      "upstream": "5f96e26fdea14ff54061a318b922b719dbaa1019",
+      "sha": {
+        "reference": "ec8b5e642e1bc04594af42f4eb4821f58834530e",
+        "mammoth": "e0729f18536c6c4d94767b04cab6b2914222df5b"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-13",
+      "type": "main",
+      "upstream": "bb034e2f2a310c9f38731a6ff0e84a322faa03ef",
+      "sha": {
+        "reference": "e0295fd6f99367071b97b635e28b32d4d394c925",
+        "mammoth": "5b3786a537f308a9a9c400cdb46b482f9a5d2126"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-14",
+      "type": "main",
+      "upstream": "25ac4ba076edc008df7276f036c402cc52bc7e1e",
+      "sha": {
+        "reference": "791e299b3e9101a1ab2440339dc8ec0e5f854a77",
+        "mammoth": "42012d4852f76d82c5af4ec5225481663a843e1a"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-15",
+      "type": "main",
+      "upstream": "2f9c6acce4f6330c0e67f3d3b14df760129c15cc",
+      "sha": {
+        "reference": "c6cfa41748bf0dd605187cc9cb7155da379c156b",
+        "mammoth": "6fa570e2d682591c14ffe5c80e488cbde57e4db6"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "pr-16",
+      "type": "pr",
+      "upstream": "cfdbd5a90e2ae96ad43f217b57ab4ea693fe716d",
+      "push_after": true,
+      "sha": {
+        "reference": "6b15961f7f44866dd9a9868e884347c436ef8b83",
+        "mammoth": "702bea312ae1bbdcaabaacc55df2354b4dd64f45"
+      },
+      "branch": "replay/scored/pr-16",
+      "title": "Update dependency software.amazon.awssdk:bom to v2.55.11 (PR 13124)"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-16",
+      "type": "main",
+      "upstream": "cfdbd5a90e2ae96ad43f217b57ab4ea693fe716d",
+      "sha": {
+        "reference": "6b15961f7f44866dd9a9868e884347c436ef8b83",
+        "mammoth": "702bea312ae1bbdcaabaacc55df2354b4dd64f45"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-17",
+      "type": "main",
+      "upstream": "0f59fcbed1cb3ffa0343c877ab4566b194f66d66",
+      "sha": {
+        "reference": "8365787c422a18e2c24fa61a75df8488dc5bba93",
+        "mammoth": "d8b6f058b4c5a797c1ebd8cce858ce01cd7cae4a"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-18",
+      "type": "main",
+      "upstream": "a2d9ff436c8a987047cbe6451013ca572839acd6",
+      "sha": {
+        "reference": "5129dab3fb8d8004804d1e4cf5d44e115679b539",
+        "mammoth": "db59b0da51b03b34292a5d6a8e268122abd92632"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-19",
+      "type": "main",
+      "upstream": "fc18e8958f8165e54c6425dfa0c311e9b455c4e0",
+      "sha": {
+        "reference": "15e6a282045dde4226cf0a0e46bc1c270853bf68",
+        "mammoth": "5b4a4092576a74881aa65ec138dc15d7694108a8"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "pr-20",
+      "type": "pr",
+      "upstream": "b4b891bbee9388a6292ede9a021242f75fb4a420",
+      "push_after": true,
+      "sha": {
+        "reference": "5b1c0a315ee5b8fb5f508c2d07be3e4fbcfd651e",
+        "mammoth": "df5ea34f7934893c4c81187e9cdb3c0ec08ec369"
+      },
+      "branch": "replay/scored/pr-20",
+      "title": "Update dependency io.quarkus.platform:quarkus-bom to v3.40.1 (PR 13106)"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-20",
+      "type": "main",
+      "upstream": "b4b891bbee9388a6292ede9a021242f75fb4a420",
+      "sha": {
+        "reference": "5b1c0a315ee5b8fb5f508c2d07be3e4fbcfd651e",
+        "mammoth": "df5ea34f7934893c4c81187e9cdb3c0ec08ec369"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-21",
+      "type": "main",
+      "upstream": "261e936e2b72a130ebc5e3a10b8b1e9d55eb6872",
+      "sha": {
+        "reference": "b45aa6dc054e362767b124b8328e0b32cf7cfe49",
+        "mammoth": "dedbc163af5da4ebb981973bf3ee5fa05d2aa8de"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-22",
+      "type": "main",
+      "upstream": "a2cc36ca425f564d175de47e58df94879265a78e",
+      "sha": {
+        "reference": "441d88fc428d3abde90a770097440e0b6e97312e",
+        "mammoth": "b87a161e9fc9e5f5000ba39f43cd4f4f3ed87e78"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-23",
+      "type": "main",
+      "upstream": "e650968505b5e0c317a884dd5bee3e2c4dc00219",
+      "sha": {
+        "reference": "a5051bb88573bdda1ef6668587d35f830d608d5a",
+        "mammoth": "6444c751605f8c5ba7ea1600992c46e128b7050e"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-24",
+      "type": "main",
+      "upstream": "e580a657c364cdf754704a28acc9f2f63546540f",
+      "sha": {
+        "reference": "befdecbb3220f29c4d9abce9f9af23b3d0d9a660",
+        "mammoth": "76087f9219b5cc6f8cf781c74649e81994606e60"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-25",
+      "type": "main",
+      "upstream": "d11828c7e2032d6fc990542fc0fcff5261eb6bb9",
+      "sha": {
+        "reference": "5f08a1c7345b1c073beb76895c852ee0864ab25b",
+        "mammoth": "caa1b5a645a2e17cf3318ba01e9ab4525d728b8b"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-26",
+      "type": "main",
+      "upstream": "b21edc8d5e4bc469e82e61406cb258a0ba7c4768",
+      "sha": {
+        "reference": "03d7a730925b563f86db3af2588ddb6bf5bf42c9",
+        "mammoth": "350fabd1d66bc31c136777335fd035864a2128a8"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-27",
+      "type": "main",
+      "upstream": "962c91219489cc537815308fac6c0f4036b86175",
+      "sha": {
+        "reference": "353a48b7bd188a36a15e3d1da72fe9fa780dbe1c",
+        "mammoth": "79516fc6e35898a07a23c05eaa41b5852e26a35d"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-28",
+      "type": "main",
+      "upstream": "21726fa79eee7566e6a7823c5fefefa689438194",
+      "sha": {
+        "reference": "84bf3323ca07ed30f023202a2a0a8dab4e728397",
+        "mammoth": "4296539c28aa922b78fe64582b6231eef28f2c03"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-29",
+      "type": "main",
+      "upstream": "154503ceab8793d88999c182cb0435935e67e3e5",
+      "sha": {
+        "reference": "627d0eadab7cdb7bb6f3a7c6feabb0419ed55270",
+        "mammoth": "4416022f8fb23f9aa0519b5782efcd9e5ca37077"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-30",
+      "type": "main",
+      "upstream": "dffaf8d280318643c4da66e0fb1d823c761f206d",
+      "sha": {
+        "reference": "d0f1215304403ad38edc2fd40b984c41025ca47a",
+        "mammoth": "7151703db76d21c646cf7ef67522f3936865df56"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-31",
+      "type": "main",
+      "upstream": "49fcad8f4cec66860f295a5bb7b10b94dc33fb0c",
+      "sha": {
+        "reference": "e858c6ff922d7bbeba84fb4a408acdb9e451cacb",
+        "mammoth": "e23aed0c9bef4ff456c7ee803a235ff246a85b00"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-32",
+      "type": "main",
+      "upstream": "d01ccfa34663f2a1c1cb371871e84b6ca35d61a6",
+      "sha": {
+        "reference": "39b141bff0cc724cace7c4e7e30ccb45f76b1d12",
+        "mammoth": "067392efc988e49fc073cacf311722761abc858a"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-35",
+      "type": "main",
+      "upstream": "30013733e220e048d1ca0282536ad0755a322968",
+      "sha": {
+        "reference": "b0606158066dc6d489ef08acde1e4af4c0e17a5d",
+        "mammoth": "62438f3ba00efc17cc90a04a52a3d860ce055107"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "pr-36",
+      "type": "pr",
+      "upstream": "5b58912049544af3361a38b070ae485a3c593448",
+      "push_after": true,
+      "sha": {
+        "reference": "2d93a191943d9a03ae2c9354936e125fc7f165a2",
+        "mammoth": "cbe77c11d069bbfc6b0bd2e8606b7210595b1bab"
+      },
+      "branch": "replay/scored/pr-36",
+      "title": "Update dependency io.netty:netty-bom to v4.2.19.Final (PR 13134)"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-36",
+      "type": "main",
+      "upstream": "5b58912049544af3361a38b070ae485a3c593448",
+      "sha": {
+        "reference": "2d93a191943d9a03ae2c9354936e125fc7f165a2",
+        "mammoth": "cbe77c11d069bbfc6b0bd2e8606b7210595b1bab"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-37",
+      "type": "main",
+      "upstream": "527a5d1663001ab661783da2c012de66089ef5d7",
+      "sha": {
+        "reference": "449f4b6c3c068291ee1b8f0d28f34911d78a0294",
+        "mammoth": "c522d9d682af90c423093496ce1a1c05aba95aea"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-39",
+      "type": "main",
+      "upstream": "6241c5b862a321716be64f847caccedc319d853f",
+      "sha": {
+        "reference": "43e6c70ea6bfef289b119766749f33dfe0b305cc",
+        "mammoth": "a3e539075d2e04bf6a9ceaccb12ff9402032ee68"
+      }
+    },
+    {
+      "campaign": "scored",
+      "id": "main-40",
+      "type": "main",
+      "upstream": "4acc20c1d8a9f565e3c58cf024820c4f6f2e1b80",
+      "sha": {
+        "reference": "9f767869ae8e1e0577d598f215b3b9ca282f13c5",
+        "mammoth": "60fd90c43ba26bf0dd74d87f3041737787965941"
+      }
+    }
+  ],
+  "dropped": [
+    {
+      "campaign": "scored",
+      "id": "main-33",
+      "upstream": "922652b68d7e4fe8e85540d4f6296ece217be3fb",
+      "reason": "no change outside .github/"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-34",
+      "upstream": "f10111d7187df7c60e849c266ea427356f0d24c7",
+      "reason": "no change outside .github/"
+    },
+    {
+      "campaign": "scored",
+      "id": "main-38",
+      "upstream": "e38994e014a0901f50ce14bbd51cb0c6273a3918",
+      "reason": "no change outside .github/"
+    }
+  ],
+  "staging_refs": {
+    "reference": {
+      "refs/tags/replay-staging/main": "9f767869ae8e1e0577d598f215b3b9ca282f13c5",
+      "refs/tags/replay-staging/smoke-pr-02": "ea8346c81eb5951615e99f984f79c7a1c11a8f86"
+    },
+    "mammoth": {
+      "refs/tags/replay-staging/main": "60fd90c43ba26bf0dd74d87f3041737787965941",
+      "refs/tags/replay-staging/smoke-pr-02": "8b9c1a7cfe03345258d7aa05a46d0f22a024cc41"
+    }
+  }
+}

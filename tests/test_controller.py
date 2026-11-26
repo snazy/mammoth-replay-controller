@@ -344,5 +344,20 @@ class TestClassify(unittest.TestCase):
         self.assertEqual(len(t["errors"]), 1)
 
 
+class TestPreflight(Harness):
+    def test_preflight(self):
+        from replay.preflight import preflight
+
+        results = preflight(self.plan, self.gh)
+        self.assertFalse([m for lvl, m in results if lvl == "FAIL"], results)
+        self.gh.repo("me/mam").refs["refs/heads/main"] = "f" * 40
+        self.gh.repo("me/ref").refs["refs/heads/other"] = "a" * 40
+        del self.gh.repo("me/ref").refs["refs/tags/replay-staging/main"]
+        results = preflight(self.plan, self.gh)
+        fails = [m for lvl, m in results if lvl == "FAIL"]
+        self.assertEqual(len(fails), 2, results)
+        self.assertTrue(any("unexpected branches: refs/heads/other" in m for lvl, m in results if lvl == "WARN"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -97,6 +97,14 @@ class FakeGitHub:
 
     # --- API surface -------------------------------------------------------------------------
 
+    def get_repo(self, repo):
+        if repo not in self.repos:
+            return None
+        return {"visibility": "public", "archived": False, "permissions": {"push": True}, "has_issues": False, "has_wiki": False, "has_projects": False}
+
+    def commit_exists(self, repo, sha):
+        return True
+
     def get_ref(self, repo, ref):
         self._call("get_ref", repo, ref)
         return self.repo(repo).refs.get(f"refs/{ref}")
@@ -210,3 +218,4 @@ class FakeGitHub:
         self._call("delete_cache", repo, cache_id)
         r = self.repo(repo)
         r.caches = [c for c in r.caches if c["id"] != cache_id]
+

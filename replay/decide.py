@@ -37,7 +37,7 @@ def take_snapshot(plan: dict, api) -> dict:
         repo = cfg["repo"]
         heads = api.matching_refs(repo, "heads")
         tags = api.matching_refs(repo, "tags/replay-staging")
-        prs = [p for p in api.list_prs(repo) if p["head_ref"].startswith("replay/")]
+        prs = [p for p in api.list_prs(repo) if p["same_repo"] and p["head_ref"].startswith("replay/")]
         usage = api.cache_usage(repo)
         snap[variant] = {
             "main": heads.get("refs/heads/main"),
