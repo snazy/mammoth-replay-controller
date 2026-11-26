@@ -15,6 +15,7 @@ touches `projectnessie/nessie` or any other upstream repository.
 | Duration | Smoke about 1 day, then about 9 days for the scored campaign (4 h spacing plus CI time per event) |
 | Cost | Public repositories on standard runners: no Actions minutes billed. Controller ticks: about 1–2 min every 15 min. |
 | Limits | At most 6 mutations per tick; no force-push; runs are never cancelled; unrecognised failures pause the replay |
+| Who can open issues and PRs | Collaborators only (repository settings), in all three repositories. No collaborators are invited, so effectively only the owner and the controller's token. |
 
 ## Batch A: create and seed (no CI runs)
 
@@ -22,15 +23,30 @@ touches `projectnessie/nessie` or any other upstream repository.
 B=/home/snazy/devel/projectnessie/nessie/mammoth-prototype
 GH_CRED=(-c credential.helper= -c 'credential.helper=!gh auth git-credential')
 
-# 1. Repositories
+# 1. Repositories (empty; nothing pushed yet)
 gh repo create snazy/mammoth-replay-controller --public --disable-wiki \
   --description "Controller for the Mammoth vs incumbent Gradle caching replay experiment"
 for r in nessie-mammoth-reference nessie-mammoth-prototype; do
-  gh repo create snazy/$r --public --disable-issues --disable-wiki \
+  gh repo create snazy/$r --public --disable-wiki \
     --description "Mammoth caching replay experiment (synthetic replay of projectnessie/nessie history)"
   gh repo edit snazy/$r --enable-projects=false
 done
+```
 
+Before anything is pushed, **you** restrict issue and PR creation in the GitHub UI, for each of the
+three repositories, under Settings > General > Features:
+
+- **Pull requests**: select **Collaborators only**
+  ([docs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/disabling-pull-requests)).
+- **Issues**: keep the checkbox selected, and set **Creation allowed by: Collaborators only**
+  ([changelog](https://github.blog/changelog/2026-06-29-restrict-issue-creation-to-collaborators-only/)).
+
+GitHub documents both settings only for the UI (no REST API or `gh` field is documented), so
+they're a manual step, and preflight can't verify them. The controller opens PRs with your
+fine-grained token, i.e. as the repository owner; the smoke run confirms that the restriction
+doesn't block it.
+
+```shell
 # 2. Controller: main and an empty data branch
 cd $B/mammoth-replay-controller
 git remote add origin https://github.com/snazy/mammoth-replay-controller.git
@@ -95,6 +111,8 @@ Review of the smoke data before Batch C:
 - `started_at` versus `created_at` plausibly excludes queue time
 - the Mammoth aggregator published on `main` and the PR run stayed read-only
 - the default branch of each replay repo is `main`
+- the controller's PRs were created despite the collaborators-only PR setting, and both settings
+  are still shown as "Collaborators only" in all three repositories
 
 ## Batch C: scored campaign
 
