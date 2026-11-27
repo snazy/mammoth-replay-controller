@@ -1,36 +1,17 @@
 {
- "applied_events": 4,
- "at": "2026-11-27T20:22:16Z",
+ "applied_events": 5,
+ "at": "2026-11-27T20:37:15Z",
  "current": "scored/main-01",
  "exceptions": [],
  "finished": false,
- "not_before": "2026-11-27T20:09:39Z",
- "notes": [
-  "update_ref mammoth scored/main-01 done",
-  "update_ref reference scored/main-01 done"
- ],
+ "not_before": null,
+ "notes": [],
  "paused": false,
- "planned_actions": [
-  {
-   "event": "scored/main-01",
-   "expected": "8f0ad6f377099798d846a984039711c1531438ec",
-   "ref": "heads/main",
-   "repo": "snazy/nessie-mammoth-prototype",
-   "sha": "e534e079a219dbf8dc3564fc9d8d55dadb10ab09",
-   "type": "update_ref",
-   "variant": "mammoth"
-  },
-  {
-   "event": "scored/main-01",
-   "expected": "ab36144a034cb9e32b67bb851d5b23cd0441dd5c",
-   "ref": "heads/main",
-   "repo": "snazy/nessie-mammoth-reference",
-   "sha": "9a8ce110f7c7ce4cafa7a0f074c553cfc6884302",
-   "type": "update_ref",
-   "variant": "reference"
-  }
- ],
+ "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
- "waiting": []
+ "waiting": [
+  "reference: run 46063182143 attempt 1 in_progress",
+  "mammoth: run 46063179770 attempt 1 in_progress"
+ ]
 }
