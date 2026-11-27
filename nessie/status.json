@@ -1,54 +1,17 @@
 {
- "applied_events": 2,
- "at": "2026-11-27T13:52:15Z",
+ "applied_events": 3,
+ "at": "2026-11-27T14:07:16Z",
  "current": "smoke/pr-02",
  "exceptions": [],
  "finished": false,
- "not_before": "2026-11-27T13:47:52Z",
- "notes": [
-  "create_ref reference smoke/pr-02 done",
-  "create_pr reference smoke/pr-02 done",
-  "create_ref mammoth smoke/pr-02 done",
-  "create_pr mammoth smoke/pr-02 done"
- ],
+ "not_before": null,
+ "notes": [],
  "paused": false,
- "planned_actions": [
-  {
-   "event": "smoke/pr-02",
-   "ref": "heads/replay/smoke/pr-02",
-   "repo": "snazy/nessie-mammoth-reference",
-   "sha": "2a2cba30094dc26c9d76a386873ffb8d15b60bf1",
-   "type": "create_ref",
-   "variant": "reference"
-  },
-  {
-   "base": "main",
-   "event": "smoke/pr-02",
-   "head": "replay/smoke/pr-02",
-   "repo": "snazy/nessie-mammoth-reference",
-   "title": "Update quay.io/keycloak/keycloak Docker tag to v26.8.0 (PR 13111)",
-   "type": "create_pr",
-   "variant": "reference"
-  },
-  {
-   "event": "smoke/pr-02",
-   "ref": "heads/replay/smoke/pr-02",
-   "repo": "snazy/nessie-mammoth-prototype",
-   "sha": "ee2a7435a01c9cfd47d4feff75b0a0d3a4cbf20b",
-   "type": "create_ref",
-   "variant": "mammoth"
-  },
-  {
-   "base": "main",
-   "event": "smoke/pr-02",
-   "head": "replay/smoke/pr-02",
-   "repo": "snazy/nessie-mammoth-prototype",
-   "title": "Update quay.io/keycloak/keycloak Docker tag to v26.8.0 (PR 13111)",
-   "type": "create_pr",
-   "variant": "mammoth"
-  }
- ],
+ "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
- "waiting": []
+ "waiting": [
+  "reference: run 46010853629 attempt 1 in_progress",
+  "mammoth: run 46010860711 attempt 1 in_progress"
+ ]
 }
