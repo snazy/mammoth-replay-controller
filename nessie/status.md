@@ -1,13 +1,9 @@
 # Replay status (nessie)
 
-As of 2026-11-27T16:22:18Z.
+As of 2026-11-27T16:37:17Z.
 Applied in all variants: 4 of 47 CI events. Current: `scored/main-01`.
 Next mutation not before 2026-11-27T20:09:39Z.
 
 ## Waiting
 
 - scored/main-01: not before 2026-11-27T20:09:39Z
-
-## This tick
-
-- collected reference scored/seed run 46018806957 attempt 3
