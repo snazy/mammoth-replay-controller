@@ -24,6 +24,18 @@ smoke/seed,seed,mammoth,45991379878,1,test-quarkus,success,4.0,541.0,2.0,539.0,6
 smoke/seed,seed,mammoth,45991379878,1,code-checks,success,3.0,324.0,1.0,323.0,40.0,0,[],,"{""executed"": 1916, ""from-cache"": 1009, ""skipped"": 2229, ""up-to-date"": 4746}",0,0,,false
 smoke/seed,seed,mammoth,45991379878,1,docker-testing,success,3.0,773.0,4.0,769.0,41.0,0,[],,"{""executed"": 269, ""from-cache"": 101, ""skipped"": 96, ""up-to-date"": 319}",0,0,,false
 smoke/seed,seed,mammoth,45991379878,1,store-cache,success,2.0,143.0,1.0,142.0,142.0,0,[],,{},0,0,,false
+smoke/main-01,main,reference,45998965334,1,test,success,3.0,298.0,3.0,295.0,37.0,0,[],,"{""executed"": 577, ""from-cache"": 287, ""skipped"": 658, ""up-to-date"": 328}",283,13456382,,
+smoke/main-01,main,reference,45998965334,1,site,success,3.0,760.0,2.0,758.0,27.0,0,[],,"{""executed"": 218, ""from-cache"": 70, ""skipped"": 37, ""up-to-date"": 30}",283,13456382,,
+smoke/main-01,main,reference,45998965334,1,test-quarkus,success,3.0,262.0,2.0,260.0,31.0,0,[],,"{""executed"": 304, ""from-cache"": 117, ""skipped"": 91, ""up-to-date"": 143}",0,0,,
+smoke/main-01,main,reference,45998965334,1,determine-jobs,success,3.0,12.0,0,12.0,0,0,[],,,,,no artifact,
+smoke/main-01,main,reference,45998965334,1,int-test-integrations,success,4.0,237.0,4.0,233.0,42.0,0,[],,"{""executed"": 261, ""from-cache"": 105, ""skipped"": 138, ""up-to-date"": 80}",0,0,,
+smoke/main-01,main,reference,45998965334,1,int-test-quarkus-events,success,3.0,143.0,2.0,141.0,42.0,0,[],,"{""executed"": 37, ""from-cache"": 20, ""skipped"": 20, ""up-to-date"": 10}",0,0,,
+smoke/main-01,main,reference,45998965334,1,code-checks,success,3.0,518.0,3.0,515.0,22.0,0,[],,"{""executed"": 1895, ""from-cache"": 1020, ""skipped"": 2229, ""up-to-date"": 4756}",283,13456382,,
+smoke/main-01,main,reference,45998965334,1,int-test-quarkus-tool,success,3.0,208.0,3.0,205.0,37.0,0,[],,"{""executed"": 219, ""from-cache"": 74, ""skipped"": 30, ""up-to-date"": 24}",0,0,,
+smoke/main-01,main,reference,45998965334,1,int-test-stores,success,4.0,148.0,2.0,146.0,34.0,0,[],,"{""executed"": 223, ""from-cache"": 81, ""skipped"": 163, ""up-to-date"": 102}",0,0,,
+smoke/main-01,main,reference,45998965334,1,int-test,success,19.0,411.0,2.0,409.0,52.0,0,[],,"{""executed"": 509, ""from-cache"": 171, ""skipped"": 493, ""up-to-date"": 262}",283,13456382,,
+smoke/main-01,main,reference,45998965334,1,int-test-quarkus-server,failure,22.0,2045.0,3.0,2042.0,43.0,0,[],infrastructure,"{""executed"": 297, ""failed"": 1, ""from-cache"": 108, ""skipped"": 64, ""up-to-date"": 54}",0,0,,
+smoke/main-01,main,reference,45998965334,1,docker-testing,success,89.0,789.0,3.0,786.0,20.0,0,[],,"{""executed"": 269, ""from-cache"": 101, ""skipped"": 96, ""up-to-date"": 319}",0,0,,
 smoke/main-01,main,mammoth,45998963136,1,test-quarkus,success,3.0,164.0,2.0,162.0,66.0,0,[],,"{""executed"": 304, ""from-cache"": 117, ""skipped"": 91, ""up-to-date"": 143}",0,0,,false
 smoke/main-01,main,mammoth,45998963136,1,int-test-quarkus-tool,success,3.0,158.0,2.0,156.0,72.0,0,[],,"{""executed"": 219, ""from-cache"": 74, ""skipped"": 30, ""up-to-date"": 24}",0,0,,false
 smoke/main-01,main,mammoth,45998963136,1,int-test,success,3.0,306.0,4.0,302.0,63.0,0,[],,"{""executed"": 509, ""from-cache"": 171, ""skipped"": 493, ""up-to-date"": 262}",283,13456382,,false

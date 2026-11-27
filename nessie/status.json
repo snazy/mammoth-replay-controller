@@ -1,28 +1,28 @@
 {
  "applied_events": 2,
- "at": "2026-11-27T12:52:18Z",
+ "at": "2026-11-27T13:04:05Z",
  "current": "smoke/main-01",
  "exceptions": [],
  "finished": false,
  "not_before": null,
  "notes": [
-  "collected mammoth smoke/main-01 run 45998963136 attempt 1",
-  "rerun_failed mammoth smoke/main-01 done"
+  "collected reference smoke/main-01 run 45998965334 attempt 1",
+  "rerun_failed reference smoke/main-01 done"
  ],
  "paused": false,
  "planned_actions": [
   {
    "attempt": 1,
    "event": "smoke/main-01",
-   "repo": "snazy/nessie-mammoth-prototype",
-   "run_id": 45998963136,
+   "repo": "snazy/nessie-mammoth-reference",
+   "run_id": 45998965334,
    "type": "rerun_failed",
-   "variant": "mammoth"
+   "variant": "reference"
   }
  ],
  "profile": "nessie",
  "total_events": 47,
  "waiting": [
-  "reference: run 45998965334 attempt 1 in_progress"
+  "mammoth: run 45998963136 attempt 2 in_progress"
  ]
 }
