@@ -1,14 +1,11 @@
 {
  "applied_events": 1,
- "at": "2026-11-27T12:15:06Z",
+ "at": "2026-11-27T12:22:22Z",
  "current": "smoke/main-01",
  "exceptions": [],
  "finished": false,
  "not_before": "2026-11-27T16:13:12Z",
- "notes": [
-  "collected reference smoke/seed run 45989126099 attempt 2",
-  "collected mammoth smoke/seed run 45991379878 attempt 2"
- ],
+ "notes": [],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
