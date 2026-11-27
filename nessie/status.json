@@ -1,20 +1,19 @@
 {
  "applied_events": 1,
- "at": "2026-11-27T12:01:13Z",
- "current": "smoke/seed",
+ "at": "2026-11-27T12:15:06Z",
+ "current": "smoke/main-01",
  "exceptions": [],
  "finished": false,
- "not_before": null,
+ "not_before": "2026-11-27T16:13:12Z",
  "notes": [
-  "collected reference smoke/seed run 45989126099 attempt 1",
-  "collected mammoth smoke/seed run 45991379878 attempt 1"
+  "collected reference smoke/seed run 45989126099 attempt 2",
+  "collected mammoth smoke/seed run 45991379878 attempt 2"
  ],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
  "waiting": [
-  "reference: run 45989126099 attempt 2 in_progress",
-  "mammoth: run 45991379878 attempt 2 in_progress"
+  "smoke/main-01: not before 2026-11-27T16:13:12Z"
  ]
 }
