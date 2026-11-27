@@ -391,11 +391,12 @@ class TestClassify(unittest.TestCase):
         log = (
             "2026-11-26T10:00:00.1234567Z Publishing Build Scan...\n"
             "2026-11-26T10:00:01.0000000Z https://scans.gradle.com/s/abc123def\n"
+            "2026-11-27T12:30:20.0000000Z Gradle 9.7.1 SUCCESS (config-cache miss) tasks=':x:generateDocs' project='nessie' scan=https://gradle.com/s/yshtdce64epgy\n"
             "2026-11-26T10:00:02.0000000Z Received status code 429 from server: Too Many Requests (repo1.maven.org)\n"
             "2026-11-26T10:00:03.0000000Z > Task :nessie-x:test FAILED\n"
         )
         x = classify.extract(log)
-        self.assertEqual(x["scan_urls"], ["https://scans.gradle.com/s/abc123def"])
+        self.assertEqual(x["scan_urls"], ["https://gradle.com/s/yshtdce64epgy", "https://scans.gradle.com/s/abc123def"])
         self.assertEqual((x["http_429"], x["http_429_maven_central"]), (1, 1))
         self.assertEqual(x["failure_excerpt"], ["> Task :nessie-x:test FAILED"])
 

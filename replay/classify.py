@@ -4,7 +4,8 @@ import re
 
 COLLECTOR_VERSION = 1
 LOG_TS = re.compile(r"^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z ")
-SCAN_URL = re.compile(r"https://scans\.gradle\.com/s/[a-z0-9]+")
+# Develocity prints public scans as https://gradle.com/s/<id>; older versions used scans.gradle.com.
+SCAN_URL = re.compile(r"https://(?:scans\.)?gradle\.com/s/[a-z0-9]+")
 HTTP_429 = re.compile(r"\b429\b.*(Too Many Requests|status code)|(Too Many Requests|status code)\D{0,5}429\b", re.IGNORECASE)
 MAVEN_CENTRAL = re.compile(r"repo1?\.maven(\.apache)?\.org", re.IGNORECASE)
 FAILURE_LINE = re.compile(r"FAILED|What went wrong|##\[error\]|Execution failed for task")
