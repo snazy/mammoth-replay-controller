@@ -1,0 +1,5243 @@
+{
+ "attempt": 2,
+ "collected_at": "2026-11-27T13:22:20Z",
+ "collector_version": 1,
+ "event": "smoke/main-01",
+ "event_type": "main",
+ "failures": [],
+ "jobs": [
+  {
+   "api_id": 140522345276,
+   "completed_at": "2026-11-27T13:20:35Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:34Z",
+   "job": "int-test-quarkus-server",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 141395,
+    "scan_urls": []
+   },
+   "name": "CI intTest Quarkus Server",
+   "runner_name": "GitHub Actions 1000019434",
+   "started_at": "2026-11-27T13:04:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T13:04:38Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T13:04:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:04:39Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T13:04:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:04:40Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T13:04:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:04:41Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T13:04:40Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:05:17Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T13:04:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:05:17Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T13:05:17Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:24Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Quarkus Server",
+     "number": 7,
+     "started_at": "2026-11-27T13:05:17Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:24Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-27T13:20:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:24Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-27T13:20:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:25Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-27T13:20:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:32Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 11,
+     "started_at": "2026-11-27T13:20:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:33Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T13:20:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:33Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T13:20:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:33Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T13:20:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:33Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T13:20:33Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522347503,
+   "completed_at": "2026-11-27T12:35:55Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:34Z",
+   "job": "int-test",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 221927,
+    "scan_urls": []
+   },
+   "name": "CI intTest",
+   "runner_name": "GitHub Actions 1000019423",
+   "started_at": "2026-11-27T12:29:04Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:29:07Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:29:05Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:13Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:29:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:17Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:29:13Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:18Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:29:17Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:30:06Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:29:18Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:30:06Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:30:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:45Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest",
+     "number": 7,
+     "started_at": "2026-11-27T12:30:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:45Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T12:35:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:47Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T12:35:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:51Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T12:35:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:51Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T12:35:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:51Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T12:35:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:51Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T12:35:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:51Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T12:35:51Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522347976,
+   "completed_at": "2026-11-27T12:31:11Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:34Z",
+   "job": "int-test-quarkus-events",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 92466,
+    "scan_urls": []
+   },
+   "name": "CI intTest Quarkus Events",
+   "runner_name": "GitHub Actions 1000019416",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:56Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:02Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:02Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:29:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:43Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:29:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:43Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:04Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Quarkus Events",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:04Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-27T12:31:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:04Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-27T12:31:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:06Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-27T12:31:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:07Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 11,
+     "started_at": "2026-11-27T12:31:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:07Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T12:31:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:07Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T12:31:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:07Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T12:31:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:08Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T12:31:07Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522349512,
+   "completed_at": "2026-11-27T12:32:16Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:34Z",
+   "job": "int-test-quarkus-tool",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 113328,
+    "scan_urls": []
+   },
+   "name": "CI intTest Admin Tool",
+   "runner_name": "GitHub Actions 1000019419",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:50Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:55Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:56Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:32Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:28:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:32Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:08Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Admin Tool",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:08Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-27T12:32:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:08Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-27T12:32:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:11Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-27T12:32:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:12Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 11,
+     "started_at": "2026-11-27T12:32:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:12Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T12:32:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:12Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T12:32:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:12Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T12:32:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:13Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T12:32:12Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522349556,
+   "completed_at": "2026-11-27T12:43:38Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:34Z",
+   "job": "docker-testing",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "\u001b[36;1m    ## Nessie Java Docker image FAILED\u001b[0m",
+     "\u001b[36;1m echo \"GC Tool Java Docker image smoke test: FAILED\" > /dev/stderr\u001b[0m",
+     "\u001b[36;1m  ## GC Tool Java Docker image FAILED\u001b[0m",
+     "\u001b[36;1m echo \"Server Admin Tool Java Docker image smoke test: FAILED\" > /dev/stderr\u001b[0m",
+     "\u001b[36;1m  ## Server Admin Tool Java Docker image FAILED\u001b[0m",
+     "\u001b[36;1m echo \"CLI Java Docker image smoke test: FAILED\" > /dev/stderr\u001b[0m",
+     "\u001b[36;1m  ## CLI Java Docker image FAILED\u001b[0m"
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 1315548,
+    "scan_urls": []
+   },
+   "name": "CI Docker and Helm checks",
+   "runner_name": "GitHub Actions 1000019425",
+   "started_at": "2026-11-27T12:30:29Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:30:31Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:30:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:30:33Z",
+     "conclusion": "success",
+     "name": "Checkout",
+     "number": 2,
+     "started_at": "2026-11-27T12:30:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:30:34Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:30:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:30:34Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:30:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:30:34Z",
+     "conclusion": "success",
+     "name": "Extract version",
+     "number": 5,
+     "started_at": "2026-11-27T12:30:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:22Z",
+     "conclusion": "success",
+     "name": "Free disk space",
+     "number": 6,
+     "started_at": "2026-11-27T12:30:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:22Z",
+     "conclusion": "success",
+     "name": "Setup Helm",
+     "number": 7,
+     "started_at": "2026-11-27T12:32:22Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:27Z",
+     "conclusion": "success",
+     "name": "Setup chart-testing",
+     "number": 8,
+     "started_at": "2026-11-27T12:32:22Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:27Z",
+     "conclusion": "success",
+     "name": "Setup Python",
+     "number": 9,
+     "started_at": "2026-11-27T12:32:27Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:34Z",
+     "conclusion": "success",
+     "name": "Setup & Start Minikube",
+     "number": 10,
+     "started_at": "2026-11-27T12:32:27Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:34:25Z",
+     "conclusion": "success",
+     "name": "Setup Docker registry",
+     "number": 11,
+     "started_at": "2026-11-27T12:33:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:34:44Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 12,
+     "started_at": "2026-11-27T12:34:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:34:45Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 13,
+     "started_at": "2026-11-27T12:34:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:39:46Z",
+     "conclusion": "success",
+     "name": "Docker images publishing",
+     "number": 14,
+     "started_at": "2026-11-27T12:34:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:39:49Z",
+     "conclusion": "success",
+     "name": "Cleanup buildx",
+     "number": 15,
+     "started_at": "2026-11-27T12:39:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:40:00Z",
+     "conclusion": "success",
+     "name": "Check if expected Docker images exist",
+     "number": 16,
+     "started_at": "2026-11-27T12:39:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:02Z",
+     "conclusion": "success",
+     "name": "Check if Server Docker Java image works",
+     "number": 17,
+     "started_at": "2026-11-27T12:40:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:03Z",
+     "conclusion": "success",
+     "name": "Check if GC Tool Docker Java image works",
+     "number": 18,
+     "started_at": "2026-11-27T12:41:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:06Z",
+     "conclusion": "success",
+     "name": "Check if Server Admin Tool Docker Java image works",
+     "number": 19,
+     "started_at": "2026-11-27T12:41:03Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:06Z",
+     "conclusion": "success",
+     "name": "Check if CLI Docker Java image works",
+     "number": 20,
+     "started_at": "2026-11-27T12:41:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:07Z",
+     "conclusion": "success",
+     "name": "Run chart-testing (list-changed)",
+     "number": 21,
+     "started_at": "2026-11-27T12:41:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:07Z",
+     "conclusion": "success",
+     "name": "Run 'helm template' validation",
+     "number": 22,
+     "started_at": "2026-11-27T12:41:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:10Z",
+     "conclusion": "success",
+     "name": "Run Helm unit tests",
+     "number": 23,
+     "started_at": "2026-11-27T12:41:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:12Z",
+     "conclusion": "success",
+     "name": "Run chart-testing (lint)",
+     "number": 24,
+     "started_at": "2026-11-27T12:41:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:13Z",
+     "conclusion": "success",
+     "name": "Show pods",
+     "number": 25,
+     "started_at": "2026-11-27T12:41:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:14Z",
+     "conclusion": "success",
+     "name": "Install fixtures",
+     "number": 26,
+     "started_at": "2026-11-27T12:41:13Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:32Z",
+     "conclusion": "success",
+     "name": "Run chart-testing (install)",
+     "number": 27,
+     "started_at": "2026-11-27T12:41:14Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:34Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 28,
+     "started_at": "2026-11-27T12:43:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:35Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 52,
+     "started_at": "2026-11-27T12:43:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:35Z",
+     "conclusion": "success",
+     "name": "Post Setup Python",
+     "number": 53,
+     "started_at": "2026-11-27T12:43:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:35Z",
+     "conclusion": "success",
+     "name": "Post Setup chart-testing",
+     "number": 54,
+     "started_at": "2026-11-27T12:43:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:35Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 55,
+     "started_at": "2026-11-27T12:43:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:36Z",
+     "conclusion": "success",
+     "name": "Post Checkout",
+     "number": 56,
+     "started_at": "2026-11-27T12:43:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:43:36Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 57,
+     "started_at": "2026-11-27T12:43:36Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522390927,
+   "completed_at": "2026-11-27T12:37:26Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:39Z",
+   "job": "code-checks",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 1273157,
+    "scan_urls": []
+   },
+   "name": "CI Code Checks et al",
+   "runner_name": "GitHub Actions 1000019418",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:49Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:50Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:11Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:12Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:07Z",
+     "conclusion": "success",
+     "name": "Gradle / Compile",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:41Z",
+     "conclusion": "success",
+     "name": "Gradle / Compile Quarkus",
+     "number": 8,
+     "started_at": "2026-11-27T12:33:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:34:18Z",
+     "conclusion": "success",
+     "name": "Gradle / Code checks",
+     "number": 9,
+     "started_at": "2026-11-27T12:33:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:34:51Z",
+     "conclusion": "success",
+     "name": "Gradle / Assemble",
+     "number": 10,
+     "started_at": "2026-11-27T12:34:18Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:35:08Z",
+     "conclusion": "success",
+     "name": "Gradle / Publish to Maven local",
+     "number": 11,
+     "started_at": "2026-11-27T12:34:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:20Z",
+     "conclusion": "success",
+     "name": "Gradle / build tools integration tests",
+     "number": 12,
+     "started_at": "2026-11-27T12:35:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:22Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 13,
+     "started_at": "2026-11-27T12:37:20Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:24Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 14,
+     "started_at": "2026-11-27T12:37:22Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:25Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 26,
+     "started_at": "2026-11-27T12:37:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:25Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 27,
+     "started_at": "2026-11-27T12:37:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:25Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 28,
+     "started_at": "2026-11-27T12:37:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:37:25Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 29,
+     "started_at": "2026-11-27T12:37:25Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522399705,
+   "completed_at": "2026-11-27T12:32:46Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:40Z",
+   "job": "int-test-integrations",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 139919,
+    "scan_urls": []
+   },
+   "name": "CI intTest integrations",
+   "runner_name": "GitHub Actions 1000019422",
+   "started_at": "2026-11-27T12:28:49Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:57Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:02Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:57Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:03Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:29:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:44Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:29:03Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:45Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:39Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest integrations",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:39Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T12:32:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:42Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T12:32:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:42Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T12:32:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:43Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T12:32:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:43Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T12:32:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:43Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T12:32:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:43Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T12:32:43Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522410772,
+   "completed_at": "2026-11-27T12:31:17Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:42Z",
+   "job": "int-test-stores",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 138756,
+    "scan_urls": []
+   },
+   "name": "CI intTest versioned/stores",
+   "runner_name": "GitHub Actions 1000019421",
+   "started_at": "2026-11-27T12:28:49Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:50Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:54Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:55Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:28Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:28:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:28Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:28Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:11Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest versioned/stores",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:28Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:11Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T12:31:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:13Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T12:31:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:13Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T12:31:13Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:14Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T12:31:13Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:14Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T12:31:14Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:14Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T12:31:14Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:31:14Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T12:31:14Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522415069,
+   "completed_at": "2026-11-27T12:29:00Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:42Z",
+   "job": "determine-jobs",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 6281,
+    "scan_urls": []
+   },
+   "name": "CI Determine jobs",
+   "runner_name": "GitHub Actions 1000019420",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:51Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:56Z",
+     "conclusion": "success",
+     "name": "install minimatch",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:59Z",
+     "conclusion": "success",
+     "name": "Determine conditional jobs to run",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:59Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:59Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522415427,
+   "completed_at": "2026-11-27T12:33:10Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:42Z",
+   "job": "test-quarkus",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 141386,
+    "scan_urls": []
+   },
+   "name": "CI Test Quarkus",
+   "runner_name": "GitHub Actions 1000019415",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:49Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:51Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:57Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:58Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:57Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:27Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:28:58Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:28Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:27Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:50Z",
+     "conclusion": "success",
+     "name": "Gradle / Test Quarkus Server",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:28Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:32:55Z",
+     "conclusion": "success",
+     "name": "Gradle / Test Quarkus Events",
+     "number": 8,
+     "started_at": "2026-11-27T12:32:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:04Z",
+     "conclusion": "success",
+     "name": "Gradle / Test Quarkus Events RI",
+     "number": 9,
+     "started_at": "2026-11-27T12:32:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:04Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 10,
+     "started_at": "2026-11-27T12:33:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:04Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 11,
+     "started_at": "2026-11-27T12:33:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:05Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 12,
+     "started_at": "2026-11-27T12:33:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:07Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 13,
+     "started_at": "2026-11-27T12:33:05Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:07Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 24,
+     "started_at": "2026-11-27T12:33:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:07Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 25,
+     "started_at": "2026-11-27T12:33:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:07Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 26,
+     "started_at": "2026-11-27T12:33:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:07Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 27,
+     "started_at": "2026-11-27T12:33:07Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522416318,
+   "completed_at": "2026-11-27T12:33:46Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:42Z",
+   "job": "test",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 254014,
+    "scan_urls": []
+   },
+   "name": "CI Test",
+   "runner_name": "GitHub Actions 1000019417",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:50Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:52Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:53Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:53Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:25Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:28:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:26Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:35Z",
+     "conclusion": "success",
+     "name": "Gradle / test",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:35Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T12:33:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:37Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T12:33:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:41Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T12:33:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:42Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T12:33:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:42Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T12:33:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:42Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T12:33:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:33:42Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T12:33:42Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140522426035,
+   "completed_at": "2026-11-27T12:41:28Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:04:44Z",
+   "job": "site",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 258619,
+    "scan_urls": []
+   },
+   "name": "CI Website",
+   "runner_name": "GitHub Actions 1000019414",
+   "started_at": "2026-11-27T12:28:48Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T12:28:49Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T12:28:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:50Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T12:28:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:53Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T12:28:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:28:53Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T12:28:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:20Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T12:28:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:20Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T12:29:20Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:29:23Z",
+     "conclusion": "success",
+     "name": "Setup Python",
+     "number": 7,
+     "started_at": "2026-11-27T12:29:20Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:24Z",
+     "conclusion": "success",
+     "name": "Generate Static Site",
+     "number": 8,
+     "started_at": "2026-11-27T12:29:23Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:24Z",
+     "conclusion": "success",
+     "name": "Check code block indentation",
+     "number": 9,
+     "started_at": "2026-11-27T12:41:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:24Z",
+     "conclusion": "skipped",
+     "name": "Deploy Static Site to GitHub",
+     "number": 10,
+     "started_at": "2026-11-27T12:41:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:26Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 11,
+     "started_at": "2026-11-27T12:41:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:26Z",
+     "conclusion": "success",
+     "name": "Post Setup Python",
+     "number": 19,
+     "started_at": "2026-11-27T12:41:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:26Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T12:41:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:26Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T12:41:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:27Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T12:41:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T12:41:27Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T12:41:27Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140530120259,
+   "completed_at": "2026-11-27T13:22:11Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T13:20:35Z",
+   "job": "store-cache",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 104978,
+    "scan_urls": []
+   },
+   "name": "CI Store Cache",
+   "runner_name": "GitHub Actions 1000019439",
+   "started_at": "2026-11-27T13:20:38Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T13:20:39Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T13:20:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:40Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T13:20:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:43Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T13:20:40Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:20:44Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T13:20:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:21:19Z",
+     "conclusion": "success",
+     "name": "Collect partial Gradle build caches",
+     "number": 5,
+     "started_at": "2026-11-27T13:20:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:21:20Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T13:21:19Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:21:22Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 7,
+     "started_at": "2026-11-27T13:21:20Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:22:08Z",
+     "conclusion": "success",
+     "name": "Post Collect partial Gradle build caches",
+     "number": 12,
+     "started_at": "2026-11-27T13:21:22Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:22:08Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 13,
+     "started_at": "2026-11-27T13:22:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:22:09Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 14,
+     "started_at": "2026-11-27T13:22:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T13:22:09Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 15,
+     "started_at": "2026-11-27T13:22:09Z",
+     "status": "completed"
+    }
+   ]
+  }
+ ],
+ "run": {
+  "conclusion": "success",
+  "created_at": "2026-11-27T13:04:33Z",
+  "event": "push",
+  "head_branch": "main",
+  "head_sha": "0f545a8deff7a8166f2000d1b995fd2ad648cb50",
+  "html_url": "https://github.com/snazy/nessie-mammoth-reference/actions/runs/45998965334",
+  "run_attempt": 2,
+  "run_started_at": "2026-11-27T13:04:32Z",
+  "status": "completed",
+  "updated_at": "2026-11-27T13:22:11Z"
+ },
+ "run_id": 45998965334,
+ "schema": 1,
+ "sha": "0f545a8deff7a8166f2000d1b995fd2ad648cb50",
+ "telemetry": {
+  "int-test-quarkus-server": {
+   "deps": {
+    "begin": {
+     "at": 1795784717784,
+     "bytes": 2202897391,
+     "files": 7655,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795785624757,
+     "bytes": 2202897391,
+     "files": 7655,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [
+    {
+     "endedAt": 1795785623240,
+     "gradle": "9.7.1",
+     "outcomes": {
+      "executed": 298,
+      "from-cache": 108,
+      "skipped": 64,
+      "up-to-date": 54
+     },
+     "schema": 1,
+     "startedAt": 1795784726820,
+     "task_count": 524,
+     "tasks": [
+      {
+       "end": 1795784760056,
+       "outcome": "skipped",
+       "path": ":nessie-build-logic:checkKotlinGradlePluginConfigurationErrors",
+       "skip": "SKIPPED",
+       "start": 1795784760044
+      },
+      {
+       "end": 1795784760731,
+       "outcome": "from-cache",
+       "path": ":nessie-build-logic:generateExternalPluginSpecBuilders",
+       "start": 1795784760067
+      },
+      {
+       "end": 1795784760760,
+       "outcome": "from-cache",
+       "path": ":nessie-build-logic:extractPrecompiledScriptPluginPlugins",
+       "start": 1795784760733
+      },
+      {
+       "end": 1795784765357,
+       "outcome": "from-cache",
+       "path": ":nessie-build-logic:compilePluginsBlocks",
+       "start": 1795784760762
+      },
+      {
+       "end": 1795784767050,
+       "outcome": "from-cache",
+       "path": ":nessie-build-logic:generatePrecompiledScriptPluginAccessors",
+       "start": 1795784765358
+      },
+      {
+       "end": 1795784767057,
+       "outcome": "from-cache",
+       "path": ":nessie-build-logic:generateScriptPluginAdapters",
+       "start": 1795784767052
+      },
+      {
+       "end": 1795784767348,
+       "outcome": "from-cache",
+       "path": ":nessie-build-logic:compileKotlin",
+       "start": 1795784767058
+      },
+      {
+       "end": 1795784767353,
+       "outcome": "skipped",
+       "path": ":nessie-build-logic:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784767350
+      },
+      {
+       "end": 1795784767365,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:pluginDescriptors",
+       "start": 1795784767354
+      },
+      {
+       "end": 1795784767391,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:processResources",
+       "start": 1795784767367
+      },
+      {
+       "end": 1795784767392,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:classes",
+       "start": 1795784767392
+      },
+      {
+       "end": 1795784767555,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:jar",
+       "start": 1795784767393
+      },
+      {
+       "end": 1795784871743,
+       "outcome": "skipped",
+       "path": ":nessie-immutables-std:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784871733
+      },
+      {
+       "end": 1795784871743,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:compileQuarkusGeneratedSourcesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784871735
+      },
+      {
+       "end": 1795784871756,
+       "outcome": "skipped",
+       "path": ":nessie-events-api:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784871746
+      },
+      {
+       "end": 1795784871762,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus:compileQuarkusGeneratedSourcesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784871737
+      },
+      {
+       "end": 1795784871763,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784871758
+      },
+      {
+       "end": 1795784871773,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:processResources",
+       "start": 1795784871747
+      },
+      {
+       "end": 1795784871774,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:classes",
+       "start": 1795784871774
+      },
+      {
+       "end": 1795784871776,
+       "outcome": "skipped",
+       "path": ":nessie-events-service:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784871764
+      },
+      {
+       "end": 1795784871781,
+       "outcome": "skipped",
+       "path": ":nessie-protobuf-relocated:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784871763
+      },
+      {
+       "end": 1795784871782,
+       "outcome": "skipped",
+       "path": ":nessie-events-spi:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784871778
+      },
+      {
+       "end": 1795784871784,
+       "outcome": "skipped",
+       "path": ":nessie-protobuf-relocated:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784871782
+      },
+      {
+       "end": 1795784871784,
+       "outcome": "up-to-date",
+       "path": ":nessie-protobuf-relocated:classes",
+       "start": 1795784871784
+      },
+      {
+       "end": 1795784871806,
+       "outcome": "skipped",
+       "path": ":nessie-protobuf-relocated:jandex",
+       "skip": "SKIPPED",
+       "start": 1795784871806
+      },
+      {
+       "end": 1795784871871,
+       "outcome": "executed",
+       "path": ":nessie-model:processResources",
+       "start": 1795784871783
+      },
+      {
+       "end": 1795784871994,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:jandex",
+       "start": 1795784871805
+      },
+      {
+       "end": 1795784872002,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:jar",
+       "start": 1795784871995
+      },
+      {
+       "end": 1795784872871,
+       "outcome": "from-cache",
+       "path": ":nessie-services-config:compileJava",
+       "start": 1795784871873
+      },
+      {
+       "end": 1795784872870,
+       "outcome": "from-cache",
+       "path": ":nessie-doc-generator-annotations:compileJava",
+       "start": 1795784871733
+      },
+      {
+       "end": 1795784872880,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-config:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784872873
+      },
+      {
+       "end": 1795784872882,
+       "outcome": "skipped",
+       "path": ":nessie-services-config:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784872874
+      },
+      {
+       "end": 1795784872882,
+       "outcome": "up-to-date",
+       "path": ":nessie-services-config:classes",
+       "start": 1795784872882
+      },
+      {
+       "end": 1795784872885,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-spi:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784872881
+      },
+      {
+       "end": 1795784872899,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:processResources",
+       "start": 1795784872886
+      },
+      {
+       "end": 1795784872904,
+       "outcome": "skipped",
+       "path": ":nessie-notice:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784872900
+      },
+      {
+       "end": 1795784872939,
+       "outcome": "from-cache",
+       "path": ":nessie-immutables:compileJava",
+       "start": 1795784872906
+      },
+      {
+       "end": 1795784872961,
+       "outcome": "executed",
+       "path": ":nessie-immutables:processResources",
+       "start": 1795784872940
+      },
+      {
+       "end": 1795784872961,
+       "outcome": "executed",
+       "path": ":nessie-immutables:classes",
+       "start": 1795784872961
+      },
+      {
+       "end": 1795784872988,
+       "outcome": "executed",
+       "path": ":nessie-services-config:jandex",
+       "start": 1795784872884
+      },
+      {
+       "end": 1795784873019,
+       "outcome": "executed",
+       "path": ":nessie-services-config:jar",
+       "start": 1795784872988
+      },
+      {
+       "end": 1795784873102,
+       "outcome": "executed",
+       "path": ":nessie-immutables:jandex",
+       "start": 1795784872967
+      },
+      {
+       "end": 1795784873117,
+       "outcome": "executed",
+       "path": ":nessie-immutables:jar",
+       "start": 1795784873103
+      },
+      {
+       "end": 1795784873123,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-files-api:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784873119
+      },
+      {
+       "end": 1795784873460,
+       "outcome": "from-cache",
+       "path": ":nessie-storage-uri:compileJava",
+       "start": 1795784873020
+      },
+      {
+       "end": 1795784873471,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-files-impl:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784873462
+      },
+      {
+       "end": 1795784873525,
+       "outcome": "from-cache",
+       "path": ":nessie-model:compileJava",
+       "start": 1795784872005
+      },
+      {
+       "end": 1795784873554,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-api:compileJava",
+       "start": 1795784873125
+      },
+      {
+       "end": 1795784873696,
+       "outcome": "from-cache",
+       "path": ":nessie-events-api:compileJava",
+       "start": 1795784873556
+      },
+      {
+       "end": 1795784873697,
+       "outcome": "up-to-date",
+       "path": ":nessie-events-api:classes",
+       "start": 1795784873697
+      },
+      {
+       "end": 1795784873999,
+       "outcome": "executed",
+       "path": ":nessie-events-api:jandex",
+       "start": 1795784873699
+      },
+      {
+       "end": 1795784874023,
+       "outcome": "executed",
+       "path": ":nessie-events-api:jar",
+       "start": 1795784874000
+      },
+      {
+       "end": 1795784874048,
+       "outcome": "from-cache",
+       "path": ":nessie-events-spi:compileJava",
+       "start": 1795784874024
+      },
+      {
+       "end": 1795784874049,
+       "outcome": "up-to-date",
+       "path": ":nessie-events-spi:classes",
+       "start": 1795784874049
+      },
+      {
+       "end": 1795784874122,
+       "outcome": "executed",
+       "path": ":nessie-protobuf-relocated:shadowJar",
+       "start": 1795784871809
+      },
+      {
+       "end": 1795784874155,
+       "outcome": "executed",
+       "path": ":nessie-events-spi:jandex",
+       "start": 1795784874050
+      },
+      {
+       "end": 1795784874175,
+       "outcome": "executed",
+       "path": ":nessie-events-spi:jar",
+       "start": 1795784874156
+      },
+      {
+       "end": 1795784874177,
+       "outcome": "executed",
+       "path": ":nessie-model:classes",
+       "start": 1795784874176
+      },
+      {
+       "end": 1795784874214,
+       "outcome": "from-cache",
+       "path": ":nessie-model:generateOpenApiSpec",
+       "start": 1795784874180
+      },
+      {
+       "end": 1795784874334,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-format-iceberg:compileAvroSchemaJava",
+       "start": 1795784873475
+      },
+      {
+       "end": 1795784874492,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-spi:compileJava",
+       "start": 1795784874123
+      },
+      {
+       "end": 1795784874611,
+       "outcome": "from-cache",
+       "path": ":nessie-events-service:compileJava",
+       "start": 1795784874493
+      },
+      {
+       "end": 1795784874614,
+       "outcome": "up-to-date",
+       "path": ":nessie-events-service:classes",
+       "start": 1795784874612
+      },
+      {
+       "end": 1795784874651,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-common:compileJava",
+       "start": 1795784874336
+      },
+      {
+       "end": 1795784874754,
+       "outcome": "executed",
+       "path": ":nessie-events-service:jandex",
+       "start": 1795784874623
+      },
+      {
+       "end": 1795784874757,
+       "outcome": "executed",
+       "path": ":nessie-model:jandex",
+       "start": 1795784874217
+      },
+      {
+       "end": 1795784874771,
+       "outcome": "executed",
+       "path": ":nessie-events-service:jar",
+       "start": 1795784874755
+      },
+      {
+       "end": 1795784874772,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-spi:classes",
+       "start": 1795784874772
+      },
+      {
+       "end": 1795784874798,
+       "outcome": "from-cache",
+       "path": ":nessie-client:compileJava",
+       "start": 1795784873530
+      },
+      {
+       "end": 1795784874799,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:classes",
+       "start": 1795784874798
+      },
+      {
+       "end": 1795784874898,
+       "outcome": "executed",
+       "path": ":nessie-model:jar",
+       "start": 1795784874759
+      },
+      {
+       "end": 1795784875029,
+       "outcome": "executed",
+       "path": ":nessie-versioned-spi:jandex",
+       "start": 1795784874776
+      },
+      {
+       "end": 1795784875060,
+       "outcome": "executed",
+       "path": ":nessie-versioned-spi:jar",
+       "start": 1795784875030
+      },
+      {
+       "end": 1795784875062,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-format-iceberg:processAvroSchemaResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784875061
+      },
+      {
+       "end": 1795784875063,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-format-iceberg:avroSchemaClasses",
+       "start": 1795784875063
+      },
+      {
+       "end": 1795784875085,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-model:compileJava",
+       "start": 1795784874899
+      },
+      {
+       "end": 1795784875123,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-config:compileJava",
+       "start": 1795784874656
+      },
+      {
+       "end": 1795784875123,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-config:classes",
+       "start": 1795784875123
+      },
+      {
+       "end": 1795784875131,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:jandex",
+       "start": 1795784874800
+      },
+      {
+       "end": 1795784875195,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:jar",
+       "start": 1795784875132
+      },
+      {
+       "end": 1795784875202,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-model:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784875196
+      },
+      {
+       "end": 1795784875202,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-model:classes",
+       "start": 1795784875202
+      },
+      {
+       "end": 1795784875206,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-config:jandex",
+       "start": 1795784875128
+      },
+      {
+       "end": 1795784875233,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-config:jar",
+       "start": 1795784875207
+      },
+      {
+       "end": 1795784875546,
+       "outcome": "executed",
+       "path": ":nessie-catalog-model:jandex",
+       "start": 1795784875208
+      },
+      {
+       "end": 1795784875612,
+       "outcome": "executed",
+       "path": ":nessie-catalog-model:jar",
+       "start": 1795784875547
+      },
+      {
+       "end": 1795784875618,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-api:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784875614
+      },
+      {
+       "end": 1795784875619,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-api:classes",
+       "start": 1795784875619
+      },
+      {
+       "end": 1795784875633,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-files-api:compileJava",
+       "start": 1795784875086
+      },
+      {
+       "end": 1795784875633,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-files-api:classes",
+       "start": 1795784875633
+      },
+      {
+       "end": 1795784875639,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-format-iceberg:generateAvroSchemas",
+       "start": 1795784875063
+      },
+      {
+       "end": 1795784875714,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-api:jandex",
+       "start": 1795784875629
+      },
+      {
+       "end": 1795784875882,
+       "outcome": "executed",
+       "path": ":nessie-catalog-files-api:jandex",
+       "start": 1795784875637
+      },
+      {
+       "end": 1795784875922,
+       "outcome": "executed",
+       "path": ":nessie-catalog-files-api:jar",
+       "start": 1795784875882
+      },
+      {
+       "end": 1795784875932,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-api:jar",
+       "start": 1795784875923
+      },
+      {
+       "end": 1795784876032,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-format-iceberg:compileJava",
+       "start": 1795784875715
+      },
+      {
+       "end": 1795784876044,
+       "outcome": "executed",
+       "path": ":nessie-catalog-format-iceberg:processResources",
+       "start": 1795784876034
+      },
+      {
+       "end": 1795784876044,
+       "outcome": "executed",
+       "path": ":nessie-catalog-format-iceberg:classes",
+       "start": 1795784876044
+      },
+      {
+       "end": 1795784876165,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusGenerateAppModel",
+       "start": 1795784875234
+      },
+      {
+       "end": 1795784876177,
+       "outcome": "from-cache",
+       "path": ":nessie-events-quarkus:quarkusGenerateCode",
+       "start": 1795784876166
+      },
+      {
+       "end": 1795784876233,
+       "outcome": "from-cache",
+       "path": ":nessie-events-quarkus:compileJava",
+       "start": 1795784876179
+      },
+      {
+       "end": 1795784876305,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-aws:compileJava",
+       "start": 1795784875933
+      },
+      {
+       "end": 1795784876308,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-aws:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784876306
+      },
+      {
+       "end": 1795784876309,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-aws:classes",
+       "start": 1795784876309
+      },
+      {
+       "end": 1795784876413,
+       "outcome": "executed",
+       "path": ":nessie-catalog-format-iceberg:jandex",
+       "start": 1795784876045
+      },
+      {
+       "end": 1795784876453,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-aws:jandex",
+       "start": 1795784876311
+      },
+      {
+       "end": 1795784876464,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-aws:jar",
+       "start": 1795784876454
+      },
+      {
+       "end": 1795784876536,
+       "outcome": "executed",
+       "path": ":nessie-catalog-format-iceberg:jar",
+       "start": 1795784876413
+      },
+      {
+       "end": 1795784876541,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-cache:compileJava",
+       "start": 1795784876467
+      },
+      {
+       "end": 1795784876547,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-cache:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784876542
+      },
+      {
+       "end": 1795784876548,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-cache:classes",
+       "start": 1795784876548
+      },
+      {
+       "end": 1795784876756,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-cache:jandex",
+       "start": 1795784876549
+      },
+      {
+       "end": 1795784876766,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-cache:jar",
+       "start": 1795784876757
+      },
+      {
+       "end": 1795784876838,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-smallrye:compileJava",
+       "start": 1795784876767
+      },
+      {
+       "end": 1795784876842,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-smallrye:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784876839
+      },
+      {
+       "end": 1795784876842,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-smallrye:classes",
+       "start": 1795784876842
+      },
+      {
+       "end": 1795784877040,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-smallrye:jandex",
+       "start": 1795784876844
+      },
+      {
+       "end": 1795784877052,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-smallrye:jar",
+       "start": 1795784877041
+      },
+      {
+       "end": 1795784877179,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-vault:compileJava",
+       "start": 1795784877053
+      },
+      {
+       "end": 1795784877181,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-vault:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784877180
+      },
+      {
+       "end": 1795784877182,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-vault:classes",
+       "start": 1795784877182
+      },
+      {
+       "end": 1795784877284,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-vault:jandex",
+       "start": 1795784877184
+      },
+      {
+       "end": 1795784877293,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-vault:jar",
+       "start": 1795784877286
+      },
+      {
+       "end": 1795784877352,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-service-config:compileJava",
+       "start": 1795784877295
+      },
+      {
+       "end": 1795784877356,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-transfer-proto:protobufDummy",
+       "start": 1795784877355
+      },
+      {
+       "end": 1795784877391,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-proto:extractIncludeProto",
+       "start": 1795784877356
+      },
+      {
+       "end": 1795784877400,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-proto:extractProto",
+       "start": 1795784877393
+      },
+      {
+       "end": 1795784877425,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-transfer-proto:generateProto",
+       "start": 1795784877401
+      },
+      {
+       "end": 1795784877439,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-proto:updateGeneratedProtoFiles",
+       "start": 1795784877426
+      },
+      {
+       "end": 1795784877471,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-gcs:compileJava",
+       "start": 1795784876540
+      },
+      {
+       "end": 1795784877477,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-gcs:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784877472
+      },
+      {
+       "end": 1795784877477,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-gcs:classes",
+       "start": 1795784877477
+      },
+      {
+       "end": 1795784877524,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-transfer-proto:compileJava",
+       "start": 1795784877440
+      },
+      {
+       "end": 1795784877557,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-transfer-related:compileJava",
+       "start": 1795784877526
+      },
+      {
+       "end": 1795784877580,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-service-transfer:compileJava",
+       "start": 1795784877559
+      },
+      {
+       "end": 1795784877593,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-gcs:jandex",
+       "start": 1795784877481
+      },
+      {
+       "end": 1795784877610,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-gcs:jar",
+       "start": 1795784877593
+      },
+      {
+       "end": 1795784877647,
+       "outcome": "from-cache",
+       "path": ":nessie-tasks-api:compileJava",
+       "start": 1795784877612
+      },
+      {
+       "end": 1795784877660,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-common:processResources",
+       "start": 1795784877649
+      },
+      {
+       "end": 1795784877663,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-service-config:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784877661
+      },
+      {
+       "end": 1795784877663,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-service-config:classes",
+       "start": 1795784877663
+      },
+      {
+       "end": 1795784877817,
+       "outcome": "from-cache",
+       "path": ":nessie-services:compileJava",
+       "start": 1795784877582
+      },
+      {
+       "end": 1795784877845,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-config:jandex",
+       "start": 1795784877665
+      },
+      {
+       "end": 1795784877873,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-config:jar",
+       "start": 1795784877846
+      },
+      {
+       "end": 1795784877943,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-service-common:compileJava",
+       "start": 1795784877819
+      },
+      {
+       "end": 1795784877944,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-common:classes",
+       "start": 1795784877944
+      },
+      {
+       "end": 1795784877956,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-secrets-azure:compileJava",
+       "start": 1795784876241
+      },
+      {
+       "end": 1795784877958,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-secrets-azure:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784877957
+      },
+      {
+       "end": 1795784877958,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-secrets-azure:classes",
+       "start": 1795784877958
+      },
+      {
+       "end": 1795784878039,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-azure:jandex",
+       "start": 1795784877961
+      },
+      {
+       "end": 1795784878052,
+       "outcome": "executed",
+       "path": ":nessie-catalog-secrets-azure:jar",
+       "start": 1795784878039
+      },
+      {
+       "end": 1795784878054,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-service-impl:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784878053
+      },
+      {
+       "end": 1795784878100,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-common:jandex",
+       "start": 1795784877946
+      },
+      {
+       "end": 1795784878121,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-common:jar",
+       "start": 1795784878100
+      },
+      {
+       "end": 1795784878130,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-service-rest:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784878123
+      },
+      {
+       "end": 1795784878141,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-transfer:processResources",
+       "start": 1795784878131
+      },
+      {
+       "end": 1795784878143,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-transfer:classes",
+       "start": 1795784878142
+      },
+      {
+       "end": 1795784878145,
+       "outcome": "from-cache",
+       "path": ":nessie-rest-common:compileJava",
+       "start": 1795784878056
+      },
+      {
+       "end": 1795784878160,
+       "outcome": "executed",
+       "path": ":nessie-client:processResources",
+       "start": 1795784878148
+      },
+      {
+       "end": 1795784878161,
+       "outcome": "executed",
+       "path": ":nessie-client:classes",
+       "start": 1795784878160
+      },
+      {
+       "end": 1795784878164,
+       "outcome": "skipped",
+       "path": ":nessie-client:jandex",
+       "skip": "SKIPPED",
+       "start": 1795784878164
+      },
+      {
+       "end": 1795784878192,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-transfer:jandex",
+       "start": 1795784878144
+      },
+      {
+       "end": 1795784878204,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-transfer:jar",
+       "start": 1795784878195
+      },
+      {
+       "end": 1795784878206,
+       "outcome": "up-to-date",
+       "path": ":nessie-events-quarkus:classes",
+       "start": 1795784878205
+      },
+      {
+       "end": 1795784878241,
+       "outcome": "executed",
+       "path": ":nessie-client:jar",
+       "start": 1795784878164
+      },
+      {
+       "end": 1795784878264,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:jandex",
+       "start": 1795784878207
+      },
+      {
+       "end": 1795784878271,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:jar",
+       "start": 1795784878264
+      },
+      {
+       "end": 1795784878278,
+       "outcome": "executed",
+       "path": ":nessie-notice:includeNoticeLicenseFiles",
+       "start": 1795784878272
+      },
+      {
+       "end": 1795784878284,
+       "outcome": "executed",
+       "path": ":nessie-notice:processResources",
+       "start": 1795784878279
+      },
+      {
+       "end": 1795784878284,
+       "outcome": "executed",
+       "path": ":nessie-notice:classes",
+       "start": 1795784878284
+      },
+      {
+       "end": 1795784878356,
+       "outcome": "executed",
+       "path": ":nessie-notice:jar",
+       "start": 1795784878285
+      },
+      {
+       "end": 1795784878409,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:pullOpenApiSpec",
+       "start": 1795784878357
+      },
+      {
+       "end": 1795784878441,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:processResources",
+       "start": 1795784878409
+      },
+      {
+       "end": 1795784878442,
+       "outcome": "up-to-date",
+       "path": ":nessie-server-store-proto:protobufDummy",
+       "start": 1795784878442
+      },
+      {
+       "end": 1795784878479,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:extractIncludeProto",
+       "start": 1795784878443
+      },
+      {
+       "end": 1795784878484,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:extractProto",
+       "start": 1795784878480
+      },
+      {
+       "end": 1795784878506,
+       "outcome": "from-cache",
+       "path": ":nessie-server-store-proto:generateProto",
+       "start": 1795784878486
+      },
+      {
+       "end": 1795784878516,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:updateGeneratedProtoFiles",
+       "start": 1795784878508
+      },
+      {
+       "end": 1795784878584,
+       "outcome": "from-cache",
+       "path": ":nessie-server-store-proto:compileJava",
+       "start": 1795784878517
+      },
+      {
+       "end": 1795784878597,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-files-impl:compileJava",
+       "start": 1795784875640
+      },
+      {
+       "end": 1795784878598,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-files-impl:classes",
+       "start": 1795784878598
+      },
+      {
+       "end": 1795784878644,
+       "outcome": "from-cache",
+       "path": ":nessie-server-store:compileJava",
+       "start": 1795784878588
+      },
+      {
+       "end": 1795784878705,
+       "outcome": "from-cache",
+       "path": ":nessie-tasks-service-async:compileJava",
+       "start": 1795784877875
+      },
+      {
+       "end": 1795784878707,
+       "outcome": "from-cache",
+       "path": ":nessie-network-tools:compileJava",
+       "start": 1795784878243
+      },
+      {
+       "end": 1795784878709,
+       "outcome": "skipped",
+       "path": ":nessie-network-tools:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784878707
+      },
+      {
+       "end": 1795784878710,
+       "outcome": "up-to-date",
+       "path": ":nessie-network-tools:classes",
+       "start": 1795784878710
+      },
+      {
+       "end": 1795784878852,
+       "outcome": "executed",
+       "path": ":nessie-catalog-files-impl:jandex",
+       "start": 1795784878600
+      },
+      {
+       "end": 1795784878878,
+       "outcome": "executed",
+       "path": ":nessie-network-tools:jandex",
+       "start": 1795784878711
+      },
+      {
+       "end": 1795784878890,
+       "outcome": "executed",
+       "path": ":nessie-catalog-files-impl:jar",
+       "start": 1795784878853
+      },
+      {
+       "end": 1795784878891,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-storage-common-proto:protobufDummy",
+       "start": 1795784878891
+      },
+      {
+       "end": 1795784878900,
+       "outcome": "executed",
+       "path": ":nessie-network-tools:jar",
+       "start": 1795784878879
+      },
+      {
+       "end": 1795784878939,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:extractIncludeProto",
+       "start": 1795784878891
+      },
+      {
+       "end": 1795784878955,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-inmemory:compileJava",
+       "start": 1795784878901
+      },
+      {
+       "end": 1795784878958,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:extractProto",
+       "start": 1795784878942
+      },
+      {
+       "end": 1795784878964,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-authn:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784878957
+      },
+      {
+       "end": 1795784878971,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-authz:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784878965
+      },
+      {
+       "end": 1795784878973,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-common-proto:generateProto",
+       "start": 1795784878959
+      },
+      {
+       "end": 1795784878983,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:updateGeneratedProtoFiles",
+       "start": 1795784878975
+      },
+      {
+       "end": 1795784879002,
+       "outcome": "from-cache",
+       "path": ":nessie-rest-services:compileJava",
+       "start": 1795784878972
+      },
+      {
+       "end": 1795784879011,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-service-impl:compileJava",
+       "start": 1795784878706
+      },
+      {
+       "end": 1795784879011,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-service-impl:classes",
+       "start": 1795784879011
+      },
+      {
+       "end": 1795784879051,
+       "outcome": "from-cache",
+       "path": ":nessie-tasks-service-impl:compileJava",
+       "start": 1795784879003
+      },
+      {
+       "end": 1795784879058,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-catalog:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784879053
+      },
+      {
+       "end": 1795784879071,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-common:processResources",
+       "start": 1795784879059
+      },
+      {
+       "end": 1795784879073,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-distcache:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784879072
+      },
+      {
+       "end": 1795784879077,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-ext:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784879074
+      },
+      {
+       "end": 1795784879078,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-common-proto:compileJava",
+       "start": 1795784878983
+      },
+      {
+       "end": 1795784879078,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-ext:validateExtension",
+       "skip": "SKIPPED",
+       "start": 1795784879078
+      },
+      {
+       "end": 1795784879082,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-service-rest:compileJava",
+       "start": 1795784878645
+      },
+      {
+       "end": 1795784879082,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-service-rest:classes",
+       "start": 1795784879082
+      },
+      {
+       "end": 1795784879139,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-common-serialize:compileJava",
+       "start": 1795784879082
+      },
+      {
+       "end": 1795784879152,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-impl:jandex",
+       "start": 1795784879016
+      },
+      {
+       "end": 1795784879170,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-impl:jar",
+       "start": 1795784879152
+      },
+      {
+       "end": 1795784879201,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-cache:compileJava",
+       "start": 1795784879172
+      },
+      {
+       "end": 1795784879250,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-rest:jandex",
+       "start": 1795784879086
+      },
+      {
+       "end": 1795784879278,
+       "outcome": "executed",
+       "path": ":nessie-catalog-service-rest:jar",
+       "start": 1795784879251
+      },
+      {
+       "end": 1795784879695,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-bigtable:compileJava",
+       "start": 1795784879141
+      },
+      {
+       "end": 1795784880043,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-dynamodb:compileJava",
+       "start": 1795784879696
+      },
+      {
+       "end": 1795784880143,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-ext:extensionDescriptor",
+       "start": 1795784879078
+      },
+      {
+       "end": 1795784880152,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-dynamodb2:compileJava",
+       "start": 1795784880048
+      },
+      {
+       "end": 1795784880191,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-jdbc2:compileJava",
+       "start": 1795784880154
+      },
+      {
+       "end": 1795784880202,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-jdbc:compileJava",
+       "start": 1795784880145
+      },
+      {
+       "end": 1795784880400,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-cassandra:compileJava",
+       "start": 1795784879203
+      },
+      {
+       "end": 1795784880400,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-cassandra2:compileJava",
+       "start": 1795784879280
+      },
+      {
+       "end": 1795784880489,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-mongodb2:compileJava",
+       "start": 1795784880212
+      },
+      {
+       "end": 1795784880496,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-mongodb:compileJava",
+       "start": 1795784880195
+      },
+      {
+       "end": 1795784880533,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-distcache:compileJava",
+       "start": 1795784880497
+      },
+      {
+       "end": 1795784880533,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-distcache:classes",
+       "start": 1795784880533
+      },
+      {
+       "end": 1795784880568,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-rocksdb:compileJava",
+       "start": 1795784880404
+      },
+      {
+       "end": 1795784880576,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-ext:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784880568
+      },
+      {
+       "end": 1795784880576,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-ext:classes",
+       "start": 1795784880576
+      },
+      {
+       "end": 1795784880657,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-ext:jandex",
+       "start": 1795784880577
+      },
+      {
+       "end": 1795784880682,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-ext:jar",
+       "start": 1795784880658
+      },
+      {
+       "end": 1795784880688,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-distcache:jandex",
+       "start": 1795784880535
+      },
+      {
+       "end": 1795784880709,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-distcache:jar",
+       "start": 1795784880689
+      },
+      {
+       "end": 1795784880730,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-rest:compileJava",
+       "start": 1795784880712
+      },
+      {
+       "end": 1795784880738,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-rest:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784880732
+      },
+      {
+       "end": 1795784880738,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-rest:classes",
+       "start": 1795784880738
+      },
+      {
+       "end": 1795784880815,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-rest:jandex",
+       "start": 1795784880739
+      },
+      {
+       "end": 1795784880830,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-rest:jar",
+       "start": 1795784880816
+      },
+      {
+       "end": 1795784881234,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-testextension:compileJava",
+       "start": 1795784880402
+      },
+      {
+       "end": 1795784881264,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-batching:compileJava",
+       "start": 1795784881236
+      },
+      {
+       "end": 1795784881292,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-store:compileJava",
+       "start": 1795784881266
+      },
+      {
+       "end": 1795784881506,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-catalog:compileJava",
+       "start": 1795784880490
+      },
+      {
+       "end": 1795784881507,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-catalog:classes",
+       "start": 1795784881506
+      },
+      {
+       "end": 1795784881540,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-ext-deployment:compileJava",
+       "start": 1795784880685
+      },
+      {
+       "end": 1795784881548,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-ext-deployment:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881541
+      },
+      {
+       "end": 1795784881548,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-ext-deployment:classes",
+       "start": 1795784881548
+      },
+      {
+       "end": 1795784881585,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-catalog:jandex",
+       "start": 1795784881508
+      },
+      {
+       "end": 1795784881594,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-catalog:jar",
+       "start": 1795784881586
+      },
+      {
+       "end": 1795784881596,
+       "outcome": "skipped",
+       "path": ":nessie-rest-common:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881594
+      },
+      {
+       "end": 1795784881597,
+       "outcome": "up-to-date",
+       "path": ":nessie-rest-common:classes",
+       "start": 1795784881597
+      },
+      {
+       "end": 1795784881625,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-secrets:compileJava",
+       "start": 1795784880832
+      },
+      {
+       "end": 1795784881627,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-secrets:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881625
+      },
+      {
+       "end": 1795784881628,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-secrets:classes",
+       "start": 1795784881628
+      },
+      {
+       "end": 1795784881629,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-ext-deployment:jandex",
+       "start": 1795784881550
+      },
+      {
+       "end": 1795784881646,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-ext-deployment:jar",
+       "start": 1795784881629
+      },
+      {
+       "end": 1795784881653,
+       "outcome": "skipped",
+       "path": ":nessie-rest-services:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881647
+      },
+      {
+       "end": 1795784881653,
+       "outcome": "up-to-date",
+       "path": ":nessie-rest-services:classes",
+       "start": 1795784881653
+      },
+      {
+       "end": 1795784881698,
+       "outcome": "executed",
+       "path": ":nessie-rest-common:jandex",
+       "start": 1795784881598
+      },
+      {
+       "end": 1795784881707,
+       "outcome": "executed",
+       "path": ":nessie-rest-common:jar",
+       "start": 1795784881698
+      },
+      {
+       "end": 1795784881711,
+       "outcome": "executed",
+       "path": ":nessie-server-store:processResources",
+       "start": 1795784881707
+      },
+      {
+       "end": 1795784881711,
+       "outcome": "executed",
+       "path": ":nessie-server-store:classes",
+       "start": 1795784881711
+      },
+      {
+       "end": 1795784881758,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-secrets:jandex",
+       "start": 1795784881632
+      },
+      {
+       "end": 1795784881766,
+       "outcome": "executed",
+       "path": ":nessie-rest-services:jandex",
+       "start": 1795784881654
+      },
+      {
+       "end": 1795784881774,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-secrets:jar",
+       "start": 1795784881759
+      },
+      {
+       "end": 1795784881785,
+       "outcome": "executed",
+       "path": ":nessie-rest-services:jar",
+       "start": 1795784881766
+      },
+      {
+       "end": 1795784881790,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:processProtoResources",
+       "start": 1795784881777
+      },
+      {
+       "end": 1795784881794,
+       "outcome": "skipped",
+       "path": ":nessie-services:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881786
+      },
+      {
+       "end": 1795784881794,
+       "outcome": "up-to-date",
+       "path": ":nessie-services:classes",
+       "start": 1795784881794
+      },
+      {
+       "end": 1795784881797,
+       "outcome": "executed",
+       "path": ":nessie-server-store:jandex",
+       "start": 1795784881712
+      },
+      {
+       "end": 1795784881802,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:processResources",
+       "start": 1795784881790
+      },
+      {
+       "end": 1795784881803,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:classes",
+       "start": 1795784881802
+      },
+      {
+       "end": 1795784881819,
+       "outcome": "executed",
+       "path": ":nessie-server-store:jar",
+       "start": 1795784881798
+      },
+      {
+       "end": 1795784881825,
+       "outcome": "skipped",
+       "path": ":nessie-storage-uri:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881820
+      },
+      {
+       "end": 1795784881825,
+       "outcome": "up-to-date",
+       "path": ":nessie-storage-uri:classes",
+       "start": 1795784881825
+      },
+      {
+       "end": 1795784881897,
+       "outcome": "executed",
+       "path": ":nessie-storage-uri:jandex",
+       "start": 1795784881826
+      },
+      {
+       "end": 1795784881914,
+       "outcome": "executed",
+       "path": ":nessie-storage-uri:jar",
+       "start": 1795784881897
+      },
+      {
+       "end": 1795784881916,
+       "outcome": "skipped",
+       "path": ":nessie-tasks-api:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784881914
+      },
+      {
+       "end": 1795784881917,
+       "outcome": "up-to-date",
+       "path": ":nessie-tasks-api:classes",
+       "start": 1795784881917
+      },
+      {
+       "end": 1795784882003,
+       "outcome": "executed",
+       "path": ":nessie-services:jandex",
+       "start": 1795784881795
+      },
+      {
+       "end": 1795784882007,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:jandex",
+       "start": 1795784881807
+      },
+      {
+       "end": 1795784882024,
+       "outcome": "executed",
+       "path": ":nessie-server-store-proto:jar",
+       "start": 1795784882007
+      },
+      {
+       "end": 1795784882026,
+       "outcome": "skipped",
+       "path": ":nessie-tasks-service-async:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784882025
+      },
+      {
+       "end": 1795784882026,
+       "outcome": "up-to-date",
+       "path": ":nessie-tasks-service-async:classes",
+       "start": 1795784882026
+      },
+      {
+       "end": 1795784882041,
+       "outcome": "executed",
+       "path": ":nessie-services:jar",
+       "start": 1795784882004
+      },
+      {
+       "end": 1795784882047,
+       "outcome": "skipped",
+       "path": ":nessie-tasks-service-impl:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784882042
+      },
+      {
+       "end": 1795784882047,
+       "outcome": "up-to-date",
+       "path": ":nessie-tasks-service-impl:classes",
+       "start": 1795784882047
+      },
+      {
+       "end": 1795784882106,
+       "outcome": "executed",
+       "path": ":nessie-tasks-api:jandex",
+       "start": 1795784881919
+      },
+      {
+       "end": 1795784882111,
+       "outcome": "executed",
+       "path": ":nessie-tasks-service-async:jandex",
+       "start": 1795784882028
+      },
+      {
+       "end": 1795784882117,
+       "outcome": "executed",
+       "path": ":nessie-tasks-api:jar",
+       "start": 1795784882107
+      },
+      {
+       "end": 1795784882120,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-storage-batching:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784882117
+      },
+      {
+       "end": 1795784882121,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-storage-batching:classes",
+       "start": 1795784882121
+      },
+      {
+       "end": 1795784882127,
+       "outcome": "executed",
+       "path": ":nessie-tasks-service-async:jar",
+       "start": 1795784882111
+      },
+      {
+       "end": 1795784882136,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable:processResources",
+       "start": 1795784882127
+      },
+      {
+       "end": 1795784882137,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable:classes",
+       "start": 1795784882137
+      },
+      {
+       "end": 1795784882154,
+       "outcome": "executed",
+       "path": ":nessie-tasks-service-impl:jandex",
+       "start": 1795784882048
+      },
+      {
+       "end": 1795784882165,
+       "outcome": "executed",
+       "path": ":nessie-tasks-service-impl:jar",
+       "start": 1795784882154
+      },
+      {
+       "end": 1795784882167,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-storage-cache:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784882166
+      },
+      {
+       "end": 1795784882167,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-storage-cache:classes",
+       "start": 1795784882167
+      },
+      {
+       "end": 1795784882219,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-batching:jandex",
+       "start": 1795784882122
+      },
+      {
+       "end": 1795784882226,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-batching:jar",
+       "start": 1795784882219
+      },
+      {
+       "end": 1795784882229,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable:jandex",
+       "start": 1795784882138
+      },
+      {
+       "end": 1795784882231,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra:processResources",
+       "start": 1795784882227
+      },
+      {
+       "end": 1795784882232,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra:classes",
+       "start": 1795784882232
+      },
+      {
+       "end": 1795784882248,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable:jar",
+       "start": 1795784882230
+      },
+      {
+       "end": 1795784882254,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2:processResources",
+       "start": 1795784882248
+      },
+      {
+       "end": 1795784882254,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2:classes",
+       "start": 1795784882254
+      },
+      {
+       "end": 1795784882286,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cache:jandex",
+       "start": 1795784882169
+      },
+      {
+       "end": 1795784882311,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cache:jar",
+       "start": 1795784882286
+      },
+      {
+       "end": 1795784882323,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:processProtoResources",
+       "start": 1795784882313
+      },
+      {
+       "end": 1795784882338,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:processResources",
+       "start": 1795784882328
+      },
+      {
+       "end": 1795784882338,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:classes",
+       "start": 1795784882338
+      },
+      {
+       "end": 1795784882383,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra:jandex",
+       "start": 1795784882234
+      },
+      {
+       "end": 1795784882388,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2:jandex",
+       "start": 1795784882255
+      },
+      {
+       "end": 1795784882409,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2:jar",
+       "start": 1795784882388
+      },
+      {
+       "end": 1795784882412,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra:jar",
+       "start": 1795784882384
+      },
+      {
+       "end": 1795784882417,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-storage-common-serialize:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784882411
+      },
+      {
+       "end": 1795784882422,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb:processResources",
+       "start": 1795784882412
+      },
+      {
+       "end": 1795784882422,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-storage-common-serialize:classes",
+       "start": 1795784882422
+      },
+      {
+       "end": 1795784882422,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb:classes",
+       "start": 1795784882422
+      },
+      {
+       "end": 1795784882511,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-common:compileJava",
+       "start": 1795784881296
+      },
+      {
+       "end": 1795784882541,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-serialize:jandex",
+       "start": 1795784882428
+      },
+      {
+       "end": 1795784882543,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-authn:compileJava",
+       "start": 1795784882513
+      },
+      {
+       "end": 1795784882543,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-authn:classes",
+       "start": 1795784882543
+      },
+      {
+       "end": 1795784882561,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-authz:compileJava",
+       "start": 1795784882542
+      },
+      {
+       "end": 1795784882562,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-authz:classes",
+       "start": 1795784882562
+      },
+      {
+       "end": 1795784882576,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:jandex",
+       "start": 1795784882340
+      },
+      {
+       "end": 1795784882576,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-common:classes",
+       "start": 1795784882576
+      },
+      {
+       "end": 1795784882593,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb:jandex",
+       "start": 1795784882423
+      },
+      {
+       "end": 1795784882635,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-authn:jandex",
+       "start": 1795784882545
+      },
+      {
+       "end": 1795784882638,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-proto:jar",
+       "start": 1795784882593
+      },
+      {
+       "end": 1795784882646,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-authn:jar",
+       "start": 1795784882636
+      },
+      {
+       "end": 1795784882650,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common-serialize:jar",
+       "start": 1795784882640
+      },
+      {
+       "end": 1795784882655,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-authz:jandex",
+       "start": 1795784882563
+      },
+      {
+       "end": 1795784882658,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2:processResources",
+       "start": 1795784882651
+      },
+      {
+       "end": 1795784882658,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2:classes",
+       "start": 1795784882658
+      },
+      {
+       "end": 1795784882668,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-authz:jar",
+       "start": 1795784882655
+      },
+      {
+       "end": 1795784882670,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb:jar",
+       "start": 1795784882646
+      },
+      {
+       "end": 1795784882677,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc:processResources",
+       "start": 1795784882671
+      },
+      {
+       "end": 1795784882677,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc:classes",
+       "start": 1795784882677
+      },
+      {
+       "end": 1795784882684,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-inmemory:processResources",
+       "start": 1795784882668
+      },
+      {
+       "end": 1795784882684,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-inmemory:classes",
+       "start": 1795784882684
+      },
+      {
+       "end": 1795784882705,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-common:jandex",
+       "start": 1795784882578
+      },
+      {
+       "end": 1795784882725,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-common:jar",
+       "start": 1795784882705
+      },
+      {
+       "end": 1795784882731,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2:processResources",
+       "start": 1795784882725
+      },
+      {
+       "end": 1795784882731,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2:classes",
+       "start": 1795784882731
+      },
+      {
+       "end": 1795784882765,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2:jandex",
+       "start": 1795784882659
+      },
+      {
+       "end": 1795784882769,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-inmemory:jandex",
+       "start": 1795784882685
+      },
+      {
+       "end": 1795784882781,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2:jar",
+       "start": 1795784882765
+      },
+      {
+       "end": 1795784882782,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-inmemory:jar",
+       "start": 1795784882769
+      },
+      {
+       "end": 1795784882790,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb:processResources",
+       "start": 1795784882782
+      },
+      {
+       "end": 1795784882792,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb:classes",
+       "start": 1795784882791
+      },
+      {
+       "end": 1795784882793,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2:processResources",
+       "start": 1795784882782
+      },
+      {
+       "end": 1795784882794,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2:classes",
+       "start": 1795784882794
+      },
+      {
+       "end": 1795784882826,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc:jandex",
+       "start": 1795784882678
+      },
+      {
+       "end": 1795784882844,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2:jandex",
+       "start": 1795784882732
+      },
+      {
+       "end": 1795784882850,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc:jar",
+       "start": 1795784882827
+      },
+      {
+       "end": 1795784882854,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb:processResources",
+       "start": 1795784882850
+      },
+      {
+       "end": 1795784882854,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb:classes",
+       "start": 1795784882854
+      },
+      {
+       "end": 1795784882857,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2:jar",
+       "start": 1795784882845
+      },
+      {
+       "end": 1795784882859,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-storage-store:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784882857
+      },
+      {
+       "end": 1795784882859,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-storage-store:classes",
+       "start": 1795784882859
+      },
+      {
+       "end": 1795784882891,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2:jandex",
+       "start": 1795784882795
+      },
+      {
+       "end": 1795784882892,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb:jandex",
+       "start": 1795784882793
+      },
+      {
+       "end": 1795784882907,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb:jar",
+       "start": 1795784882893
+      },
+      {
+       "end": 1795784882908,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2:jar",
+       "start": 1795784882891
+      },
+      {
+       "end": 1795784882918,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-related:processResources",
+       "start": 1795784882908
+      },
+      {
+       "end": 1795784882919,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-related:classes",
+       "start": 1795784882919
+      },
+      {
+       "end": 1795784882961,
+       "outcome": "from-cache",
+       "path": ":nessie-catalog-format-iceberg-fixturegen:compileJava",
+       "start": 1795784882909
+      },
+      {
+       "end": 1795784882973,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb:jandex",
+       "start": 1795784882857
+      },
+      {
+       "end": 1795784882987,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb:jar",
+       "start": 1795784882973
+      },
+      {
+       "end": 1795784883027,
+       "outcome": "from-cache",
+       "path": ":nessie-multi-env-test-engine:compileJava",
+       "start": 1795784882988
+      },
+      {
+       "end": 1795784883046,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-store:jandex",
+       "start": 1795784882860
+      },
+      {
+       "end": 1795784883053,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-related:jandex",
+       "start": 1795784882920
+      },
+      {
+       "end": 1795784883063,
+       "outcome": "executed",
+       "path": ":nessie-versioned-transfer-related:jar",
+       "start": 1795784883054
+      },
+      {
+       "end": 1795784883073,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-store:jar",
+       "start": 1795784883046
+      },
+      {
+       "end": 1795784883088,
+       "outcome": "from-cache",
+       "path": ":nessie-client-testextension:compileJava",
+       "start": 1795784883028
+      },
+      {
+       "end": 1795784883659,
+       "outcome": "from-cache",
+       "path": ":nessie-jaxrs-tests:compileJava",
+       "start": 1795784883090
+      },
+      {
+       "end": 1795784883880,
+       "outcome": "from-cache",
+       "path": ":nessie-client:compileTestFixturesJava",
+       "start": 1795784882962
+      },
+      {
+       "end": 1795784883885,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-common:compileTestFixturesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784883881
+      },
+      {
+       "end": 1795784883893,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-rocksdb-tests:compileJava",
+       "start": 1795784883886
+      },
+      {
+       "end": 1795784883917,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-tests:compileJava",
+       "start": 1795784883894
+      },
+      {
+       "end": 1795784883920,
+       "outcome": "skipped",
+       "path": ":nessie-catalog-format-iceberg-fixturegen:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784883917
+      },
+      {
+       "end": 1795784883921,
+       "outcome": "up-to-date",
+       "path": ":nessie-catalog-format-iceberg-fixturegen:classes",
+       "start": 1795784883920
+      },
+      {
+       "end": 1795784883934,
+       "outcome": "from-cache",
+       "path": ":nessie-container-spec-helper:compileJava",
+       "start": 1795784883065
+      },
+      {
+       "end": 1795784883946,
+       "outcome": "from-cache",
+       "path": ":nessie-floci-az-testcontainer:compileJava",
+       "start": 1795784883935
+      },
+      {
+       "end": 1795784883985,
+       "outcome": "executed",
+       "path": ":nessie-catalog-format-iceberg-fixturegen:jandex",
+       "start": 1795784883922
+      },
+      {
+       "end": 1795784884066,
+       "outcome": "from-cache",
+       "path": ":nessie-floci-s3-testcontainer:compileJava",
+       "start": 1795784883986
+      },
+      {
+       "end": 1795784884193,
+       "outcome": "from-cache",
+       "path": ":nessie-floci-gcp-testcontainer:compileJava",
+       "start": 1795784883947
+      },
+      {
+       "end": 1795784884204,
+       "outcome": "from-cache",
+       "path": ":nessie-nessie-testcontainer:compileJava",
+       "start": 1795784884195
+      },
+      {
+       "end": 1795784884216,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-bigtable-tests:compileJava",
+       "start": 1795784884206
+      },
+      {
+       "end": 1795784884228,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-cassandra-tests:compileJava",
+       "start": 1795784884217
+      },
+      {
+       "end": 1795784884236,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-cassandra2-tests:compileJava",
+       "start": 1795784884229
+      },
+      {
+       "end": 1795784884250,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-dynamodb-tests:compileJava",
+       "start": 1795784884237
+      },
+      {
+       "end": 1795784884264,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-dynamodb2-tests:compileJava",
+       "start": 1795784884251
+      },
+      {
+       "end": 1795784884280,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-jdbc-tests:compileJava",
+       "start": 1795784884265
+      },
+      {
+       "end": 1795784884297,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-jdbc2-tests:compileJava",
+       "start": 1795784884282
+      },
+      {
+       "end": 1795784884308,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-mongodb-tests:compileJava",
+       "start": 1795784884298
+      },
+      {
+       "end": 1795784884319,
+       "outcome": "from-cache",
+       "path": ":nessie-versioned-storage-mongodb2-tests:compileJava",
+       "start": 1795784884311
+      },
+      {
+       "end": 1795784884356,
+       "outcome": "from-cache",
+       "path": ":nessie-keycloak-testcontainer:compileJava",
+       "start": 1795784884067
+      },
+      {
+       "end": 1795784884377,
+       "outcome": "from-cache",
+       "path": ":nessie-object-storage-mock:compileJava",
+       "start": 1795784883660
+      },
+      {
+       "end": 1795784884388,
+       "outcome": "executed",
+       "path": ":nessie-catalog-format-iceberg-fixturegen:jar",
+       "start": 1795784884378
+      },
+      {
+       "end": 1795784884390,
+       "outcome": "skipped",
+       "path": ":nessie-client:processTestFixturesResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784884389
+      },
+      {
+       "end": 1795784884390,
+       "outcome": "up-to-date",
+       "path": ":nessie-client:testFixturesClasses",
+       "start": 1795784884390
+      },
+      {
+       "end": 1795784884397,
+       "outcome": "executed",
+       "path": ":nessie-client:testFixturesJar",
+       "start": 1795784884391
+      },
+      {
+       "end": 1795784884399,
+       "outcome": "skipped",
+       "path": ":nessie-client-testextension:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784884397
+      },
+      {
+       "end": 1795784884399,
+       "outcome": "up-to-date",
+       "path": ":nessie-client-testextension:classes",
+       "start": 1795784884399
+      },
+      {
+       "end": 1795784884458,
+       "outcome": "executed",
+       "path": ":nessie-client-testextension:jandex",
+       "start": 1795784884400
+      },
+      {
+       "end": 1795784884465,
+       "outcome": "executed",
+       "path": ":nessie-client-testextension:jar",
+       "start": 1795784884459
+      },
+      {
+       "end": 1795784884467,
+       "outcome": "skipped",
+       "path": ":nessie-container-spec-helper:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784884465
+      },
+      {
+       "end": 1795784884467,
+       "outcome": "up-to-date",
+       "path": ":nessie-container-spec-helper:classes",
+       "start": 1795784884467
+      },
+      {
+       "end": 1795784884524,
+       "outcome": "from-cache",
+       "path": ":nessie-trino-testcontainer:compileJava",
+       "start": 1795784884323
+      },
+      {
+       "end": 1795784884543,
+       "outcome": "executed",
+       "path": ":nessie-floci-az-testcontainer:processResources",
+       "start": 1795784884524
+      },
+      {
+       "end": 1795784884543,
+       "outcome": "executed",
+       "path": ":nessie-floci-az-testcontainer:classes",
+       "start": 1795784884543
+      },
+      {
+       "end": 1795784884566,
+       "outcome": "executed",
+       "path": ":nessie-container-spec-helper:jandex",
+       "start": 1795784884468
+      },
+      {
+       "end": 1795784884580,
+       "outcome": "executed",
+       "path": ":nessie-container-spec-helper:jar",
+       "start": 1795784884567
+      },
+      {
+       "end": 1795784884589,
+       "outcome": "executed",
+       "path": ":nessie-floci-gcp-testcontainer:processResources",
+       "start": 1795784884580
+      },
+      {
+       "end": 1795784884589,
+       "outcome": "executed",
+       "path": ":nessie-floci-gcp-testcontainer:classes",
+       "start": 1795784884589
+      },
+      {
+       "end": 1795784884610,
+       "outcome": "executed",
+       "path": ":nessie-floci-az-testcontainer:jandex",
+       "start": 1795784884544
+      },
+      {
+       "end": 1795784884617,
+       "outcome": "executed",
+       "path": ":nessie-floci-az-testcontainer:jar",
+       "start": 1795784884611
+      },
+      {
+       "end": 1795784884628,
+       "outcome": "executed",
+       "path": ":nessie-floci-s3-testcontainer:processResources",
+       "start": 1795784884620
+      },
+      {
+       "end": 1795784884628,
+       "outcome": "executed",
+       "path": ":nessie-floci-s3-testcontainer:classes",
+       "start": 1795784884628
+      },
+      {
+       "end": 1795784884643,
+       "outcome": "executed",
+       "path": ":nessie-floci-gcp-testcontainer:jandex",
+       "start": 1795784884590
+      },
+      {
+       "end": 1795784884649,
+       "outcome": "executed",
+       "path": ":nessie-floci-gcp-testcontainer:jar",
+       "start": 1795784884644
+      },
+      {
+       "end": 1795784884651,
+       "outcome": "skipped",
+       "path": ":nessie-jaxrs-tests:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784884649
+      },
+      {
+       "end": 1795784884652,
+       "outcome": "up-to-date",
+       "path": ":nessie-jaxrs-tests:classes",
+       "start": 1795784884652
+      },
+      {
+       "end": 1795784884673,
+       "outcome": "executed",
+       "path": ":nessie-floci-s3-testcontainer:jandex",
+       "start": 1795784884629
+      },
+      {
+       "end": 1795784884681,
+       "outcome": "executed",
+       "path": ":nessie-floci-s3-testcontainer:jar",
+       "start": 1795784884674
+      },
+      {
+       "end": 1795784884686,
+       "outcome": "executed",
+       "path": ":nessie-keycloak-testcontainer:processResources",
+       "start": 1795784884681
+      },
+      {
+       "end": 1795784884686,
+       "outcome": "executed",
+       "path": ":nessie-keycloak-testcontainer:classes",
+       "start": 1795784884686
+      },
+      {
+       "end": 1795784884752,
+       "outcome": "executed",
+       "path": ":nessie-keycloak-testcontainer:jandex",
+       "start": 1795784884687
+      },
+      {
+       "end": 1795784884760,
+       "outcome": "executed",
+       "path": ":nessie-jaxrs-tests:jandex",
+       "start": 1795784884653
+      },
+      {
+       "end": 1795784884765,
+       "outcome": "executed",
+       "path": ":nessie-keycloak-testcontainer:jar",
+       "start": 1795784884753
+      },
+      {
+       "end": 1795784884773,
+       "outcome": "executed",
+       "path": ":nessie-multi-env-test-engine:processResources",
+       "start": 1795784884765
+      },
+      {
+       "end": 1795784884773,
+       "outcome": "executed",
+       "path": ":nessie-multi-env-test-engine:classes",
+       "start": 1795784884773
+      },
+      {
+       "end": 1795784884785,
+       "outcome": "executed",
+       "path": ":nessie-jaxrs-tests:jar",
+       "start": 1795784884761
+      },
+      {
+       "end": 1795784884786,
+       "outcome": "skipped",
+       "path": ":nessie-object-storage-mock:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784884786
+      },
+      {
+       "end": 1795784884787,
+       "outcome": "up-to-date",
+       "path": ":nessie-object-storage-mock:classes",
+       "start": 1795784884787
+      },
+      {
+       "end": 1795784884832,
+       "outcome": "executed",
+       "path": ":nessie-multi-env-test-engine:jandex",
+       "start": 1795784884775
+      },
+      {
+       "end": 1795784884840,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus-tests:compileJava",
+       "start": 1795784884357
+      },
+      {
+       "end": 1795784884844,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-common:processTestFixturesResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784884840
+      },
+      {
+       "end": 1795784884844,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus-common:testFixturesClasses",
+       "start": 1795784884844
+      },
+      {
+       "end": 1795784884847,
+       "outcome": "executed",
+       "path": ":nessie-multi-env-test-engine:jar",
+       "start": 1795784884833
+      },
+      {
+       "end": 1795784884850,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-common:testFixturesJar",
+       "start": 1795784884844
+      },
+      {
+       "end": 1795784884859,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-tests:processResources",
+       "start": 1795784884847
+      },
+      {
+       "end": 1795784884859,
+       "outcome": "executed",
+       "path": ":nessie-trino-testcontainer:processResources",
+       "start": 1795784884851
+      },
+      {
+       "end": 1795784884859,
+       "outcome": "executed",
+       "path": ":nessie-trino-testcontainer:classes",
+       "start": 1795784884859
+      },
+      {
+       "end": 1795784884859,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-tests:classes",
+       "start": 1795784884859
+      },
+      {
+       "end": 1795784884943,
+       "outcome": "executed",
+       "path": ":nessie-trino-testcontainer:jandex",
+       "start": 1795784884861
+      },
+      {
+       "end": 1795784884948,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-tests:jandex",
+       "start": 1795784884861
+      },
+      {
+       "end": 1795784884949,
+       "outcome": "executed",
+       "path": ":nessie-object-storage-mock:jandex",
+       "start": 1795784884788
+      },
+      {
+       "end": 1795784884955,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-tests:jar",
+       "start": 1795784884949
+      },
+      {
+       "end": 1795784884958,
+       "outcome": "executed",
+       "path": ":nessie-trino-testcontainer:jar",
+       "start": 1795784884944
+      },
+      {
+       "end": 1795784884960,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable-tests:processResources",
+       "start": 1795784884956
+      },
+      {
+       "end": 1795784884960,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable-tests:classes",
+       "start": 1795784884960
+      },
+      {
+       "end": 1795784884971,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra-tests:processResources",
+       "start": 1795784884959
+      },
+      {
+       "end": 1795784884972,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra-tests:classes",
+       "start": 1795784884972
+      },
+      {
+       "end": 1795784884990,
+       "outcome": "executed",
+       "path": ":nessie-object-storage-mock:jar",
+       "start": 1795784884949
+      },
+      {
+       "end": 1795784884995,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2-tests:processResources",
+       "start": 1795784884990
+      },
+      {
+       "end": 1795784884995,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2-tests:classes",
+       "start": 1795784884995
+      },
+      {
+       "end": 1795784885014,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable-tests:jandex",
+       "start": 1795784884961
+      },
+      {
+       "end": 1795784885031,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-bigtable-tests:jar",
+       "start": 1795784885014
+      },
+      {
+       "end": 1795784885050,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb-tests:processResources",
+       "start": 1795784885032
+      },
+      {
+       "end": 1795784885050,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb-tests:classes",
+       "start": 1795784885050
+      },
+      {
+       "end": 1795784885080,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra-tests:jandex",
+       "start": 1795784884973
+      },
+      {
+       "end": 1795784885086,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra-tests:jar",
+       "start": 1795784885081
+      },
+      {
+       "end": 1795784885090,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2-tests:processResources",
+       "start": 1795784885086
+      },
+      {
+       "end": 1795784885090,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2-tests:classes",
+       "start": 1795784885090
+      },
+      {
+       "end": 1795784885101,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2-tests:jandex",
+       "start": 1795784884996
+      },
+      {
+       "end": 1795784885116,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-cassandra2-tests:jar",
+       "start": 1795784885102
+      },
+      {
+       "end": 1795784885136,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb-tests:jandex",
+       "start": 1795784885052
+      },
+      {
+       "end": 1795784885138,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc-tests:processResources",
+       "start": 1795784885117
+      },
+      {
+       "end": 1795784885139,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc-tests:classes",
+       "start": 1795784885139
+      },
+      {
+       "end": 1795784885153,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb-tests:jar",
+       "start": 1795784885137
+      },
+      {
+       "end": 1795784885156,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2-tests:jandex",
+       "start": 1795784885091
+      },
+      {
+       "end": 1795784885167,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2-tests:processResources",
+       "start": 1795784885154
+      },
+      {
+       "end": 1795784885167,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2-tests:classes",
+       "start": 1795784885167
+      },
+      {
+       "end": 1795784885169,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-dynamodb2-tests:jar",
+       "start": 1795784885156
+      },
+      {
+       "end": 1795784885183,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb-tests:processResources",
+       "start": 1795784885169
+      },
+      {
+       "end": 1795784885183,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb-tests:classes",
+       "start": 1795784885183
+      },
+      {
+       "end": 1795784885220,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc-tests:jandex",
+       "start": 1795784885141
+      },
+      {
+       "end": 1795784885229,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc-tests:jar",
+       "start": 1795784885221
+      },
+      {
+       "end": 1795784885234,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2-tests:processResources",
+       "start": 1795784885230
+      },
+      {
+       "end": 1795784885234,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2-tests:classes",
+       "start": 1795784885234
+      },
+      {
+       "end": 1795784885237,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2-tests:jandex",
+       "start": 1795784885169
+      },
+      {
+       "end": 1795784885245,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb-tests:jandex",
+       "start": 1795784885184
+      },
+      {
+       "end": 1795784885246,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-jdbc2-tests:jar",
+       "start": 1795784885237
+      },
+      {
+       "end": 1795784885253,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb-tests:processResources",
+       "start": 1795784885246
+      },
+      {
+       "end": 1795784885254,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb-tests:classes",
+       "start": 1795784885254
+      },
+      {
+       "end": 1795784885255,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb-tests:jar",
+       "start": 1795784885246
+      },
+      {
+       "end": 1795784885257,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-storage-testextension:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784885255
+      },
+      {
+       "end": 1795784885258,
+       "outcome": "up-to-date",
+       "path": ":nessie-versioned-storage-testextension:classes",
+       "start": 1795784885258
+      },
+      {
+       "end": 1795784885302,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2-tests:jandex",
+       "start": 1795784885235
+      },
+      {
+       "end": 1795784885305,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb-tests:jandex",
+       "start": 1795784885255
+      },
+      {
+       "end": 1795784885315,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-mongodb2-tests:jar",
+       "start": 1795784885303
+      },
+      {
+       "end": 1795784885316,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-rocksdb-tests:jar",
+       "start": 1795784885306
+      },
+      {
+       "end": 1795784885318,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-testextension:jandex",
+       "start": 1795784885259
+      },
+      {
+       "end": 1795784885321,
+       "outcome": "executed",
+       "path": ":nessie-versioned-tests:processResources",
+       "start": 1795784885315
+      },
+      {
+       "end": 1795784885321,
+       "outcome": "executed",
+       "path": ":nessie-versioned-tests:classes",
+       "start": 1795784885321
+      },
+      {
+       "end": 1795784885329,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-testextension:jar",
+       "start": 1795784885318
+      },
+      {
+       "end": 1795784885394,
+       "outcome": "executed",
+       "path": ":nessie-versioned-tests:jandex",
+       "start": 1795784885322
+      },
+      {
+       "end": 1795784885411,
+       "outcome": "executed",
+       "path": ":nessie-versioned-tests:jar",
+       "start": 1795784885394
+      },
+      {
+       "end": 1795784886548,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:quarkusGenerateAppModel",
+       "start": 1795784883073
+      },
+      {
+       "end": 1795784886566,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus:quarkusGenerateCode",
+       "start": 1795784886549
+      },
+      {
+       "end": 1795784886590,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus:compileJava",
+       "start": 1795784886567
+      },
+      {
+       "end": 1795784886591,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:classes",
+       "start": 1795784886591
+      },
+      {
+       "end": 1795784886642,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:jandex",
+       "start": 1795784886593
+      },
+      {
+       "end": 1795784888142,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus:compileTestFixturesJava",
+       "start": 1795784886597
+      },
+      {
+       "end": 1795784888158,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:jar",
+       "start": 1795784888143
+      },
+      {
+       "end": 1795784888162,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:processTestFixturesResources",
+       "start": 1795784888158
+      },
+      {
+       "end": 1795784888172,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:testFixturesClasses",
+       "start": 1795784888162
+      },
+      {
+       "end": 1795784888186,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:testFixturesJar",
+       "start": 1795784888172
+      },
+      {
+       "end": 1795784888188,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus:compileQuarkusTestGeneratedSourcesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795784888187
+      },
+      {
+       "end": 1795784888565,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:quarkusGenerateTestAppModel",
+       "start": 1795784888188
+      },
+      {
+       "end": 1795784888579,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus:quarkusGenerateCodeTests",
+       "start": 1795784888565
+      },
+      {
+       "end": 1795784888705,
+       "outcome": "from-cache",
+       "path": ":nessie-quarkus:compileIntTestJava",
+       "start": 1795784888580
+      },
+      {
+       "end": 1795784888711,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus:processIntTestResources",
+       "skip": "NO-SOURCE",
+       "start": 1795784888706
+      },
+      {
+       "end": 1795784888712,
+       "outcome": "up-to-date",
+       "path": ":nessie-quarkus:intTestClasses",
+       "start": 1795784888712
+      },
+      {
+       "end": 1795784888795,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:quarkusBuildAppModel",
+       "start": 1795784888712
+      },
+      {
+       "end": 1795784901203,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:quarkusAppPartsBuild",
+       "start": 1795784888797
+      },
+      {
+       "end": 1795784901778,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:quarkusDependenciesBuild",
+       "start": 1795784901204
+      },
+      {
+       "end": 1795784902925,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:quarkusBuild",
+       "start": 1795784901779
+      },
+      {
+       "end": 1795785623174,
+       "outcome": "executed",
+       "path": ":nessie-quarkus:intTest",
+       "start": 1795784902926
+      }
+     ]
+    }
+   ],
+   "job": {
+    "cacheOutputs": {},
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test-quarkus-server",
+    "runAttempt": "2",
+    "runId": "45998965334",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "0f545a8deff7a8166f2000d1b995fd2ad648cb50"
+   }
+  },
+  "store-cache": {
+   "deps": {
+    "begin": {
+     "at": 1795785680581,
+     "bytes": 2202897391,
+     "files": 7655,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795785681114,
+     "bytes": 2202897391,
+     "files": 7655,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {},
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "store-cache",
+    "runAttempt": "2",
+    "runId": "45998965334",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "0f545a8deff7a8166f2000d1b995fd2ad648cb50"
+   }
+  }
+ },
+ "upstream": "cc135c7088157e4eea2a383e84d64bf1bcf018c2",
+ "variant": "reference"
+}
