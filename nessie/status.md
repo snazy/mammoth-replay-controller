@@ -1,10 +1,13 @@
 # Replay status (nessie)
 
-As of 2026-11-27T13:22:20Z.
-Applied in all variants: 2 of 47 CI events. Current: `smoke/main-01`.
+As of 2026-11-27T13:34:14Z.
+Applied in all variants: 2 of 47 CI events. Current: `smoke/pr-02`.
+Next mutation not before 2026-11-27T13:47:52Z.
+
+## Waiting
+
+- smoke/pr-02: not before 2026-11-27T13:47:52Z
 
 ## This tick
 
-- collected reference smoke/main-01 run 45998965334 attempt 2
-- collected mammoth smoke/main-01 run 45998963136 attempt 3
-- rerun_job reference smoke/main-01 done
+- collected reference smoke/main-01 run 45998965334 attempt 3
