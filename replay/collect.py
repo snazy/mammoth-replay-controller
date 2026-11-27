@@ -115,7 +115,7 @@ def collect_attempt(plan: dict, api, variant: str, e: dict, run: dict, attempt: 
         }
         if j["conclusion"] not in (None, "skipped"):
             try:
-                rec["log"] = classify.extract(api.job_log(repo, j["id"]))
+                rec["log"] = classify.extract(api.job_log(repo, j["id"]), patterns)
             except Exception as ex:  # noqa: BLE001
                 rec["log"] = {"missing": f"log download failed: {ex}"}
         if j["conclusion"] in ("failure", "cancelled", "timed_out"):

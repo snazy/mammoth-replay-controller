@@ -23,16 +23,24 @@ def strip_ts(line: str) -> str:
     return LOG_TS.sub("", line, count=1)
 
 
-def extract(log: str) -> dict:
+def infrastructure_patterns(patterns: dict) -> list[str]:
+    return [*DEFAULT_INFRASTRUCTURE, *patterns.get("infrastructure", [])]
+
+
+def extract(log: str, patterns: dict | None = None) -> dict:
     lines = [strip_ts(line) for line in log.splitlines()]
     scans = sorted(set(SCAN_URL.findall(log)))
     r429 = [line for line in lines if HTTP_429.search(line)]
     failures = [line.strip()[:300] for line in lines if FAILURE_LINE.search(line)]
+    # infrastructure messages need not be on a failure line, e.g. Gradle's plugin resolution details
+    infra = infrastructure_patterns(patterns or {})
+    infra_lines = [line.strip()[:300] for line in lines if any(re.search(pat, line) for pat in infra)]
     return {
         "scan_urls": scans,
         "http_429": len(r429),
         "http_429_maven_central": sum(1 for line in r429 if MAVEN_CENTRAL.search(line)),
         "failure_excerpt": failures[:EXCERPT_LINES],
+        "infrastructure_lines": infra_lines[:EXCERPT_LINES],
         "log_bytes": len(log.encode()),
     }
 
@@ -42,8 +50,9 @@ def classify(job_conclusion: str, extracted: dict, patterns: dict) -> str:
     excerpt = "\n".join(extracted.get("failure_excerpt", []))
     if job_conclusion == "cancelled" and not excerpt:
         return "cancelled"
-    for pat in [*DEFAULT_INFRASTRUCTURE, *patterns.get("infrastructure", [])]:
-        if re.search(pat, excerpt):
+    infra_text = "\n".join([*extracted.get("failure_excerpt", []), *extracted.get("infrastructure_lines", [])])
+    for pat in infrastructure_patterns(patterns):
+        if re.search(pat, infra_text):
             return "infrastructure"
     if extracted.get("http_429_maven_central", 0) > 0:
         return "maven-central-429"

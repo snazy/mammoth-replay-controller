@@ -62,7 +62,9 @@
     "on_unknown_failure": "pause",
     "failure_patterns": {
       "flaky_tests": [],
-      "infrastructure": []
+      "infrastructure": [
+        "could not resolve plugin artifact"
+      ]
     },
     "cache_steps": {
       "reference": ["Prepare Gradle build cache", "Collect partial Gradle build caches", "Save partial Gradle build cache"],

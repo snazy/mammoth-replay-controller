@@ -328,6 +328,21 @@ class TestClassify(unittest.TestCase):
         self.assertEqual(classify.classify("failure", {"failure_excerpt": ["TestFoo > bar() FAILED", "TestBaz > x() FAILED"]}, flaky), "unknown")
         self.assertEqual(classify.classify("failure", {"failure_excerpt": ["> Task :a FAILED"]}, {}), "unknown")
 
+    def test_infrastructure_pattern_outside_failure_lines(self):
+        # Gradle's settings plugin resolution failure (seen in the smoke seed run); the details aren't on a failure line
+        log = (
+            "2026-11-26T21:25:01.0000000Z * What went wrong:\n"
+            "2026-11-26T21:25:01.0000000Z Plugin [id: 'com.gradle.develocity', version: '4.6.0'] was not found in any of the following sources:\n"
+            "2026-11-26T21:25:01.0000000Z - Plugin Repositories (could not resolve plugin artifact 'com.gradle.develocity:com.gradle.develocity.gradle.plugin:4.6.0')\n"
+            "2026-11-26T21:25:02.0000000Z ##[error]Process completed with exit code 1.\n"
+        )
+        profile = json.loads((Path(__file__).resolve().parent.parent / "profiles/nessie.json").read_text())
+        patterns = profile["controller"]["failure_patterns"]
+        x = classify.extract(log, patterns)
+        self.assertEqual(len(x["infrastructure_lines"]), 1)
+        self.assertEqual(classify.classify("failure", x, patterns), "infrastructure")
+        self.assertEqual(classify.classify("failure", classify.extract(log), {}), "unknown")
+
     def test_parse_telemetry(self):
         files = {
             "job.json": b'{"job":"test"}',
