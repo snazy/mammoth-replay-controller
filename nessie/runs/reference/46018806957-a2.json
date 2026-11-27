@@ -1,0 +1,1937 @@
+{
+ "attempt": 2,
+ "collected_at": "2026-11-27T15:37:12Z",
+ "collector_version": 1,
+ "event": "scored/seed",
+ "event_type": "seed",
+ "failures": [
+  {
+   "class": "infrastructure",
+   "conclusion": "failure",
+   "job": "int-test"
+  }
+ ],
+ "jobs": [
+  {
+   "api_id": 140591856103,
+   "completed_at": "2026-11-27T15:24:24Z",
+   "conclusion": "failure",
+   "created_at": "2026-11-27T15:22:47Z",
+   "failure_class": "infrastructure",
+   "job": "int-test",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "* What went wrong:",
+     "BUILD FAILED in 11s",
+     "##[error]Process completed with exit code 1."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [
+     "- Plugin Repositories (could not resolve plugin artifact 'com.gradle.develocity:com.gradle.develocity.gradle.plugin:4.6.0')"
+    ],
+    "log_bytes": 94393,
+    "scan_urls": []
+   },
+   "name": "CI intTest",
+   "runner_name": "GitHub Actions 1000019508",
+   "started_at": "2026-11-27T15:22:51Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T15:22:53Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T15:22:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:22:58Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T15:22:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:23:05Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T15:22:58Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:23:06Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T15:23:05Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:07Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T15:23:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:07Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T15:24:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:20Z",
+     "conclusion": "failure",
+     "name": "Gradle / intTest",
+     "number": 7,
+     "started_at": "2026-11-27T15:24:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:20Z",
+     "conclusion": "success",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T15:24:20Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:21Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T15:24:20Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:21Z",
+     "conclusion": "skipped",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T15:24:21Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:21Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T15:24:21Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:22Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T15:24:21Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:22Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T15:24:22Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:24:22Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T15:24:22Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591858092,
+   "completed_at": "2026-11-27T14:59:30Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:47Z",
+   "job": "int-test-quarkus-tool",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 115895,
+    "scan_urls": [
+     "https://gradle.com/s/66avpppymjqto"
+    ]
+   },
+   "name": "CI intTest Admin Tool",
+   "runner_name": "GitHub Actions 1000019486",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:48Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:53Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:00Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:12Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:46:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:12Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:03Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Admin Tool",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:03Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-27T14:59:03Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:03Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-27T14:59:03Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:06Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-27T14:59:03Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:25Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 11,
+     "started_at": "2026-11-27T14:59:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:26Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T14:59:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:26Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T14:59:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:26Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T14:59:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:26Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T14:59:26Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591858369,
+   "completed_at": "2026-11-27T15:02:10Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:47Z",
+   "job": "int-test-integrations",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 146326,
+    "scan_urls": [
+     "https://gradle.com/s/cwlb4hqo3t3ck",
+     "https://gradle.com/s/ybtvf2fjtndfk"
+    ]
+   },
+   "name": "CI intTest integrations",
+   "runner_name": "GitHub Actions 1000019481",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:48Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:53Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:00Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:09Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:46:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:09Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:12Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest integrations",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:12Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T15:01:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:14Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T15:01:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:06Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T15:01:14Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:06Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T15:02:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:06Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T15:02:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:07Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T15:02:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:07Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T15:02:07Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591859367,
+   "completed_at": "2026-11-27T14:45:49Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:47Z",
+   "job": "determine-jobs",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 6288,
+    "scan_urls": []
+   },
+   "name": "CI Determine jobs",
+   "runner_name": "GitHub Actions 1000019484",
+   "started_at": "2026-11-27T14:45:44Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:46Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:47Z",
+     "conclusion": "success",
+     "name": "install minimatch",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:47Z",
+     "conclusion": "success",
+     "name": "Determine conditional jobs to run",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:47Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:47Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591859417,
+   "completed_at": "2026-11-27T14:48:45Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:47Z",
+   "job": "int-test-quarkus-events",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 89276,
+    "scan_urls": [
+     "https://gradle.com/s/eew5lvacxszbq"
+    ]
+   },
+   "name": "CI intTest Quarkus Events",
+   "runner_name": "GitHub Actions 1000019482",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:48Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:53Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:00Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:11Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:46:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:11Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:29Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Quarkus Events",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:29Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-27T14:48:29Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:29Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-27T14:48:29Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:31Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-27T14:48:29Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:41Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 11,
+     "started_at": "2026-11-27T14:48:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:41Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T14:48:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:41Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T14:48:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:41Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T14:48:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:41Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T14:48:41Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591860173,
+   "completed_at": "2026-11-27T15:04:41Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:47Z",
+   "job": "docker-testing",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "\u001b[36;1m    ## Nessie Java Docker image FAILED\u001b[0m",
+     "\u001b[36;1m echo \"GC Tool Java Docker image smoke test: FAILED\" > /dev/stderr\u001b[0m",
+     "\u001b[36;1m  ## GC Tool Java Docker image FAILED\u001b[0m",
+     "\u001b[36;1m echo \"Server Admin Tool Java Docker image smoke test: FAILED\" > /dev/stderr\u001b[0m",
+     "\u001b[36;1m  ## Server Admin Tool Java Docker image FAILED\u001b[0m",
+     "\u001b[36;1m echo \"CLI Java Docker image smoke test: FAILED\" > /dev/stderr\u001b[0m",
+     "\u001b[36;1m  ## CLI Java Docker image FAILED\u001b[0m"
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 1317260,
+    "scan_urls": [
+     "https://gradle.com/s/ih55jv2l6ueau",
+     "https://gradle.com/s/l3vdzs2vozxf6",
+     "https://gradle.com/s/lhqdkq6q4ansa",
+     "https://gradle.com/s/uppt5f2f4n5lm"
+    ]
+   },
+   "name": "CI Docker and Helm checks",
+   "runner_name": "GitHub Actions 1000019502",
+   "started_at": "2026-11-27T14:46:25Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:46:28Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:46:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:29Z",
+     "conclusion": "success",
+     "name": "Checkout",
+     "number": 2,
+     "started_at": "2026-11-27T14:46:28Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:32Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:46:29Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:33Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:46:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:33Z",
+     "conclusion": "success",
+     "name": "Extract version",
+     "number": 5,
+     "started_at": "2026-11-27T14:46:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:06Z",
+     "conclusion": "success",
+     "name": "Free disk space",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:07Z",
+     "conclusion": "success",
+     "name": "Setup Helm",
+     "number": 7,
+     "started_at": "2026-11-27T14:48:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:11Z",
+     "conclusion": "success",
+     "name": "Setup chart-testing",
+     "number": 8,
+     "started_at": "2026-11-27T14:48:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:48:11Z",
+     "conclusion": "success",
+     "name": "Setup Python",
+     "number": 9,
+     "started_at": "2026-11-27T14:48:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:49:17Z",
+     "conclusion": "success",
+     "name": "Setup & Start Minikube",
+     "number": 10,
+     "started_at": "2026-11-27T14:48:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:50:06Z",
+     "conclusion": "success",
+     "name": "Setup Docker registry",
+     "number": 11,
+     "started_at": "2026-11-27T14:49:17Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:50:26Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 12,
+     "started_at": "2026-11-27T14:50:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:50:32Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 13,
+     "started_at": "2026-11-27T14:50:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:30Z",
+     "conclusion": "success",
+     "name": "Docker images publishing",
+     "number": 14,
+     "started_at": "2026-11-27T14:50:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:35Z",
+     "conclusion": "success",
+     "name": "Cleanup buildx",
+     "number": 15,
+     "started_at": "2026-11-27T15:00:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:50Z",
+     "conclusion": "success",
+     "name": "Check if expected Docker images exist",
+     "number": 16,
+     "started_at": "2026-11-27T15:00:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:52Z",
+     "conclusion": "success",
+     "name": "Check if Server Docker Java image works",
+     "number": 17,
+     "started_at": "2026-11-27T15:00:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:52Z",
+     "conclusion": "success",
+     "name": "Check if GC Tool Docker Java image works",
+     "number": 18,
+     "started_at": "2026-11-27T15:01:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:55Z",
+     "conclusion": "success",
+     "name": "Check if Server Admin Tool Docker Java image works",
+     "number": 19,
+     "started_at": "2026-11-27T15:01:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:56Z",
+     "conclusion": "success",
+     "name": "Check if CLI Docker Java image works",
+     "number": 20,
+     "started_at": "2026-11-27T15:01:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:56Z",
+     "conclusion": "success",
+     "name": "Run chart-testing (list-changed)",
+     "number": 21,
+     "started_at": "2026-11-27T15:01:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:56Z",
+     "conclusion": "success",
+     "name": "Run 'helm template' validation",
+     "number": 22,
+     "started_at": "2026-11-27T15:01:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:59Z",
+     "conclusion": "success",
+     "name": "Run Helm unit tests",
+     "number": 23,
+     "started_at": "2026-11-27T15:01:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:02Z",
+     "conclusion": "success",
+     "name": "Run chart-testing (lint)",
+     "number": 24,
+     "started_at": "2026-11-27T15:01:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:02Z",
+     "conclusion": "success",
+     "name": "Show pods",
+     "number": 25,
+     "started_at": "2026-11-27T15:02:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:02:04Z",
+     "conclusion": "success",
+     "name": "Install fixtures",
+     "number": 26,
+     "started_at": "2026-11-27T15:02:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:33Z",
+     "conclusion": "success",
+     "name": "Run chart-testing (install)",
+     "number": 27,
+     "started_at": "2026-11-27T15:02:04Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:36Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 28,
+     "started_at": "2026-11-27T15:04:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:36Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 52,
+     "started_at": "2026-11-27T15:04:36Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:36Z",
+     "conclusion": "success",
+     "name": "Post Setup Python",
+     "number": 53,
+     "started_at": "2026-11-27T15:04:36Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:37Z",
+     "conclusion": "success",
+     "name": "Post Setup chart-testing",
+     "number": 54,
+     "started_at": "2026-11-27T15:04:36Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:38Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 55,
+     "started_at": "2026-11-27T15:04:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:38Z",
+     "conclusion": "success",
+     "name": "Post Checkout",
+     "number": 56,
+     "started_at": "2026-11-27T15:04:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:38Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 57,
+     "started_at": "2026-11-27T15:04:38Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591905887,
+   "completed_at": "2026-11-27T15:01:59Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:53Z",
+   "job": "int-test-quarkus-server",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 129755,
+    "scan_urls": [
+     "https://gradle.com/s/ntpeqdp3zwpye"
+    ]
+   },
+   "name": "CI intTest Quarkus Server",
+   "runner_name": "GitHub Actions 1000019487",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:48Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:53Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:10Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:46:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:10Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:25Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Quarkus Server",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:25Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-27T15:01:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:25Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-27T15:01:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:27Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-27T15:01:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:55Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 11,
+     "started_at": "2026-11-27T15:01:27Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:55Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T15:01:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:55Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T15:01:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:55Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T15:01:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:01:55Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T15:01:55Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591907036,
+   "completed_at": "2026-11-27T14:59:59Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:53Z",
+   "job": "test-quarkus",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 221363,
+    "scan_urls": [
+     "https://gradle.com/s/5co27sfn44tfe",
+     "https://gradle.com/s/6y2cu6oydtgiq",
+     "https://gradle.com/s/qia2hqxe3wlbk"
+    ]
+   },
+   "name": "CI Test Quarkus",
+   "runner_name": "GitHub Actions 1000019489",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:48Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:52Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:00Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:10Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:46:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:10Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:57:35Z",
+     "conclusion": "success",
+     "name": "Gradle / Test Quarkus Server",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:58:36Z",
+     "conclusion": "success",
+     "name": "Gradle / Test Quarkus Events",
+     "number": 8,
+     "started_at": "2026-11-27T14:57:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:21Z",
+     "conclusion": "success",
+     "name": "Gradle / Test Quarkus Events RI",
+     "number": 9,
+     "started_at": "2026-11-27T14:58:36Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:21Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 10,
+     "started_at": "2026-11-27T14:59:21Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:21Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 11,
+     "started_at": "2026-11-27T14:59:21Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:25Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 12,
+     "started_at": "2026-11-27T14:59:21Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:54Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 13,
+     "started_at": "2026-11-27T14:59:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:55Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 24,
+     "started_at": "2026-11-27T14:59:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:55Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 25,
+     "started_at": "2026-11-27T14:59:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:55Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 26,
+     "started_at": "2026-11-27T14:59:55Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:59:55Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 27,
+     "started_at": "2026-11-27T14:59:55Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591919272,
+   "completed_at": "2026-11-27T15:00:57Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:55Z",
+   "job": "int-test-stores",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 139756,
+    "scan_urls": [
+     "https://gradle.com/s/32ljcoaz2cmga",
+     "https://gradle.com/s/dqltoygrhy2gg",
+     "https://gradle.com/s/w3tkvoqxqnfny"
+    ]
+   },
+   "name": "CI intTest versioned/stores",
+   "runner_name": "GitHub Actions 1000019480",
+   "started_at": "2026-11-27T14:45:44Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:48Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:52Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:59Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:08Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:45:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:08Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:37Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest versioned/stores",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:37Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T15:00:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:39Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T15:00:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:53Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T15:00:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:53Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T15:00:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:53Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T15:00:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:53Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T15:00:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:53Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T15:00:53Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591919729,
+   "completed_at": "2026-11-27T15:05:58Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:55Z",
+   "job": "test",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 266809,
+    "scan_urls": [
+     "https://gradle.com/s/t767xpz7smn2s"
+    ]
+   },
+   "name": "CI Test",
+   "runner_name": "GitHub Actions 1000019485",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:47Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:49Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:52Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:53Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:06Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:45:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:06Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:06Z",
+     "conclusion": "success",
+     "name": "Gradle / test",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:06Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-27T15:05:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:08Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-27T15:05:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:54Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 10,
+     "started_at": "2026-11-27T15:05:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:54Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 18,
+     "started_at": "2026-11-27T15:05:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:54Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-27T15:05:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:54Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-27T15:05:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:05:54Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-27T15:05:54Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591925763,
+   "completed_at": "2026-11-27T15:08:28Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:56Z",
+   "job": "code-checks",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 1298842,
+    "scan_urls": [
+     "https://gradle.com/s/4mc54q5uysiog",
+     "https://gradle.com/s/ca5qeeet2nfrw",
+     "https://gradle.com/s/fth6whil5frvu",
+     "https://gradle.com/s/jp4frg3ixwgl6",
+     "https://gradle.com/s/n67yeb2exrywi",
+     "https://gradle.com/s/xiya4fdsgdrli"
+    ]
+   },
+   "name": "CI Code Checks et al",
+   "runner_name": "GitHub Actions 1000019490",
+   "started_at": "2026-11-27T14:45:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:47Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:51Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:56Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:57Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:08Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:45:57Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:08Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:57:14Z",
+     "conclusion": "success",
+     "name": "Gradle / Compile",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:58:54Z",
+     "conclusion": "success",
+     "name": "Gradle / Compile Quarkus",
+     "number": 8,
+     "started_at": "2026-11-27T14:57:14Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:00:39Z",
+     "conclusion": "success",
+     "name": "Gradle / Code checks",
+     "number": 9,
+     "started_at": "2026-11-27T14:58:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:25Z",
+     "conclusion": "success",
+     "name": "Gradle / Assemble",
+     "number": 10,
+     "started_at": "2026-11-27T15:00:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:04:43Z",
+     "conclusion": "success",
+     "name": "Gradle / Publish to Maven local",
+     "number": 11,
+     "started_at": "2026-11-27T15:04:25Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:28Z",
+     "conclusion": "success",
+     "name": "Gradle / build tools integration tests",
+     "number": 12,
+     "started_at": "2026-11-27T15:04:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:30Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 13,
+     "started_at": "2026-11-27T15:07:28Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:08:24Z",
+     "conclusion": "success",
+     "name": "Save partial Gradle build cache",
+     "number": 14,
+     "started_at": "2026-11-27T15:07:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:08:24Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 26,
+     "started_at": "2026-11-27T15:08:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:08:24Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 27,
+     "started_at": "2026-11-27T15:08:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:08:25Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 28,
+     "started_at": "2026-11-27T15:08:24Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:08:25Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 29,
+     "started_at": "2026-11-27T15:08:25Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140591928258,
+   "completed_at": "2026-11-27T15:07:37Z",
+   "conclusion": "success",
+   "created_at": "2026-11-27T15:22:56Z",
+   "job": "site",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "infrastructure_lines": [],
+    "log_bytes": 255378,
+    "scan_urls": [
+     "https://gradle.com/s/ocae664qarx3c"
+    ]
+   },
+   "name": "CI Website",
+   "runner_name": "GitHub Actions 1000019483",
+   "started_at": "2026-11-27T14:45:44Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-27T14:45:46Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-27T14:45:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:47Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-27T14:45:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:51Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-27T14:45:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:45:51Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-27T14:45:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:02Z",
+     "conclusion": "success",
+     "name": "Prepare Gradle build cache",
+     "number": 5,
+     "started_at": "2026-11-27T14:45:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:02Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-27T14:46:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T14:46:08Z",
+     "conclusion": "success",
+     "name": "Setup Python",
+     "number": 7,
+     "started_at": "2026-11-27T14:46:02Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:32Z",
+     "conclusion": "success",
+     "name": "Generate Static Site",
+     "number": 8,
+     "started_at": "2026-11-27T14:46:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:33Z",
+     "conclusion": "success",
+     "name": "Check code block indentation",
+     "number": 9,
+     "started_at": "2026-11-27T15:07:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:33Z",
+     "conclusion": "skipped",
+     "name": "Deploy Static Site to GitHub",
+     "number": 10,
+     "started_at": "2026-11-27T15:07:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:34Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 11,
+     "started_at": "2026-11-27T15:07:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:34Z",
+     "conclusion": "success",
+     "name": "Post Setup Python",
+     "number": 19,
+     "started_at": "2026-11-27T15:07:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:35Z",
+     "conclusion": "success",
+     "name": "Post Prepare Gradle build cache",
+     "number": 20,
+     "started_at": "2026-11-27T15:07:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:35Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-27T15:07:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:35Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-27T15:07:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-27T15:07:35Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-27T15:07:35Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140592685030,
+   "completed_at": "2026-11-27T15:24:24Z",
+   "conclusion": "skipped",
+   "created_at": "2026-11-27T15:24:24Z",
+   "job": "store-cache",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "name": "CI Store Cache",
+   "runner_name": null,
+   "started_at": "2026-11-27T15:24:24Z",
+   "status": "completed",
+   "steps": []
+  }
+ ],
+ "run": {
+  "conclusion": "failure",
+  "created_at": "2026-11-27T15:22:46Z",
+  "event": "push",
+  "head_branch": "main",
+  "head_sha": "ab36144a034cb9e32b67bb851d5b23cd0441dd5c",
+  "html_url": "https://github.com/snazy/nessie-mammoth-reference/actions/runs/46018806957",
+  "run_attempt": 2,
+  "run_started_at": "2026-11-27T15:22:44Z",
+  "status": "completed",
+  "updated_at": "2026-11-27T15:24:25Z"
+ },
+ "run_id": 46018806957,
+ "schema": 1,
+ "sha": "ab36144a034cb9e32b67bb851d5b23cd0441dd5c",
+ "telemetry": {
+  "int-test": {
+   "deps": {
+    "begin": {
+     "at": 1795793047827,
+     "bytes": 2176327116,
+     "files": 7339,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795793060872,
+     "bytes": 2176327116,
+     "files": 7339,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {},
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test",
+    "runAttempt": "2",
+    "runId": "46018806957",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "ab36144a034cb9e32b67bb851d5b23cd0441dd5c"
+   }
+  }
+ },
+ "upstream": "f400e1dfddd6336f30a54c688529d4d70bcfc607",
+ "variant": "reference"
+}
