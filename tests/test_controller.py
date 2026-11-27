@@ -393,6 +393,19 @@ class TestClassify(unittest.TestCase):
         self.assertEqual(classify.classify("failure", x, patterns), "infrastructure")
         self.assertEqual(classify.classify("failure", classify.extract(log), {}), "unknown")
 
+    def test_container_fetch_failure_is_infrastructure(self):
+        # Testcontainers couldn't fetch an image in time (reference smoke/main-01, intTest Quarkus Server)
+        log = (
+            "2026-11-27T12:40:00.0000000Z V2 > ITRestApiPersistCassandra [V2] > smoke() [V2] FAILED\n"
+            "2026-11-27T12:40:00.0000000Z     java.lang.RuntimeException at QuarkusIntegrationTestExtension.java:435\n"
+            "2026-11-27T12:40:00.0000000Z                 Caused by: org.testcontainers.containers.ContainerFetchException at GenericContainer.java:1308\n"
+            "2026-11-27T12:40:00.0000000Z                     Caused by: org.testcontainers.shaded.org.awaitility.core.ConditionTimeoutException at ConditionAwaiter.java:167\n"
+            "2026-11-27T12:40:02.0000000Z > Task :nessie-quarkus:intTest FAILED\n"
+        )
+        profile = json.loads((Path(__file__).resolve().parent.parent / "profiles/nessie.json").read_text())
+        patterns = profile["controller"]["failure_patterns"]
+        self.assertEqual(classify.classify("failure", classify.extract(log, patterns), patterns), "infrastructure")
+
     def test_aggregator_failure_follows_producer_failure(self):
         plan = {"jobs": {"producers": ["test"], "aggregator": "store-cache"}}
 

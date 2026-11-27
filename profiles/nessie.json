@@ -64,7 +64,8 @@
     "failure_patterns": {
       "flaky_tests": [],
       "infrastructure": [
-        "could not resolve plugin artifact"
+        "could not resolve plugin artifact",
+        "ContainerFetchException"
       ]
     },
     "cache_steps": {
