@@ -76,7 +76,7 @@ The smoke seed runs (2026-11-27) showed it isn't Mammoth-specific:
 
 Both passed on a manual rerun (attempt 2). So the failures are Maven Central throttling or errors
 early in the build, hitting whichever jobs resolve first, on both sides. Both classes are rerun
-automatically (at most twice per run).
+automatically; in the scored campaign up to 5 times per run, with growing waits in between.
 
 ## Other
 

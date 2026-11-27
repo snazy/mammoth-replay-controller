@@ -48,7 +48,10 @@ names the run and what to do.
 - **Unrecognised CI failure**: the controller pauses and links the run. Inspect it; rerun the failed
   jobs in the GitHub UI (or `gh run rerun <id> --failed --repo <repo>`) to continue. Known
   patterns (Maven Central HTTP 429, infrastructure errors, configured flaky tests in
-  `failure_patterns`) are rerun automatically, at most twice per run.
+  `failure_patterns`) are rerun automatically: in the smoke campaign at most twice per run, at the
+  next tick; in the scored campaign at most 5 times, waiting 15, 30, 60 and 120 min before reruns
+  2–5 (`max_reruns`, `rerun_backoff_minutes` in the campaign's `settings`), so throttling or a short
+  outage doesn't stop the multi-day run. After the last rerun the controller pauses.
   A `store-cache` failure next to a failed producer job is a follow-on failure (Mammoth's aggregator
   runs after failed builds, too, and fails when a worker's delta is missing); the producers' failures
   decide.

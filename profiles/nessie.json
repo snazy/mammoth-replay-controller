@@ -87,6 +87,7 @@
     },
     {
       "id": "scored",
+      "settings": {"max_reruns": 5, "rerun_backoff_minutes": 15},
       "events": [
         {"id": "clear-caches", "type": "gate", "action": "delete-caches-and-artifacts"},
         {"id": "seed", "type": "seed", "upstream": "f400e1dfdd"},

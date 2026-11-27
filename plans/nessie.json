@@ -64,6 +64,10 @@
   "campaign_settings": {
     "smoke": {
       "min_event_spacing_minutes": 15
+    },
+    "scored": {
+      "max_reruns": 5,
+      "rerun_backoff_minutes": 15
     }
   },
   "workflow": {

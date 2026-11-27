@@ -6,6 +6,7 @@ from pathlib import Path
 
 from replay import classify, collect, controller
 from replay.decide import Env
+from replay.decide import rerun_wait as controller_rerun_wait
 from replay.decide import spacing_minutes as controller_spacing
 
 from tests.fake_github import FakeGitHub
@@ -187,6 +188,34 @@ class TestFailures(Harness):
         rec = json.loads(sorted((self.data / "runs" / "reference").glob("*-a1.json"))[0].read_text())
         self.assertEqual(rec["failures"][0]["class"], "maven-central-429")
         self.assertEqual(rec["jobs"][0]["log"]["http_429_maven_central"], 1)
+
+    def test_campaign_rerun_limit_and_backoff(self):
+        # the test plan's events are all in the smoke campaign; give it the scored campaign's settings
+        self.plan["campaign_settings"] = {"smoke": {"max_reruns": 5, "rerun_backoff_minutes": 15}}
+        self.start_seed()
+        log = "2026-01-01T00:00:00Z Could not GET 'https://repo.maven.apache.org/x.pom'. Received status code 429 from server: Too Many Requests\n"
+        self.gh.finish_run("me/mam", self.gh.repo("me/mam").runs[0]["id"])
+        for rerun, wait in ((1, 0), (2, 15), (3, 30), (4, 60), (5, 120)):
+            self.gh.finish_run("me/ref", self.gh.repo("me/ref").runs[0]["id"], "failure", failed_job_log=log)
+            if wait:
+                self.tick()
+                self.advance(wait - 1)
+                self.tick()
+                self.assertEqual(len(self.mutations("rerun_failed_jobs")), rerun - 1, f"rerun {rerun} too early")
+                self.advance(2)
+            d, _ = self.tick()
+            self.assertEqual(len(self.mutations("rerun_failed_jobs")), rerun, f"rerun {rerun} missing")
+            self.advance(20)
+        self.gh.finish_run("me/ref", self.gh.repo("me/ref").runs[0]["id"], "failure", failed_job_log=log)
+        d, _ = self.tick()
+        self.assertEqual(len(self.mutations("rerun_failed_jobs")), 5)
+        self.assertTrue(any("rerun limit reached" in x for x in d.exceptions), d.exceptions)
+
+    def test_rerun_wait(self):
+        plan = {"settings": {"max_reruns": 2}, "campaign_settings": {"scored": {"max_reruns": 5, "rerun_backoff_minutes": 15}}}
+        scored, smoke = {"campaign": "scored"}, {"campaign": "smoke"}
+        self.assertEqual([controller_rerun_wait(plan, scored, n) for n in range(1, 6)], [timedelta(minutes=m) for m in (0, 15, 30, 60, 120)])
+        self.assertEqual([controller_rerun_wait(plan, smoke, n) for n in (1, 2)], [timedelta(0)] * 2)
 
     def test_planned_job_rerun_after_429_rerun(self):
         # smoke/main-01 plans a rerun of "build"; a 429 rerun first must not skip it

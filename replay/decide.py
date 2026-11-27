@@ -193,7 +193,12 @@ def ci_status(ctx: _Ctx, variant: str, e: dict, d: Decision) -> tuple[str, datet
                 "Inspect it; rerun the failed jobs manually to continue, or adjust failure patterns."
             )
             return "exception", None
-        if attempt <= ctx.settings["max_reruns"]:
+        if attempt <= campaign_setting(ctx.plan, e, "max_reruns"):
+            # the next attempt is rerun number `attempt`
+            not_before = parse_ts(run["updated_at"]) + rerun_wait(ctx.plan, e, attempt)
+            if now < not_before:
+                d.waiting.append(f"{variant}: rerun {attempt} of run {run['id']} not before {iso(not_before)}")
+                return "running", None
             d.actions.append({"variant": variant, "event": key, "type": "rerun_failed", "repo": repo, "run_id": run["id"], "attempt": attempt})
             return "running", None
         d.exceptions.append(f"{variant}: run {run['html_url']} still {conclusion} after {attempt} attempts (rerun limit reached)")
@@ -226,10 +231,25 @@ def apply_actions(ctx: _Ctx, variant: str, e: dict) -> list[dict]:
     return actions
 
 
-def spacing_minutes(plan: dict, e: dict) -> float:
-    """Minimum wait before event e, after the previous event finished: the event's campaign may override the default."""
+def campaign_setting(plan: dict, e: dict, name: str, default=None):
+    """A controller setting for event e: its campaign's settings override the profile's defaults."""
     campaign = plan.get("campaign_settings", {}).get(e["campaign"], {})
-    return campaign.get("min_event_spacing_minutes", plan["settings"]["min_event_spacing_minutes"])
+    return campaign.get(name, plan["settings"].get(name, default))
+
+
+def spacing_minutes(plan: dict, e: dict) -> float:
+    """Minimum wait before event e, after the previous event finished."""
+    return campaign_setting(plan, e, "min_event_spacing_minutes")
+
+
+def rerun_wait(plan: dict, e: dict, rerun: int) -> timedelta:
+    """Wait after a failed attempt before rerun number `rerun` (1-based).
+
+    The first rerun happens at the next tick; with rerun_backoff_minutes set, each further rerun
+    waits twice as long as the previous one, to ride out throttling or a short outage.
+    """
+    base = campaign_setting(plan, e, "rerun_backoff_minutes", 0)
+    return timedelta(minutes=base * 2 ** (rerun - 2)) if base and rerun >= 2 else timedelta(0)
 
 
 def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) -> Decision:
