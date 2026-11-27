@@ -1,9 +1,9 @@
 # Replay status (nessie)
 
-As of 2026-11-27T14:45:33Z.
-Applied in all variants: 3 of 47 CI events. Current: `scored/seed`.
+As of 2026-11-27T14:52:17Z.
+Applied in all variants: 4 of 47 CI events. Current: `scored/seed`.
 
-## This tick
+## Waiting
 
-- update_ref reference scored/seed done
-- update_ref mammoth scored/seed done
+- reference: run 46018806957 attempt 1 in_progress
+- mammoth: run 46018809569 attempt 1 in_progress
