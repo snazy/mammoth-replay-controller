@@ -30,7 +30,9 @@ def preflight(plan: dict, api) -> list[tuple[str, str]]:
             out.append(("OK" if tags.get(ref) == sha else "FAIL", f"{v}: {ref} {'matches the plan' if tags.get(ref) == sha else f'is {tags.get(ref)}, plan expects {sha[:10]}'}"))
         main = api.get_ref(repo, "heads/main")
         if main is None:
-            out.append(("OK", f"{v}: main does not exist yet (the controller creates it with the seed)"))
+            out.append(("WARN", f"{v}: main does not exist; push it at the root commit {plan['root'][:10]}"))
+        elif main == plan.get("root"):
+            out.append(("OK", f"{v}: main at the root commit (the controller moves it to the seed)"))
         else:
             out.append(("OK" if main in chain[v] else "FAIL", f"{v}: main at {main[:10]} {'is a plan commit' if main in chain[v] else 'is NOT a plan commit'}"))
         extra = [r for r in api.matching_refs(repo, "heads") if r != "refs/heads/main" and not r.startswith("refs/heads/replay/")]

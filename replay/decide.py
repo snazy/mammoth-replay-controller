@@ -196,6 +196,7 @@ def apply_actions(ctx: _Ctx, variant: str, e: dict) -> list[dict]:
     sha = e["sha"][variant]
     if e["type"] in ("seed", "main"):
         head = ctx.snap[variant]["main"]
+        # main normally starts at the plan's root commit; an absent main is still created
         if head is None:
             return [{"variant": variant, "event": key, "type": "create_ref", "repo": repo, "ref": "heads/main", "sha": sha}]
         return [{"variant": variant, "event": key, "type": "update_ref", "repo": repo, "ref": "heads/main", "sha": sha, "expected": head}]
@@ -224,7 +225,7 @@ def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) ->
         if missing:
             d.exceptions.append(f"{v}: staging refs missing or different: {', '.join(missing)}")
         head = snap[v]["main"]
-        if head is not None and head not in ctx.chain[v]:
+        if head is not None and head not in ctx.chain[v] and head != plan.get("root"):
             d.exceptions.append(f"{v}: main is at {head[:10]}, which is not a plan commit")
     if d.exceptions:
         return d

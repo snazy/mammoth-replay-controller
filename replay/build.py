@@ -252,6 +252,24 @@ def expand_events(profile: dict, upstream: Path) -> list[dict]:
     return events
 
 
+ROOT_README = """# Replay repository
+
+Synthetic replay of {upstream} history for a CI caching experiment. The commits are generated and
+pushed by a replay controller. This is not a fork: please don't open issues or pull requests.
+"""
+
+
+def root_commit(repo: Path, profile: dict, date: str) -> str:
+    """The shared, workflow-free root of every variant's replay history.
+
+    The seed is its child, so moving main from the root to the seed is an ordinary fast-forward
+    push; GitHub starts no push run when main is force-pushed to an unrelated root commit.
+    """
+    blob = git(repo, "hash-object", "-w", "--stdin", stdin=ROOT_README.format(upstream=profile["upstream"]["repo"]).encode()).strip()
+    tree = gitops.mktree(repo, [("100644", "blob", blob, "README.md")])
+    return commit(repo, tree, None, "Initialize replay repository", date, profile["identity"])
+
+
 def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[str, Path]) -> dict:
     """Builds replay commits in each variant's local repo and returns the frozen plan.
 
@@ -270,6 +288,8 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
     dropped: dict[str, dict] = {}
     overlay_trees = {}
     tips = {}
+    roots = {}
+    root_date = gitops.commit_meta(upstream, seed_sha)["committer_date"]
     workflow_jobs: dict | None = None
 
     for variant, vcfg in profile["variants"].items():
@@ -287,8 +307,9 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
         elif jobs != workflow_jobs:
             raise BuildError(f"{variant}: workflow job names or needs differ from the other variant")
 
-        tip: str | None = None
-        tip_tree: str | None = None
+        roots[variant] = root_commit(repo, profile, root_date)
+        tip: str | None = roots[variant]
+        tip_tree: str | None = None  # the seed always triggers: compare against nothing, not the root's README
         pending_pr: dict | None = None
         for pe in plan_events:
             key = f"{pe['campaign']}/{pe['id']}"
@@ -329,6 +350,9 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
             if nxt is None or nxt["sha"] != pe["sha"]:
                 raise BuildError(f"{pe['campaign']}/{pe['id']}: PR commit differs from its main push")
 
+    if len(set(roots.values())) != 1:
+        raise BuildError(f"root commits differ between variants: {roots}")
+
     staging = {}
     for variant in profile["variants"]:
         refs = {"refs/tags/replay-staging/main": tips[variant]}
@@ -343,6 +367,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
         "schema": PLAN_SCHEMA,
         "profile": profile["name"],
         "upstream": {"repo": profile["upstream"]["repo"], "seed": seed_sha},
+        "root": next(iter(roots.values())),
         "variants": {v: {"repo": c["repo"], "overlay_tree": overlay_trees[v]} for v, c in profile["variants"].items()},
         "settings": profile["controller"],
         "workflow": {**profile["workflow"], "jobs": workflow_jobs},

@@ -8,7 +8,7 @@ touches `projectnessie/nessie` or any other upstream repository.
 | Item | Value |
 | --- | --- |
 | Repositories (new, public, personal account) | `snazy/mammoth-replay-controller`, `snazy/nessie-mammoth-reference`, `snazy/nessie-mammoth-prototype` |
-| Pushed by you/us once | Controller `main` and `data` branches; in each replay repo the two `replay-staging/*` tags (about 9 MB each). Tag pushes trigger no CI. |
+| Pushed by you/us once | Controller `main` and `data` branches; in each replay repo the two `replay-staging/*` tags (about 9 MB each) and `main` at the plan's root commit. Neither triggers CI: tags don't, and the root commit has no workflows. |
 | Pushed later by the controller only | Replay repos: `main` (moved through 40 plan commits), 7 branches `replay/<campaign>/pr-NN`, 7 PRs (opened and closed, never merged) |
 | CI runs per replay repo | Smoke: 3 runs plus 1 job rerun. Scored: 44 runs (37 `main` pushes, 6 PRs, 1 seed). Automatic reruns of failed jobs: at most 2 per run. |
 | Deletions | Once, at gate `scored/clear-caches` after you release it: all Actions caches and artifacts in both replay repos |
@@ -56,10 +56,11 @@ tree=$(printf 'Replay evidence; written by the Replay tick workflow.\n' | git ha
 git update-ref refs/heads/data "$(git commit-tree "$tree" -m 'Initialize data branch')"
 git "${GH_CRED[@]}" push origin data
 
-# 3. Replay repos: staging tags only
+# 3. Replay repos: staging tags, and main at the shared root commit (README only, no workflows)
+ROOT=$(python3 -c 'import json; print(json.load(open("plans/nessie.json"))["root"])')
 for r in nessie-mammoth-reference nessie-mammoth-prototype; do
   git -C $B/$r remote add origin https://github.com/snazy/$r.git
-  git -C $B/$r "${GH_CRED[@]}" push origin 'refs/tags/replay-staging/*:refs/tags/replay-staging/*'
+  git -C $B/$r "${GH_CRED[@]}" push origin 'refs/tags/replay-staging/*:refs/tags/replay-staging/*' "$ROOT:refs/heads/main"
 done
 
 # 4. Controller settings (paused)
@@ -98,7 +99,7 @@ gh variable set REPLAY_PAUSED --body false --repo snazy/mammoth-replay-controlle
 
 The controller then, in both replay repos:
 
-1. creates `main` at the smoke seed: first cold CI run;
+1. moves `main` from the root commit to the smoke seed (a fast-forward): first cold CI run;
 2. moves `main` to `smoke/main-01`, then reruns `code-checks` once (its dependents rerun too);
 3. opens and closes the PR `replay/smoke/pr-02`;
 4. stops at gate `scored/clear-caches`.
@@ -122,6 +123,18 @@ gh variable set REPLAY_RELEASED_GATES --body scored/clear-caches --repo snazy/ma
 
 The controller deletes all caches and artifacts in both replay repos (once every smoke attempt is
 collected), then replays the scored campaign starting from a cold seed. About 9 days.
+
+## Restarting a variant
+
+Never force-push `main` to a different root commit: GitHub starts no push run for it (seen on
+2026-11-27). Every replay history therefore starts at the plan's shared root commit, and the
+seed is its child. To restart a variant, pause the controller, force-push `main` back to the root
+commit (no CI: it has no workflows) and unpause; the controller then fast-forwards `main` to the
+seed again.
+
+```shell
+git -C $B/<repo> "${GH_CRED[@]}" push --force origin "$ROOT:refs/heads/main"
+```
 
 ## Stop and rollback
 

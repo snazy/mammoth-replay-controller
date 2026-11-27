@@ -12,6 +12,7 @@ from tests.fake_github import FakeGitHub
 VARIANTS = {"reference": "me/ref", "mammoth": "me/mam"}
 T0 = datetime(2026, 12, 1, 8, 0, tzinfo=timezone.utc)
 SPACING = 300
+ROOT = "r" * 40
 
 
 def sha(variant, name):
@@ -42,6 +43,7 @@ def make_plan():
     return {
         "schema": 1,
         "profile": "test",
+        "root": ROOT,
         "variants": {v: {"repo": r, "overlay_tree": "t"} for v, r in VARIANTS.items()},
         "settings": {"max_reruns": 2, "min_event_spacing_minutes": SPACING, "run_visibility_timeout_minutes": 30,
                      "run_max_duration_minutes": 360, "on_unknown_failure": "pause",
@@ -64,6 +66,7 @@ class Harness(unittest.TestCase):
         for v, repo in VARIANTS.items():
             for ref, s in self.plan["staging_refs"][v].items():
                 self.gh.repo(repo).refs[ref] = s
+            self.gh.repo(repo).refs["refs/heads/main"] = ROOT  # pushed at launch, triggers no CI
         self.released = set()
         self.paused = False
 
@@ -231,8 +234,9 @@ class TestFailures(Harness):
         self.finish_all()
         self.paused = True
         self.advance(SPACING + 1)
+        before = len(self.mutations("update_ref"))
         _, notes = self.tick()
-        self.assertEqual(len(self.mutations("update_ref")), 0)
+        self.assertEqual(len(self.mutations("update_ref")), before)
         self.assertEqual(len(list((self.data / "runs").glob("*/*.json"))), 2)
         self.assertTrue(any(n.startswith("paused") for n in notes))
 
@@ -259,21 +263,28 @@ class TestReconciliation(Harness):
             self.assertEqual(len(self.gh.repo(r).prs), 1)
         self.assertEqual(len(self.mutations("create_pr")), 2)
 
-    def test_lost_branch_creation_then_pr(self):
-        self.gh.lose_next.add("create_ref")
-        self.tick()  # seed main creation response lost in the first variant
-        self.assertEqual(sum(1 for v in VARIANTS if self.main(v)), 1)
+    def test_lost_seed_push_response(self):
+        self.gh.lose_next.add("update_ref")
+        self.tick()  # seed push response (root -> seed) lost in the first variant
+        self.assertEqual(sum(1 for v in VARIANTS if self.main(v) != ROOT), 1)
         self.tick()
         self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s0") for v in VARIANTS})
-        self.assertEqual(len(self.mutations("create_ref")), 2)
+        self.assertEqual(len(self.mutations("update_ref")), 2)
 
     def test_failed_write_is_not_retried_in_same_tick(self):
-        self.gh.fail_next.add("create_ref")
+        self.gh.fail_next.add("update_ref")
         _, notes = self.tick()
-        self.assertEqual(len(self.mutations("create_ref")), 1)
+        self.assertEqual(len(self.mutations("update_ref")), 1)
         self.assertTrue(any("failed" in n for n in notes))
         self.tick()
         self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s0") for v in VARIANTS})
+
+    def test_absent_main_is_created(self):
+        for r in VARIANTS.values():
+            del self.gh.repo(r).refs["refs/heads/main"]
+        self.tick()
+        self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s0") for v in VARIANTS})
+        self.assertEqual(len(self.mutations("create_ref")), 2)
 
     def test_update_ref_precondition(self):
         self.tick()
@@ -380,6 +391,7 @@ class TestPreflight(Harness):
 
         results = preflight(self.plan, self.gh)
         self.assertFalse([m for lvl, m in results if lvl == "FAIL"], results)
+        self.assertTrue(any("main at the root commit" in m for lvl, m in results if lvl == "OK"))
         self.gh.repo("me/mam").refs["refs/heads/main"] = "f" * 40
         self.gh.repo("me/ref").refs["refs/heads/other"] = "a" * 40
         del self.gh.repo("me/ref").refs["refs/tags/replay-staging/main"]

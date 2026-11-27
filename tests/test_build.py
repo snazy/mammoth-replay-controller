@@ -174,8 +174,10 @@ class TestBuildPlan(BuildFixture):
             self.assertEqual(refs["refs/tags/replay-staging/main"], ev["scored/main-05"]["sha"][v])
             self.assertEqual(refs["refs/tags/replay-staging/smoke-pr-02"], ev["smoke/pr-02"]["sha"][v])
             self.assertEqual(len(refs), 2)
-            # the root commit has no parent
-            self.assertEqual(git(repo, "rev-list", "--max-parents=0", refs["refs/tags/replay-staging/main"]).strip(), ev["smoke/seed"]["sha"][v])
+            # the seed's parent is the shared root commit, which has no parent and no workflows
+            self.assertEqual(git(repo, "rev-parse", f"{ev['smoke/seed']['sha'][v]}^").strip(), plan["root"])
+            self.assertEqual(git(repo, "rev-list", "--max-parents=0", refs["refs/tags/replay-staging/main"]).strip(), plan["root"])
+            self.assertEqual(git(repo, "ls-tree", "--name-only", plan["root"]).split(), ["README.md"])
         self.assertEqual(ev["scored/pr-03"]["branch"], "replay/scored/pr-03")
 
     def test_message_and_identity(self):
