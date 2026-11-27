@@ -1,21 +1,35 @@
 {
- "applied_events": 1,
- "at": "2026-11-27T03:40:12Z",
+ "applied_events": 0,
+ "at": "2026-11-27T10:25:05Z",
  "current": "smoke/seed",
- "exceptions": [
-  "reference: run https://github.com/snazy/nessie-mammoth-reference/actions/runs/45897936513 attempt 1 has unclassified failures in int-test-stores, int-test, int-test-quarkus-tool, int-test-quarkus-server. Inspect it; rerun the failed jobs manually to continue, or adjust failure patterns.",
-  "mammoth: run https://github.com/snazy/nessie-mammoth-prototype/actions/runs/45897938717 attempt 2 has unclassified failures in code-checks, int-test-quarkus-server, site, int-test, test-quarkus, int-test-quarkus-tool, int-test-integrations, test, int-test-stores, docker-testing, store-cache. Inspect it; rerun the failed jobs manually to continue, or adjust failure patterns."
- ],
+ "exceptions": [],
  "finished": false,
  "not_before": null,
  "notes": [
-  "collected reference smoke/seed run 45897936513 attempt 1",
-  "collected mammoth smoke/seed run 45897938717 attempt 1",
-  "collected mammoth smoke/seed run 45897938717 attempt 2",
-  "exceptions present; no mutations"
+  "update_ref reference smoke/seed done",
+  "update_ref mammoth smoke/seed done"
  ],
- "paused": true,
- "planned_actions": [],
+ "paused": false,
+ "planned_actions": [
+  {
+   "event": "smoke/seed",
+   "expected": "ed6cd37a3fd8a5a2e2248fcd6c48f9e4715a1235",
+   "ref": "heads/main",
+   "repo": "snazy/nessie-mammoth-reference",
+   "sha": "27c88d1e6a97f5f91cc999e5930f88499142119b",
+   "type": "update_ref",
+   "variant": "reference"
+  },
+  {
+   "event": "smoke/seed",
+   "expected": "ed6cd37a3fd8a5a2e2248fcd6c48f9e4715a1235",
+   "ref": "heads/main",
+   "repo": "snazy/nessie-mammoth-prototype",
+   "sha": "f0315eb1cb0164e17e2ad3f93af9b1c66cf823d4",
+   "type": "update_ref",
+   "variant": "mammoth"
+  }
+ ],
  "profile": "nessie",
  "total_events": 47,
  "waiting": []
