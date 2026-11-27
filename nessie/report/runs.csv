@@ -3,8 +3,8 @@ smoke/seed,seed,reference,45989126099,2,success,,,,23.0,12,"[""code-checks""]","
 smoke/seed,seed,mammoth,45991379878,2,success,,,,25.0,13,"[""int-test""]","[""maven-central-429""]","{""executed"": 4340, ""from-cache"": 1967, ""skipped"": 3534, ""up-to-date"": 5866}",0,3,0,[],"[""smoke"", ""rerun""]",
 smoke/main-01,main,reference,45998965334,3,success,,,,29.0,12,"[""int-test-quarkus-server""]","[""infrastructure""]","{""executed"": 4809, ""from-cache"": 2154, ""skipped"": 4019, ""up-to-date"": 6108, ""failed"": 1}",1132,0,0,[],"[""smoke"", ""rerun""]",
 smoke/main-01,main,mammoth,45998963136,3,success,,,,29.0,13,"[""site""]","[""maven-central-429""]","{""executed"": 4596, ""from-cache"": 2090, ""skipped"": 3984, ""up-to-date"": 6078}",1132,1,0,[],"[""smoke"", ""rerun""]",
-smoke/pr-02,pr,reference,,,,,,,,,,,,,,,,"[""smoke""]",not collected
-smoke/pr-02,pr,mammoth,,,,,,,,,,,,,,,,"[""smoke""]",not collected
+smoke/pr-02,pr,reference,46010853629,1,success,4334.0,1020.0,359.0,29.0,11,[],[],"{""executed"": 4534, ""from-cache"": 2060, ""skipped"": 3923, ""up-to-date"": 5789}",0,0,0,[],"[""smoke""]",
+smoke/pr-02,pr,mammoth,46010860711,1,failure,,,,24.0,11,"[""test""]","[""maven-central-429""]","{""executed"": 3963, ""from-cache"": 1777, ""skipped"": 3267, ""up-to-date"": 5461}",0,3,0,[],"[""smoke"", ""rerun""]",
 scored/seed,seed,reference,,,,,,,,,,,,,,,,"[""warm-up""]",not collected
 scored/seed,seed,mammoth,,,,,,,,,,,,,,,,"[""warm-up""]",not collected
 scored/main-01,main,reference,,,,,,,,,,,,,,,,"[""warm-up""]",not collected
