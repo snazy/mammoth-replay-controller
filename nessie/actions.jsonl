@@ -56,3 +56,5 @@
 {"at": "2026-11-27T15:22:22Z", "attempt": 1, "event": "scored/seed", "phase": "done", "repo": "snazy/nessie-mammoth-reference", "result": null, "run_id": 46018806957, "type": "rerun_failed", "variant": "reference"}
 {"at": "2026-11-27T15:22:22Z", "attempt": 1, "event": "scored/seed", "phase": "intent", "repo": "snazy/nessie-mammoth-prototype", "run_id": 46018809569, "type": "rerun_failed", "variant": "mammoth"}
 {"at": "2026-11-27T15:22:22Z", "attempt": 1, "event": "scored/seed", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": null, "run_id": 46018809569, "type": "rerun_failed", "variant": "mammoth"}
+{"at": "2026-11-27T15:52:17Z", "attempt": 2, "event": "scored/seed", "phase": "intent", "repo": "snazy/nessie-mammoth-reference", "run_id": 46018806957, "type": "rerun_failed", "variant": "reference"}
+{"at": "2026-11-27T15:52:17Z", "attempt": 2, "event": "scored/seed", "phase": "done", "repo": "snazy/nessie-mammoth-reference", "result": null, "run_id": 46018806957, "type": "rerun_failed", "variant": "reference"}
