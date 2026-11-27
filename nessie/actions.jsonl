@@ -22,3 +22,5 @@
 {"at": "2026-11-27T12:52:18Z", "attempt": 1, "event": "smoke/main-01", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": null, "run_id": 45998963136, "type": "rerun_failed", "variant": "mammoth"}
 {"at": "2026-11-27T13:04:05Z", "attempt": 1, "event": "smoke/main-01", "phase": "intent", "repo": "snazy/nessie-mammoth-reference", "run_id": 45998965334, "type": "rerun_failed", "variant": "reference"}
 {"at": "2026-11-27T13:04:05Z", "attempt": 1, "event": "smoke/main-01", "phase": "done", "repo": "snazy/nessie-mammoth-reference", "result": null, "run_id": 45998965334, "type": "rerun_failed", "variant": "reference"}
+{"at": "2026-11-27T13:10:46Z", "attempt": 2, "event": "smoke/main-01", "job": "code-checks", "phase": "intent", "repo": "snazy/nessie-mammoth-prototype", "run_id": 45998963136, "type": "rerun_job", "variant": "mammoth"}
+{"at": "2026-11-27T13:10:46Z", "attempt": 2, "event": "smoke/main-01", "job": "code-checks", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": 140516791572, "run_id": 45998963136, "type": "rerun_job", "variant": "mammoth"}
