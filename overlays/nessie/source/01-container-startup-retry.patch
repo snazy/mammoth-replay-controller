@@ -1,0 +1,1007 @@
+Backport of projectnessie/nessie aeacaf520fe120597fee2230c1a2a31a80546653 to the replay window
+(seed f400e1dfdd): verify test containers are running after start and retry if not.
+The two gc JDBC ITs are adapted (no sslMode URL parameter yet); formatted with
+google-java-format 1.36.1, the version in the replay window.
+
+diff --git a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITJdbcHelper.java b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITJdbcHelper.java
+index 88e8365f53..3119a303b7 100644
+--- a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITJdbcHelper.java
++++ b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITJdbcHelper.java
+@@ -23,6 +23,7 @@
+ import org.junit.jupiter.api.BeforeAll;
+ import org.junit.jupiter.api.Order;
+ import org.junit.jupiter.api.Test;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.testcontainers.postgresql.PostgreSQLContainer;
+ 
+ public class ITJdbcHelper extends AbstractJdbcHelper {
+@@ -31,8 +32,8 @@ public class ITJdbcHelper extends AbstractJdbcHelper {
+ 
+   @BeforeAll
+   static void createDataSource() throws Exception {
+-    container = new PostgreSQLContainer(dockerImage("postgres"));
+-    container.start();
++    container =
++        ContainerStarter.startContainer(() -> new PostgreSQLContainer(dockerImage("postgres")));
+     initDataSource(container.getJdbcUrl());
+   }
+ 
+diff --git a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMariaDBPersistenceSpi.java b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMariaDBPersistenceSpi.java
+index 9f5fcec302..080dd54dc8 100644
+--- a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMariaDBPersistenceSpi.java
++++ b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMariaDBPersistenceSpi.java
+@@ -19,6 +19,7 @@
+ 
+ import org.junit.jupiter.api.AfterAll;
+ import org.junit.jupiter.api.BeforeAll;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.testcontainers.mariadb.MariaDBContainer;
+ 
+ public class ITMariaDBPersistenceSpi extends AbstractJdbcPersistenceSpi {
+@@ -27,8 +28,10 @@ public class ITMariaDBPersistenceSpi extends AbstractJdbcPersistenceSpi {
+ 
+   @BeforeAll
+   static void createDataSource() throws Exception {
+-    container = new MariaDBContainer(dockerImage("mariadb").asCompatibleSubstituteFor("mariadb"));
+-    container.start();
++    container =
++        ContainerStarter.startContainer(
++            () ->
++                new MariaDBContainer(dockerImage("mariadb").asCompatibleSubstituteFor("mariadb")));
+     initDataSource(container.getJdbcUrl());
+   }
+ 
+diff --git a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMySQLPersistenceSpi.java b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMySQLPersistenceSpi.java
+index a3af0736a6..7652d61a7e 100644
+--- a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMySQLPersistenceSpi.java
++++ b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITMySQLPersistenceSpi.java
+@@ -19,6 +19,7 @@
+ 
+ import org.junit.jupiter.api.AfterAll;
+ import org.junit.jupiter.api.BeforeAll;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.testcontainers.mysql.MySQLContainer;
+ import org.testcontainers.utility.DockerImageName;
+ 
+@@ -29,8 +30,10 @@ public class ITMySQLPersistenceSpi extends AbstractJdbcPersistenceSpi {
+   @BeforeAll
+   static void createDataSource() throws Exception {
+     container =
+-        new MariaDBDriverMySQLContainer(dockerImage("mysql").asCompatibleSubstituteFor("mysql"));
+-    container.start();
++        ContainerStarter.startContainer(
++            () ->
++                new MariaDBDriverMySQLContainer(
++                    dockerImage("mysql").asCompatibleSubstituteFor("mysql")));
+     initDataSource(container.getJdbcUrl());
+   }
+ 
+diff --git a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITPostgresPersistenceSpi.java b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITPostgresPersistenceSpi.java
+index 24eb052690..d78ee51de9 100644
+--- a/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITPostgresPersistenceSpi.java
++++ b/gc/gc-repository-jdbc/src/intTest/java/org/projectnessie/gc/contents/jdbc/ITPostgresPersistenceSpi.java
+@@ -18,6 +18,7 @@
+ import org.junit.jupiter.api.AfterAll;
+ import org.junit.jupiter.api.BeforeAll;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.testcontainers.postgresql.PostgreSQLContainer;
+ import org.testcontainers.utility.DockerImageName;
+ 
+@@ -28,8 +29,8 @@ public class ITPostgresPersistenceSpi extends AbstractJdbcPersistenceSpi {
+   @BeforeAll
+   static void createDataSource() throws Exception {
+ 
+-    container = new PostgreSQLContainer(dockerImage("postgres"));
+-    container.start();
++    container =
++        ContainerStarter.startContainer(() -> new PostgreSQLContainer(dockerImage("postgres")));
+ 
+     initDataSource(container.getJdbcUrl());
+   }
+diff --git a/servers/quarkus-server/src/intTest/java/org/projectnessie/server/catalog/AbstractTrino.java b/servers/quarkus-server/src/intTest/java/org/projectnessie/server/catalog/AbstractTrino.java
+index dd24d5f215..25bf29af1f 100644
+--- a/servers/quarkus-server/src/intTest/java/org/projectnessie/server/catalog/AbstractTrino.java
++++ b/servers/quarkus-server/src/intTest/java/org/projectnessie/server/catalog/AbstractTrino.java
+@@ -33,6 +33,7 @@
+ import org.junit.jupiter.api.Order;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.TestMethodOrder;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.nessie.testing.trino.TrinoContainer;
+ import org.testcontainers.shaded.com.google.common.collect.ImmutableMap;
+ 
+@@ -75,13 +76,9 @@ void maybeStartTrino(HttpServer httpServer) throws Exception {
+ 
+     tweakTrinoProperties(props);
+ 
+-    trinoContainer = new TrinoContainer().withCatalog("nessie", props).withNetworkMode("bridge");
+-    try {
+-      trinoContainer.start();
+-    } catch (Exception e) {
+-      trinoContainer = null;
+-      throw e;
+-    }
++    trinoContainer =
++        ContainerStarter.startContainer(
++            () -> new TrinoContainer().withCatalog("nessie", props).withNetworkMode("bridge"));
+   }
+ 
+   protected void tweakTrinoProperties(Properties props) {}
+diff --git a/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/FlociAwsSecretsTestResourceLifecycleManager.java b/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/FlociAwsSecretsTestResourceLifecycleManager.java
+index 08fe6ca035..a42b7ce538 100644
+--- a/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/FlociAwsSecretsTestResourceLifecycleManager.java
++++ b/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/FlociAwsSecretsTestResourceLifecycleManager.java
+@@ -32,6 +32,7 @@
+ import org.projectnessie.catalog.secrets.SecretType;
+ import org.projectnessie.catalog.secrets.TokenSecret;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.quarkus.config.QuarkusSecretsConfig.ExternalSecretsManagerType;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+@@ -71,16 +72,17 @@ public class FlociAwsSecretsTestResourceLifecycleManager
+   @Override
+   public Map<String, String> start() {
+     floci =
+-        new FlociContainer(
+-                ContainerSpecHelper.builder()
+-                    .name("floci")
+-                    .containerClass(FlociAwsSecretsTestResourceLifecycleManager.class)
+-                    .build()
+-                    .dockerImageName(null)
+-                    .asCompatibleSubstituteFor("floci/floci"))
+-            .withLogConsumer(c -> LOGGER.info("[FLOCI] {}", c.getUtf8StringWithoutLineEnding()));
+-
+-    floci.start();
++        ContainerStarter.startContainer(
++            () ->
++                new FlociContainer(
++                        ContainerSpecHelper.builder()
++                            .name("floci")
++                            .containerClass(FlociAwsSecretsTestResourceLifecycleManager.class)
++                            .build()
++                            .dockerImageName(null)
++                            .asCompatibleSubstituteFor("floci/floci"))
++                    .withLogConsumer(
++                        c -> LOGGER.info("[FLOCI] {}", c.getUtf8StringWithoutLineEnding())));
+ 
+     URI secretsManagerEndpoint = URI.create(floci.getEndpoint());
+ 
+diff --git a/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/VaultTestResourceLifecycleManager.java b/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/VaultTestResourceLifecycleManager.java
+index 8bf49ca857..f91827ae6c 100644
+--- a/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/VaultTestResourceLifecycleManager.java
++++ b/servers/quarkus-server/src/testFixtures/java/org/projectnessie/server/secrets/VaultTestResourceLifecycleManager.java
+@@ -46,6 +46,7 @@
+ import org.projectnessie.catalog.secrets.SecretType;
+ import org.projectnessie.catalog.secrets.TokenSecret;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.quarkus.config.QuarkusSecretsConfig.ExternalSecretsManagerType;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+@@ -84,19 +85,20 @@ public class VaultTestResourceLifecycleManager implements QuarkusTestResourceLif
+   @Override
+   public Map<String, String> start() {
+     vaultContainer =
+-        new VaultContainer<>(
+-                ContainerSpecHelper.builder()
+-                    .name("vault")
+-                    .containerClass(VaultTestResourceLifecycleManager.class)
+-                    .build()
+-                    .dockerImageName(null)
+-                    .asCompatibleSubstituteFor("vault"))
+-            .withLogConsumer(c -> LOGGER.info("[VAULT] {}", c.getUtf8StringWithoutLineEnding()))
+-            .withEnv("SKIP_SETCAP", "true")
+-            .withVaultToken(VAULT_ROOT_TOKEN)
+-            .withInitCommand("auth enable userpass");
+-
+-    vaultContainer.start();
++        ContainerStarter.startContainer(
++            () ->
++                new VaultContainer<>(
++                        ContainerSpecHelper.builder()
++                            .name("vault")
++                            .containerClass(VaultTestResourceLifecycleManager.class)
++                            .build()
++                            .dockerImageName(null)
++                            .asCompatibleSubstituteFor("vault"))
++                    .withLogConsumer(
++                        c -> LOGGER.info("[VAULT] {}", c.getUtf8StringWithoutLineEnding()))
++                    .withEnv("SKIP_SETCAP", "true")
++                    .withVaultToken(VAULT_ROOT_TOKEN)
++                    .withInitCommand("auth enable userpass"));
+ 
+     try {
+       VaultClient vaultClient =
+diff --git a/servers/quarkus-tests/src/main/java/org/projectnessie/quarkus/tests/profiles/KeycloakTestResourceLifecycleManager.java b/servers/quarkus-tests/src/main/java/org/projectnessie/quarkus/tests/profiles/KeycloakTestResourceLifecycleManager.java
+index f0dac45bed..866b520a31 100644
+--- a/servers/quarkus-tests/src/main/java/org/projectnessie/quarkus/tests/profiles/KeycloakTestResourceLifecycleManager.java
++++ b/servers/quarkus-tests/src/main/java/org/projectnessie/quarkus/tests/profiles/KeycloakTestResourceLifecycleManager.java
+@@ -29,6 +29,7 @@
+ import org.keycloak.representations.idm.ClientScopeRepresentation;
+ import org.keycloak.representations.idm.RealmRepresentation;
+ import org.keycloak.representations.idm.RoleRepresentation;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.testing.keycloak.CustomKeycloakContainer;
+ 
+ /**
+@@ -175,9 +176,7 @@ private static String initArg(Map<String, String> initArgs, String initArg, Stri
+ 
+   @Override
+   public Map<String, String> start() {
+-    keycloak = containerConfig.createContainer();
+-
+-    keycloak.start();
++    keycloak = ContainerStarter.startContainer(containerConfig::createContainer);
+ 
+     return Map.of(
+         "keycloak.url",
+diff --git a/testing/container-spec-helper/src/main/java/org/projectnessie/nessie/testing/containerspec/ContainerStarter.java b/testing/container-spec-helper/src/main/java/org/projectnessie/nessie/testing/containerspec/ContainerStarter.java
+new file mode 100644
+index 0000000000..02da148975
+--- /dev/null
++++ b/testing/container-spec-helper/src/main/java/org/projectnessie/nessie/testing/containerspec/ContainerStarter.java
+@@ -0,0 +1,131 @@
++/*
++ * Copyright (C) 2026 Dremio
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.projectnessie.nessie.testing.containerspec;
++
++import com.github.dockerjava.api.command.InspectContainerResponse;
++import java.util.Arrays;
++import java.util.List;
++import java.util.function.Supplier;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++import org.testcontainers.containers.ContainerLaunchException;
++import org.testcontainers.containers.GenericContainer;
++
++/**
++ * Starts Testcontainers containers with retries and verifies that a container is still running
++ * after {@link GenericContainer#start()} returned.
++ *
++ * <p>Testcontainers' {@code HostPortWaitStrategy} ignores a failed (not timed out) in-container
++ * port check, so {@link GenericContainer#start()} can return successfully although the container
++ * process already died. This class treats such a container as a failed launch, logs the container
++ * state and logs, and retries.
++ */
++public final class ContainerStarter {
++  private static final Logger LOGGER = LoggerFactory.getLogger(ContainerStarter.class);
++
++  public static final int DEFAULT_MAX_RETRIES = 3;
++  private static final int MAX_LOG_LINES = 100;
++
++  private ContainerStarter() {}
++
++  /**
++   * Creates and starts a container using {@code containerFactory}, retrying up to {@value
++   * #DEFAULT_MAX_RETRIES} times.
++   */
++  public static <C extends GenericContainer<?>> C startContainer(Supplier<C> containerFactory) {
++    return startContainer(containerFactory, DEFAULT_MAX_RETRIES);
++  }
++
++  /**
++   * Creates and starts a container using {@code containerFactory}, retrying up to {@code
++   * maxRetries} times, if the launch failed with a cause or the container is not running after
++   * {@link GenericContainer#start()} returned.
++   *
++   * @return the started container, which is running
++   * @throws RuntimeException if the container could not be started
++   */
++  public static <C extends GenericContainer<?>> C startContainer(
++      Supplier<C> containerFactory, int maxRetries) {
++    for (int retry = 0; ; retry++) {
++      C c = containerFactory.get();
++      try {
++        c.start();
++        verifyRunning(c);
++        return c;
++      } catch (ContainerLaunchException e) {
++        c.close();
++        if (e.getCause() != null && retry < maxRetries) {
++          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
++          continue;
++        }
++        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
++        throw new RuntimeException(e);
++      } catch (RuntimeException e) {
++        c.close();
++        throw e;
++      }
++    }
++  }
++
++  /**
++   * Throws a {@link ContainerLaunchException} with diagnostic information, if the given container
++   * is not running.
++   */
++  public static void verifyRunning(GenericContainer<?> container) {
++    if (container.isRunning()) {
++      return;
++    }
++
++    String state = describeState(container);
++    String logs = tailLogs(container);
++    LOGGER.error(
++        "Container {} is not running after start: {}\nLast container log lines:\n{}",
++        container.getDockerImageName(),
++        state,
++        logs);
++    throw new ContainerLaunchException(
++        "Container " + container.getDockerImageName() + " is not running after start",
++        new IllegalStateException(
++            "Container " + container.getDockerImageName() + " is not running: " + state));
++  }
++
++  private static String describeState(GenericContainer<?> container) {
++    try {
++      InspectContainerResponse.ContainerState state =
++          container.getCurrentContainerInfo().getState();
++      return String.format(
++          "status=%s, exitCode=%s, oomKilled=%s, error=%s, startedAt=%s, finishedAt=%s",
++          state.getStatus(),
++          state.getExitCodeLong(),
++          state.getOOMKilled(),
++          state.getError(),
++          state.getStartedAt(),
++          state.getFinishedAt());
++    } catch (Exception e) {
++      return "<failed to inspect container: " + e + ">";
++    }
++  }
++
++  private static String tailLogs(GenericContainer<?> container) {
++    try {
++      List<String> lines = Arrays.asList(container.getLogs().split("\n"));
++      return String.join(
++          "\n", lines.subList(Math.max(0, lines.size() - MAX_LOG_LINES), lines.size()));
++    } catch (Exception e) {
++      return "<failed to retrieve container logs: " + e + ">";
++    }
++  }
++}
+diff --git a/testing/floci-az-container/src/main/java/org/projectnessie/testing/floci/az/FlociAzContainer.java b/testing/floci-az-container/src/main/java/org/projectnessie/testing/floci/az/FlociAzContainer.java
+index ed3fbdece9..4f1ed44b33 100644
+--- a/testing/floci-az-container/src/main/java/org/projectnessie/testing/floci/az/FlociAzContainer.java
++++ b/testing/floci-az-container/src/main/java/org/projectnessie/testing/floci/az/FlociAzContainer.java
+@@ -22,6 +22,7 @@
+ import java.util.Locale;
+ import java.util.Map;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.testcontainers.containers.GenericContainer;
+ import org.testcontainers.containers.wait.strategy.Wait;
+ import org.testcontainers.utility.Base58;
+@@ -67,6 +68,7 @@ public FlociAzContainer(String image, String storageContainer) {
+   @Override
+   public void start() {
+     super.start();
++    ContainerStarter.verifyRunning(this);
+ 
+     createStorageContainer();
+   }
+diff --git a/testing/floci-gcp-container/src/main/java/org/projectnessie/testing/floci/gcp/FlociGcpContainer.java b/testing/floci-gcp-container/src/main/java/org/projectnessie/testing/floci/gcp/FlociGcpContainer.java
+index e190b8d7d7..8f78817b9e 100644
+--- a/testing/floci-gcp-container/src/main/java/org/projectnessie/testing/floci/gcp/FlociGcpContainer.java
++++ b/testing/floci-gcp-container/src/main/java/org/projectnessie/testing/floci/gcp/FlociGcpContainer.java
+@@ -27,6 +27,7 @@
+ import java.util.Locale;
+ import java.util.Map;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.testcontainers.containers.GenericContainer;
+@@ -76,6 +77,7 @@ public FlociGcpContainer(String image, String bucket, String projectId, String o
+   @Override
+   public void start() {
+     super.start();
++    ContainerStarter.verifyRunning(this);
+ 
+     try (Storage storage = newStorage()) {
+       storage.create(BucketInfo.newBuilder(bucket).build());
+diff --git a/testing/floci-s3-container/src/main/java/org/projectnessie/testing/floci/s3/FlociS3Container.java b/testing/floci-s3-container/src/main/java/org/projectnessie/testing/floci/s3/FlociS3Container.java
+index 52f0f4ce76..a6c939209d 100644
+--- a/testing/floci-s3-container/src/main/java/org/projectnessie/testing/floci/s3/FlociS3Container.java
++++ b/testing/floci-s3-container/src/main/java/org/projectnessie/testing/floci/s3/FlociS3Container.java
+@@ -22,6 +22,7 @@
+ import java.util.Locale;
+ import java.util.Map;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.slf4j.LoggerFactory;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.Base58;
+@@ -163,6 +164,7 @@ public URI s3BucketUri(String scheme, String path) {
+   @Override
+   public void start() {
+     super.start();
++    ContainerStarter.verifyRunning(this);
+ 
+     URI endpoint = URI.create(getEndpoint());
+     this.hostPort = endpoint.getHost() + ":" + endpoint.getPort();
+diff --git a/testing/keycloak-container/src/main/java/org/projectnessie/testing/keycloak/CustomKeycloakContainer.java b/testing/keycloak-container/src/main/java/org/projectnessie/testing/keycloak/CustomKeycloakContainer.java
+index 3c0f3c7e94..3adadbae76 100644
+--- a/testing/keycloak-container/src/main/java/org/projectnessie/testing/keycloak/CustomKeycloakContainer.java
++++ b/testing/keycloak-container/src/main/java/org/projectnessie/testing/keycloak/CustomKeycloakContainer.java
+@@ -46,6 +46,7 @@
+ import org.keycloak.representations.idm.RolesRepresentation;
+ import org.keycloak.representations.idm.UserRepresentation;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.testcontainers.containers.Network;
+@@ -264,6 +265,7 @@ public CustomKeycloakContainer(KeycloakConfig config) {
+   public void start() {
+     LOGGER.info("Starting Keycloak...");
+     super.start();
++    ContainerStarter.verifyRunning(this);
+     LOGGER.info("Keycloak started, creating realm {}...", config.realmName());
+ 
+     RealmRepresentation realm = createRealm();
+diff --git a/versioned/storage/bigtable-tests/src/main/java/org/projectnessie/versioned/storage/bigtabletests/BigTableBackendContainerTestFactory.java b/versioned/storage/bigtable-tests/src/main/java/org/projectnessie/versioned/storage/bigtabletests/BigTableBackendContainerTestFactory.java
+index 820e26f9bf..18dcf7631a 100644
+--- a/versioned/storage/bigtable-tests/src/main/java/org/projectnessie/versioned/storage/bigtabletests/BigTableBackendContainerTestFactory.java
++++ b/versioned/storage/bigtable-tests/src/main/java/org/projectnessie/versioned/storage/bigtabletests/BigTableBackendContainerTestFactory.java
+@@ -17,10 +17,10 @@
+ 
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.bigtable.BigTableBackendFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.GenericContainer;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -55,34 +55,24 @@ public void start(Optional<String> containerNetworkId) {
+             .build()
+             .dockerImageName(null);
+ 
+-    for (int retry = 0; ; retry++) {
+-      GenericContainer<?> c =
+-          new GenericContainer<>(imageName)
+-              .withLogConsumer(new Slf4jLogConsumer(LOGGER))
+-              .withExposedPorts(BIGTABLE_PORT)
+-              .withCommand(
+-                  "gcloud",
+-                  "beta",
+-                  "emulators",
+-                  "bigtable",
+-                  "start",
+-                  "--verbosity=info", // debug, info, warning, error, critical, none
+-                  "--host-port=0.0.0.0:" + BIGTABLE_PORT);
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              GenericContainer<?> c =
++                  new GenericContainer<>(imageName)
++                      .withLogConsumer(new Slf4jLogConsumer(LOGGER))
++                      .withExposedPorts(BIGTABLE_PORT)
++                      .withCommand(
++                          "gcloud",
++                          "beta",
++                          "emulators",
++                          "bigtable",
++                          "start",
++                          "--verbosity=info", // debug, info, warning, error, critical, none
++                          "--host-port=0.0.0.0:" + BIGTABLE_PORT);
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     emulatorPort = containerNetworkId.isPresent() ? BIGTABLE_PORT : container.getFirstMappedPort();
+     emulatorHost =
+diff --git a/versioned/storage/cassandra-tests/src/main/java/org/projectnessie/versioned/storage/cassandratests/AbstractCassandraBackendTestFactory.java b/versioned/storage/cassandra-tests/src/main/java/org/projectnessie/versioned/storage/cassandratests/AbstractCassandraBackendTestFactory.java
+index 41eff9e44b..05a58a2e77 100644
+--- a/versioned/storage/cassandra-tests/src/main/java/org/projectnessie/versioned/storage/cassandratests/AbstractCassandraBackendTestFactory.java
++++ b/versioned/storage/cassandra-tests/src/main/java/org/projectnessie/versioned/storage/cassandratests/AbstractCassandraBackendTestFactory.java
+@@ -26,13 +26,13 @@
+ import java.util.Optional;
+ import java.util.stream.Collectors;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.cassandra.CassandraBackend;
+ import org.projectnessie.versioned.storage.cassandra.CassandraBackendConfig;
+ import org.projectnessie.versioned.storage.testextension.BackendTestFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.testcontainers.cassandra.CassandraContainer;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+ 
+@@ -115,27 +115,17 @@ public void start(Optional<String> containerNetworkId) {
+             .dockerImageName(null)
+             .asCompatibleSubstituteFor("cassandra");
+ 
+-    for (int retry = 0; ; retry++) {
+-      CassandraContainer c =
+-          new CassandraContainer(dockerImageName)
+-              .withLogConsumer(new Slf4jLogConsumer(LOGGER))
+-              .withCommand(args.toArray(new String[0]));
+-      configureContainer(c);
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              CassandraContainer c =
++                  new CassandraContainer(dockerImageName)
++                      .withLogConsumer(new Slf4jLogConsumer(LOGGER))
++                      .withCommand(args.toArray(new String[0]));
++              configureContainer(c);
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     int port = containerNetworkId.isPresent() ? CQL_PORT : container.getMappedPort(CQL_PORT);
+     String host =
+diff --git a/versioned/storage/cassandra2-tests/src/main/java/org/projectnessie/versioned/storage/cassandra2tests/AbstractCassandraBackendTestFactory.java b/versioned/storage/cassandra2-tests/src/main/java/org/projectnessie/versioned/storage/cassandra2tests/AbstractCassandraBackendTestFactory.java
+index a0820500a2..6885348ca7 100644
+--- a/versioned/storage/cassandra2-tests/src/main/java/org/projectnessie/versioned/storage/cassandra2tests/AbstractCassandraBackendTestFactory.java
++++ b/versioned/storage/cassandra2-tests/src/main/java/org/projectnessie/versioned/storage/cassandra2tests/AbstractCassandraBackendTestFactory.java
+@@ -26,13 +26,13 @@
+ import java.util.Optional;
+ import java.util.stream.Collectors;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.cassandra2.Cassandra2Backend;
+ import org.projectnessie.versioned.storage.cassandra2.Cassandra2BackendConfig;
+ import org.projectnessie.versioned.storage.testextension.BackendTestFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.testcontainers.cassandra.CassandraContainer;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+ 
+@@ -116,27 +116,17 @@ public void start(Optional<String> containerNetworkId) {
+             .dockerImageName(null)
+             .asCompatibleSubstituteFor("cassandra");
+ 
+-    for (int retry = 0; ; retry++) {
+-      CassandraContainer c =
+-          new CassandraContainer(dockerImageName)
+-              .withLogConsumer(new Slf4jLogConsumer(LOGGER))
+-              .withCommand(args.toArray(new String[0]));
+-      configureContainer(c);
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              CassandraContainer c =
++                  new CassandraContainer(dockerImageName)
++                      .withLogConsumer(new Slf4jLogConsumer(LOGGER))
++                      .withCommand(args.toArray(new String[0]));
++              configureContainer(c);
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     int port = containerNetworkId.isPresent() ? CQL_PORT : container.getMappedPort(CQL_PORT);
+     String host =
+diff --git a/versioned/storage/dynamodb-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests/DynamoDBBackendTestFactory.java b/versioned/storage/dynamodb-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests/DynamoDBBackendTestFactory.java
+index 8f5003cd43..1904800d37 100644
+--- a/versioned/storage/dynamodb-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests/DynamoDBBackendTestFactory.java
++++ b/versioned/storage/dynamodb-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests/DynamoDBBackendTestFactory.java
+@@ -20,6 +20,7 @@
+ import java.util.Map;
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.dynamodb.DynamoDBBackend;
+ import org.projectnessie.versioned.storage.dynamodb.DynamoDBBackendConfig;
+ import org.projectnessie.versioned.storage.dynamodb.DynamoDBBackendFactory;
+@@ -27,7 +28,6 @@
+ import org.projectnessie.versioned.storage.testextension.BackendTestFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.GenericContainer;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -87,26 +87,16 @@ public void start(Optional<String> containerNetworkId) {
+             .build()
+             .dockerImageName(null);
+ 
+-    for (int retry = 0; ; retry++) {
+-      GenericContainer<?> c =
+-          new GenericContainer<>(dockerImage)
+-              .withLogConsumer(new Slf4jLogConsumer(LOGGER))
+-              .withExposedPorts(DYNAMODB_PORT);
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              GenericContainer<?> c =
++                  new GenericContainer<>(dockerImage)
++                      .withLogConsumer(new Slf4jLogConsumer(LOGGER))
++                      .withExposedPorts(DYNAMODB_PORT);
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     Integer port = containerNetworkId.isPresent() ? DYNAMODB_PORT : container.getFirstMappedPort();
+     String host =
+diff --git a/versioned/storage/dynamodb2-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests2/DynamoDB2BackendTestFactory.java b/versioned/storage/dynamodb2-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests2/DynamoDB2BackendTestFactory.java
+index c6cce0e376..d19e5db487 100644
+--- a/versioned/storage/dynamodb2-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests2/DynamoDB2BackendTestFactory.java
++++ b/versioned/storage/dynamodb2-tests/src/main/java/org/projectnessie/versioned/storage/dynamodbtests2/DynamoDB2BackendTestFactory.java
+@@ -20,6 +20,7 @@
+ import java.util.Map;
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.dynamodb2.DynamoDB2Backend;
+ import org.projectnessie.versioned.storage.dynamodb2.DynamoDB2BackendConfig;
+ import org.projectnessie.versioned.storage.dynamodb2.DynamoDB2BackendFactory;
+@@ -27,7 +28,6 @@
+ import org.projectnessie.versioned.storage.testextension.BackendTestFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.GenericContainer;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -86,26 +86,16 @@ public void start(Optional<String> containerNetworkId) {
+             .build()
+             .dockerImageName(null);
+ 
+-    for (int retry = 0; ; retry++) {
+-      GenericContainer<?> c =
+-          new GenericContainer<>(dockerImage)
+-              .withLogConsumer(new Slf4jLogConsumer(LOGGER))
+-              .withExposedPorts(DYNAMODB_PORT);
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              GenericContainer<?> c =
++                  new GenericContainer<>(dockerImage)
++                      .withLogConsumer(new Slf4jLogConsumer(LOGGER))
++                      .withExposedPorts(DYNAMODB_PORT);
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     Integer port = containerNetworkId.isPresent() ? DYNAMODB_PORT : container.getFirstMappedPort();
+     String host =
+diff --git a/versioned/storage/jdbc-tests/src/main/java/org/projectnessie/versioned/storage/jdbctests/ContainerBackendTestFactory.java b/versioned/storage/jdbc-tests/src/main/java/org/projectnessie/versioned/storage/jdbctests/ContainerBackendTestFactory.java
+index 75222c4168..c3db769b0c 100644
+--- a/versioned/storage/jdbc-tests/src/main/java/org/projectnessie/versioned/storage/jdbctests/ContainerBackendTestFactory.java
++++ b/versioned/storage/jdbc-tests/src/main/java/org/projectnessie/versioned/storage/jdbctests/ContainerBackendTestFactory.java
+@@ -20,9 +20,9 @@
+ import jakarta.annotation.Nonnull;
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.JdbcDatabaseContainer;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -64,24 +64,14 @@ public void start(Optional<String> containerNetworkId) throws Exception {
+       throw new IllegalStateException("Already started");
+     }
+ 
+-    for (int retry = 0; ; retry++) {
+-      @SuppressWarnings("resource")
+-      JdbcDatabaseContainer<?> c = createContainer().withLogConsumer(new Slf4jLogConsumer(LOGGER));
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              JdbcDatabaseContainer<?> c =
++                  createContainer().withLogConsumer(new Slf4jLogConsumer(LOGGER));
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     super.start();
+   }
+diff --git a/versioned/storage/jdbc2-tests/src/main/java/org/projectnessie/versioned/storage/jdbc2tests/ContainerBackendTestFactory.java b/versioned/storage/jdbc2-tests/src/main/java/org/projectnessie/versioned/storage/jdbc2tests/ContainerBackendTestFactory.java
+index a135aff819..54fb2db673 100644
+--- a/versioned/storage/jdbc2-tests/src/main/java/org/projectnessie/versioned/storage/jdbc2tests/ContainerBackendTestFactory.java
++++ b/versioned/storage/jdbc2-tests/src/main/java/org/projectnessie/versioned/storage/jdbc2tests/ContainerBackendTestFactory.java
+@@ -20,9 +20,9 @@
+ import jakarta.annotation.Nonnull;
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.JdbcDatabaseContainer;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -64,24 +64,14 @@ public void start(Optional<String> containerNetworkId) throws Exception {
+       throw new IllegalStateException("Already started");
+     }
+ 
+-    for (int retry = 0; ; retry++) {
+-      @SuppressWarnings("resource")
+-      JdbcDatabaseContainer<?> c = createContainer().withLogConsumer(new Slf4jLogConsumer(LOGGER));
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    container =
++        ContainerStarter.startContainer(
++            () -> {
++              JdbcDatabaseContainer<?> c =
++                  createContainer().withLogConsumer(new Slf4jLogConsumer(LOGGER));
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+     super.start();
+   }
+diff --git a/versioned/storage/mongodb-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests/MongoDBBackendTestFactory.java b/versioned/storage/mongodb-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests/MongoDBBackendTestFactory.java
+index e5f20705f3..a4568f106e 100644
+--- a/versioned/storage/mongodb-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests/MongoDBBackendTestFactory.java
++++ b/versioned/storage/mongodb-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests/MongoDBBackendTestFactory.java
+@@ -20,6 +20,7 @@
+ import java.util.Map;
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.common.persist.Backend;
+ import org.projectnessie.versioned.storage.mongodb.MongoDBBackend;
+ import org.projectnessie.versioned.storage.mongodb.MongoDBBackendConfig;
+@@ -27,7 +28,6 @@
+ import org.projectnessie.versioned.storage.testextension.BackendTestFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.mongodb.MongoDBContainer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -59,33 +59,33 @@ public void start(Optional<String> containerNetworkId) {
+             .dockerImageName(null)
+             .asCompatibleSubstituteFor("mongo");
+ 
+-    for (int retry = 0; ; retry++) {
+-      MongoDBContainer c =
+-          new MongoDBContainer(dockerImage).withLogConsumer(new Slf4jLogConsumer(LOGGER));
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    MongoDBContainer started =
++        ContainerStarter.startContainer(
++            () -> {
++              MongoDBContainer c =
++                  new MongoDBContainer(dockerImage).withLogConsumer(new Slf4jLogConsumer(LOGGER));
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+-    connectionString = container.getReplicaSetUrl(MONGO_DB_NAME);
++    try {
++      String url = started.getReplicaSetUrl(MONGO_DB_NAME);
++
++      if (containerNetworkId.isPresent()) {
++        String hostPort = started.getHost() + ':' + started.getMappedPort(MONGO_PORT);
++        String networkHostPort =
++            started.getCurrentContainerInfo().getConfig().getHostName() + ':' + MONGO_PORT;
++        url = url.replace(hostPort, networkHostPort);
++      }
+ 
+-    if (containerNetworkId.isPresent()) {
+-      String hostPort = container.getHost() + ':' + container.getMappedPort(MONGO_PORT);
+-      String networkHostPort =
+-          container.getCurrentContainerInfo().getConfig().getHostName() + ':' + MONGO_PORT;
+-      connectionString = connectionString.replace(hostPort, networkHostPort);
++      connectionString = url;
++    } catch (RuntimeException e) {
++      // Do not keep a broken container, so that a subsequent start() does not fail with "Already
++      // started".
++      started.close();
++      throw e;
+     }
++    container = started;
+   }
+ 
+   @Override
+diff --git a/versioned/storage/mongodb2-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests2/MongoDB2BackendTestFactory.java b/versioned/storage/mongodb2-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests2/MongoDB2BackendTestFactory.java
+index 5db5bec5dd..2fd7d2727b 100644
+--- a/versioned/storage/mongodb2-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests2/MongoDB2BackendTestFactory.java
++++ b/versioned/storage/mongodb2-tests/src/main/java/org/projectnessie/versioned/storage/mongodbtests2/MongoDB2BackendTestFactory.java
+@@ -20,6 +20,7 @@
+ import java.util.Map;
+ import java.util.Optional;
+ import org.projectnessie.nessie.testing.containerspec.ContainerSpecHelper;
++import org.projectnessie.nessie.testing.containerspec.ContainerStarter;
+ import org.projectnessie.versioned.storage.common.persist.Backend;
+ import org.projectnessie.versioned.storage.mongodb2.MongoDB2Backend;
+ import org.projectnessie.versioned.storage.mongodb2.MongoDB2BackendConfig;
+@@ -27,7 +28,6 @@
+ import org.projectnessie.versioned.storage.testextension.BackendTestFactory;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+-import org.testcontainers.containers.ContainerLaunchException;
+ import org.testcontainers.containers.output.Slf4jLogConsumer;
+ import org.testcontainers.mongodb.MongoDBContainer;
+ import org.testcontainers.utility.DockerImageName;
+@@ -59,33 +59,33 @@ public void start(Optional<String> containerNetworkId) {
+             .dockerImageName(null)
+             .asCompatibleSubstituteFor("mongo");
+ 
+-    for (int retry = 0; ; retry++) {
+-      MongoDBContainer c =
+-          new MongoDBContainer(dockerImage).withLogConsumer(new Slf4jLogConsumer(LOGGER));
+-      containerNetworkId.ifPresent(c::withNetworkMode);
+-      try {
+-        c.start();
+-        container = c;
+-        break;
+-      } catch (ContainerLaunchException e) {
+-        c.close();
+-        if (e.getCause() != null && retry < 3) {
+-          LOGGER.warn("Launch of container {} failed, will retry...", c.getDockerImageName(), e);
+-          continue;
+-        }
+-        LOGGER.error("Launch of container {} failed", c.getDockerImageName(), e);
+-        throw new RuntimeException(e);
+-      }
+-    }
++    MongoDBContainer started =
++        ContainerStarter.startContainer(
++            () -> {
++              MongoDBContainer c =
++                  new MongoDBContainer(dockerImage).withLogConsumer(new Slf4jLogConsumer(LOGGER));
++              containerNetworkId.ifPresent(c::withNetworkMode);
++              return c;
++            });
+ 
+-    connectionString = container.getReplicaSetUrl(MONGO_DB_NAME);
++    try {
++      String url = started.getReplicaSetUrl(MONGO_DB_NAME);
++
++      if (containerNetworkId.isPresent()) {
++        String hostPort = started.getHost() + ':' + started.getMappedPort(MONGO_PORT);
++        String networkHostPort =
++            started.getCurrentContainerInfo().getConfig().getHostName() + ':' + MONGO_PORT;
++        url = url.replace(hostPort, networkHostPort);
++      }
+ 
+-    if (containerNetworkId.isPresent()) {
+-      String hostPort = container.getHost() + ':' + container.getMappedPort(MONGO_PORT);
+-      String networkHostPort =
+-          container.getCurrentContainerInfo().getConfig().getHostName() + ':' + MONGO_PORT;
+-      connectionString = connectionString.replace(hostPort, networkHostPort);
++      connectionString = url;
++    } catch (RuntimeException e) {
++      // Do not keep a broken container, so that a subsequent start() does not fail with "Already
++      // started".
++      started.close();
++      throw e;
+     }
++    container = started;
+   }
+ 
+   @Override

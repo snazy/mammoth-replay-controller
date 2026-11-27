@@ -15,6 +15,8 @@ machine is needed once the experiment runs. Launch steps and their approval scop
   `plans/nessie.json`: upstream tree plus the variant's frozen `.github/`, fixed identity and dates,
   so SHAs are deterministic. Commit messages carry no upstream body, issue references or mentions.
   All commits are pushed once under `replay-staging/*` tags, which trigger no CI.
+  Source patches (`overlay.source_patches` in the profile, outside `.github/`) are applied to every
+  replayed upstream tree in both variants alike, e.g. a backported test-resilience fix.
   Each replay history starts at a shared root commit without workflows; `main` starts there, and
   the controller fast-forwards it to the seed (GitHub starts no push run when `main` is force-pushed
   to an unrelated root commit).

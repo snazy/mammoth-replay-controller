@@ -222,6 +222,32 @@ class TestBuildPlan(BuildFixture):
         with self.assertRaisesRegex(build.BuildError, "02-bad.patch failed"):
             self.plan()
 
+    def write_source_patch(self, content: str) -> None:
+        p = self.overlays / "t/source/01-fix.patch"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(content)
+        self.profile["overlay"]["source_patches"] = ["t/source/01-fix.patch"]
+
+    def test_source_patch_applied_to_every_commit(self):
+        self.write_source_patch("--- /dev/null\n+++ b/src/fix.txt\n@@ -0,0 +1 @@\n+fixed\n")
+        plan, repos = self.plan()
+        self.assertEqual(plan["source_patches"][0]["path"], "t/source/01-fix.patch")
+        for e in plan["events"]:
+            for v, sha in e.get("sha", {}).items():
+                self.assertEqual(git(repos[v], "show", f"{sha}:src/fix.txt"), "fixed\n", (e["id"], v))
+        # still deterministic
+        self.assertEqual(self.plan("b")[0]["events"], plan["events"])
+
+    def test_source_patch_must_not_touch_overlay(self):
+        self.write_source_patch("--- /dev/null\n+++ b/.github/x.txt\n@@ -0,0 +1 @@\n+x\n")
+        with self.assertRaisesRegex(build.BuildError, "changes .github/"):
+            self.plan()
+
+    def test_source_patch_must_apply(self):
+        self.write_source_patch("--- a/src/a.txt\n+++ b/src/a.txt\n@@ -1 +1 @@\n-nope\n+fixed\n")
+        with self.assertRaisesRegex(build.BuildError, "01-fix.patch does not apply"):
+            self.plan()
+
 
 class TestFilters(unittest.TestCase):
     IGNORE = ["LICENSE", "**.md", "!site/**", ".idea/**", ".github/workflows/release*.yml"]

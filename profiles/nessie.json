@@ -20,7 +20,8 @@
   },
   "overlay": {
     "keep": [".github/workflows/ci.yml", ".github/actions"],
-    "common_layers": ["nessie/common"]
+    "common_layers": ["nessie/common"],
+    "source_patches": ["nessie/source/01-container-startup-retry.patch"]
   },
   "workflow": {
     "file": "ci.yml",

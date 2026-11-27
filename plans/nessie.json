@@ -16,6 +16,12 @@
       "overlay_tree": "28a4aa71622e1e173062e570295c168f655afada"
     }
   },
+  "source_patches": [
+    {
+      "path": "nessie/source/01-container-startup-retry.patch",
+      "sha256": "c9f2fbd0b88f5bac9d93c4e6c9227dee8ef26b1cf3154bc94f618f875d411bda"
+    }
+  ],
   "settings": {
     "max_reruns": 2,
     "min_event_spacing_minutes": 240,
@@ -164,8 +170,8 @@
       "type": "seed",
       "upstream": "f400e1dfddd6336f30a54c688529d4d70bcfc607",
       "sha": {
-        "reference": "1036fbe37e89c0add2c7d7ced72b37cdfe20f957",
-        "mammoth": "cb213196b23735475135c59ffd4259d94662b311"
+        "reference": "27c88d1e6a97f5f91cc999e5930f88499142119b",
+        "mammoth": "f0315eb1cb0164e17e2ad3f93af9b1c66cf823d4"
       }
     },
     {
@@ -175,8 +181,8 @@
       "upstream": "cc135c7088157e4eea2a383e84d64bf1bcf018c2",
       "rerun_job": "code-checks",
       "sha": {
-        "reference": "2245af5f8928c6710a7800430243b7e6dda8b3f8",
-        "mammoth": "b503f86a66273749d95b9ad0d8892172adc49a13"
+        "reference": "f89a0364eed5d07150cb125bb791a20ccea898c3",
+        "mammoth": "b784e309afd8e31454bf173d5019bfde7469af1c"
       }
     },
     {
@@ -186,8 +192,8 @@
       "upstream": "1c580838f913e0ade60a95ff37f498e4cbe93b34",
       "push_after": false,
       "sha": {
-        "reference": "f34233f98016faad7fd79e09b8b3ae3a8dc372d5",
-        "mammoth": "d6f8d0986fd99225c7434bd741c67da39ac62994"
+        "reference": "0a2466eea787fedb3e7b0a54ee9c3b4bb6a62aa8",
+        "mammoth": "e25992646f14e8f0e1a7cadc7c113416b1777a40"
       },
       "branch": "replay/smoke/pr-02",
       "title": "Update quay.io/keycloak/keycloak Docker tag to v26.8.0 (PR 13111)"
@@ -205,8 +211,8 @@
       "type": "seed",
       "upstream": "f400e1dfddd6336f30a54c688529d4d70bcfc607",
       "sha": {
-        "reference": "5ab8829767c29444d55fa2c008ac6499023f2d19",
-        "mammoth": "eeb8e6008e7bcccf6d0853f872d94f6653eaf727"
+        "reference": "d8fe85f6a9cdea5de2412c29a61d98e74d431cde",
+        "mammoth": "0452a1a3726727378eeff05a086f3de3986bd03c"
       }
     },
     {
@@ -215,8 +221,8 @@
       "type": "main",
       "upstream": "cc135c7088157e4eea2a383e84d64bf1bcf018c2",
       "sha": {
-        "reference": "ea5d417f0f0623fdc0770bb5c61f0b7d20bb7881",
-        "mammoth": "0ad36f31face0c5d610125b30537a50b49dc5f92"
+        "reference": "83146ec6d53f92c9e550b2edfc48df40227c2621",
+        "mammoth": "55a541f8684d662240dd976c2106aff0f08663be"
       }
     },
     {
@@ -225,8 +231,8 @@
       "type": "main",
       "upstream": "1c580838f913e0ade60a95ff37f498e4cbe93b34",
       "sha": {
-        "reference": "4af02f449e5fb2ad733accfd60a02f2a4d22241d",
-        "mammoth": "d8ee91b8175504a16f330d1d41afcf0665f7f0d2"
+        "reference": "9adcb6967a6048c89b2b2ab15967a2803e5b2aaa",
+        "mammoth": "97cc9ef8124f7280010784cc7da1d21ade8ec053"
       }
     },
     {
@@ -236,8 +242,8 @@
       "upstream": "00ca4d77faf37102bf034d3260417e64b79ce38b",
       "push_after": true,
       "sha": {
-        "reference": "fe1153c9aa18c411e79c2a51302e2597a694ace9",
-        "mammoth": "f4b28e66ebbe34f043e5d6923c46fbd158b28c40"
+        "reference": "f468c56b3b37447cb7d8ea8ab3981aeaa516a0bc",
+        "mammoth": "99a74a4d18085faf1a5e5788811c41afc2a5ff0f"
       },
       "branch": "replay/scored/pr-03",
       "title": "feat(helm): add optional Nessie GC CronJob (PR 12643)"
@@ -248,8 +254,8 @@
       "type": "main",
       "upstream": "00ca4d77faf37102bf034d3260417e64b79ce38b",
       "sha": {
-        "reference": "fe1153c9aa18c411e79c2a51302e2597a694ace9",
-        "mammoth": "f4b28e66ebbe34f043e5d6923c46fbd158b28c40"
+        "reference": "f468c56b3b37447cb7d8ea8ab3981aeaa516a0bc",
+        "mammoth": "99a74a4d18085faf1a5e5788811c41afc2a5ff0f"
       }
     },
     {
@@ -258,8 +264,8 @@
       "type": "main",
       "upstream": "68157f0785f8227ab091a30d8f133186b9e7e6f7",
       "sha": {
-        "reference": "11a2fbff776f7c2da229a3cd094aa1104b598930",
-        "mammoth": "abfddde07125ef7cb129ba4e96dd372826145110"
+        "reference": "bfbb7ce401c9ca86a049f6fd14a9044d188455a4",
+        "mammoth": "20b06324e270ed0681c0fe51d599bd1c397e1bcc"
       }
     },
     {
@@ -269,8 +275,8 @@
       "upstream": "01872b10e126d6fd2015f38ec92c2d3b5b9b42f7",
       "push_after": true,
       "sha": {
-        "reference": "d7d7e6a17ee1323bfcb33df8128853875941f273",
-        "mammoth": "432305b6651b77e7f5e0b6f38863347504c1257f"
+        "reference": "a94a3146dbbfad0ec040a30d3ac05068f8f04f53",
+        "mammoth": "7c2b52ceb2029d63268a13e3beb8af31fa6e6024"
       },
       "branch": "replay/scored/pr-05",
       "title": "Update dependency com.github.dasniko:testcontainers-keycloak to v4.4.0 (PR 13116)"
@@ -281,8 +287,8 @@
       "type": "main",
       "upstream": "01872b10e126d6fd2015f38ec92c2d3b5b9b42f7",
       "sha": {
-        "reference": "d7d7e6a17ee1323bfcb33df8128853875941f273",
-        "mammoth": "432305b6651b77e7f5e0b6f38863347504c1257f"
+        "reference": "a94a3146dbbfad0ec040a30d3ac05068f8f04f53",
+        "mammoth": "7c2b52ceb2029d63268a13e3beb8af31fa6e6024"
       }
     },
     {
@@ -291,8 +297,8 @@
       "type": "main",
       "upstream": "da07c8495748be60582267a04bc2ad52ee688d92",
       "sha": {
-        "reference": "ed421145ed0b9365bfa9aec7230cc36ed870b982",
-        "mammoth": "8e243e927e76ab0cb4a28af747b861636620f192"
+        "reference": "b63940de789adf67223b25e660fc096ef4bd6e77",
+        "mammoth": "1d4973242dcea70d3e40e87f64f8a14b8bea2799"
       }
     },
     {
@@ -301,8 +307,8 @@
       "type": "main",
       "upstream": "387744ed6fa3142d4ec71eed678b66c9eac0170b",
       "sha": {
-        "reference": "cef6d3c5ef3ac1487d42826c707d258e80b7f820",
-        "mammoth": "09b73eee82c3df9b4394a77a8581887550d533d4"
+        "reference": "e5358c657b899151f6c442f161b980aea63ab2a0",
+        "mammoth": "e163b2e552f737f70a90c3c3d307edfd757c03dc"
       }
     },
     {
@@ -311,8 +317,8 @@
       "type": "main",
       "upstream": "16a700433e8bf68c96fae785c8ffb301f27b3369",
       "sha": {
-        "reference": "fd844852e18c937268df991f7b5f772e63befd31",
-        "mammoth": "ca94bbff4d67e0d70063076777a783a5df488cc1"
+        "reference": "4b579fa0cd0be73e2f506af11f305ad8515f6a1e",
+        "mammoth": "9f29e8aaeff2ad5794c45d03ab203c71476faaad"
       }
     },
     {
@@ -321,8 +327,8 @@
       "type": "main",
       "upstream": "12b3e4e356304702764c006d6bacc2d3e6e97ad4",
       "sha": {
-        "reference": "0606131f3c9795c324324603abc7bae26af88a37",
-        "mammoth": "61568647e3d27f533203d77eda7b8442b4a2009f"
+        "reference": "df21e9e2bf67593cce32589e4b714c6cebd30854",
+        "mammoth": "ae0d3c2d15950205844e8caff7244dcc2a6d2128"
       }
     },
     {
@@ -331,8 +337,8 @@
       "type": "main",
       "upstream": "82138512cd4e6d2665ed842aa6de446fbd6bd8b6",
       "sha": {
-        "reference": "69bea05d9334d5aa7f5f4c3318b9e1fda0e215c9",
-        "mammoth": "612d8d5bd950fe760d73da2c4e53ebbef5dbc11c"
+        "reference": "fd83ed577d972898276482ecef17d318f6041870",
+        "mammoth": "4c7502dd1084265820f7972dddab7488de52d5ce"
       }
     },
     {
@@ -341,8 +347,8 @@
       "type": "main",
       "upstream": "df541558c7a1423aa925785e51807b7936ac0ffd",
       "sha": {
-        "reference": "dde36181bcacb2070857855e52e98740e7caf04c",
-        "mammoth": "fb38ad11258c381616cfa58445e16bb9ad4fe5d3"
+        "reference": "9d8f22504bd1194463febf70ce9ab1b74819e893",
+        "mammoth": "ef38bd15efaed40fda5163054ffdf750a1bb3ad4"
       }
     },
     {
@@ -352,8 +358,8 @@
       "upstream": "5f96e26fdea14ff54061a318b922b719dbaa1019",
       "push_after": true,
       "sha": {
-        "reference": "0a92c6544b10c18d3fc207216981e384993f06b6",
-        "mammoth": "28dcf8674686dfa1bc52bc841664e1959a98c35e"
+        "reference": "bd54402e94b05b8450f23423757ff0e1a7a2200a",
+        "mammoth": "cd74d9548d28d116f48108f8ca549259ce3d8a1e"
       },
       "branch": "replay/scored/pr-12",
       "title": "Support custom S3 virtual-host request signing (PR 12865)"
@@ -364,8 +370,8 @@
       "type": "main",
       "upstream": "5f96e26fdea14ff54061a318b922b719dbaa1019",
       "sha": {
-        "reference": "0a92c6544b10c18d3fc207216981e384993f06b6",
-        "mammoth": "28dcf8674686dfa1bc52bc841664e1959a98c35e"
+        "reference": "bd54402e94b05b8450f23423757ff0e1a7a2200a",
+        "mammoth": "cd74d9548d28d116f48108f8ca549259ce3d8a1e"
       }
     },
     {
@@ -374,8 +380,8 @@
       "type": "main",
       "upstream": "bb034e2f2a310c9f38731a6ff0e84a322faa03ef",
       "sha": {
-        "reference": "dedd6ea433614f55ad2b47139c80b297ab3f6c36",
-        "mammoth": "7b8ff35c893f0c99b60401115af93f2303783112"
+        "reference": "2884486432ed3052898611c236076ec04fab7a7e",
+        "mammoth": "99eb4d63dae0c06cdb187356187f9a163c6be8c2"
       }
     },
     {
@@ -384,8 +390,8 @@
       "type": "main",
       "upstream": "25ac4ba076edc008df7276f036c402cc52bc7e1e",
       "sha": {
-        "reference": "ce36df4c8c0af9a131d931a7dff152c759c1edcb",
-        "mammoth": "da33e35623441a9c6ccd2897438c58c119b69fad"
+        "reference": "439c2fbbd2a8af56241db70e8ee1dddeb28ce455",
+        "mammoth": "27c7fd3452835a2e64fa3a7541c5269866df174b"
       }
     },
     {
@@ -394,8 +400,8 @@
       "type": "main",
       "upstream": "2f9c6acce4f6330c0e67f3d3b14df760129c15cc",
       "sha": {
-        "reference": "b87f0eab67bcb94074a17e6282315ba91775893e",
-        "mammoth": "a2f93642172cea665e3262fe2b0cb1b613357237"
+        "reference": "94dfa7861a79e16d9d16575a57b8c01df9aa64a9",
+        "mammoth": "431e9fa898a8d49dc0a77fc271ae5889eb02acca"
       }
     },
     {
@@ -405,8 +411,8 @@
       "upstream": "cfdbd5a90e2ae96ad43f217b57ab4ea693fe716d",
       "push_after": true,
       "sha": {
-        "reference": "99c191a27d641dc8d510f37569f63588f9da33e2",
-        "mammoth": "23f06b9b867cd4c17fc868c5f0d7fa9235fc2a82"
+        "reference": "0ba86b18d15a96331f1c830887bf2e894901ff3a",
+        "mammoth": "05dc3a2530481dcfdc4569766d4ac99faaf96a9f"
       },
       "branch": "replay/scored/pr-16",
       "title": "Update dependency software.amazon.awssdk:bom to v2.55.11 (PR 13124)"
@@ -417,8 +423,8 @@
       "type": "main",
       "upstream": "cfdbd5a90e2ae96ad43f217b57ab4ea693fe716d",
       "sha": {
-        "reference": "99c191a27d641dc8d510f37569f63588f9da33e2",
-        "mammoth": "23f06b9b867cd4c17fc868c5f0d7fa9235fc2a82"
+        "reference": "0ba86b18d15a96331f1c830887bf2e894901ff3a",
+        "mammoth": "05dc3a2530481dcfdc4569766d4ac99faaf96a9f"
       }
     },
     {
@@ -427,8 +433,8 @@
       "type": "main",
       "upstream": "0f59fcbed1cb3ffa0343c877ab4566b194f66d66",
       "sha": {
-        "reference": "1f70c4ad8ff5154da4eab80d8903af88f824cbb4",
-        "mammoth": "6fcd5687876cb2e4795f680aea629faf1b87b0a7"
+        "reference": "43f937dab357cc4a6e58739880035d59e5fe8a02",
+        "mammoth": "d6024becc9f36798dc33d1a0020e7f5fda0508ea"
       }
     },
     {
@@ -437,8 +443,8 @@
       "type": "main",
       "upstream": "a2d9ff436c8a987047cbe6451013ca572839acd6",
       "sha": {
-        "reference": "bb487c0c7a30e163996c0e8ddf1ac5ddda7fdaf9",
-        "mammoth": "42992e5e90f2cfda62fe3093f3d7c607cdc92809"
+        "reference": "889eac1e16c1ed053bdcc4cd7078398fd0810c36",
+        "mammoth": "f1c2b10e917f241a9e6a886c25a2c32a1f66d284"
       }
     },
     {
@@ -447,8 +453,8 @@
       "type": "main",
       "upstream": "fc18e8958f8165e54c6425dfa0c311e9b455c4e0",
       "sha": {
-        "reference": "1cbad8ab71fef656c36ca471d7ebc276940f1062",
-        "mammoth": "40fb45885c3f71fcc4807b2e36aa9efb2f83ae65"
+        "reference": "b64a953327e61a1cb9d1c61f161057eb82a0deec",
+        "mammoth": "b27b32762f257ccf7f5490aa2d505dc001ea5b94"
       }
     },
     {
@@ -458,8 +464,8 @@
       "upstream": "b4b891bbee9388a6292ede9a021242f75fb4a420",
       "push_after": true,
       "sha": {
-        "reference": "f3e3d86532e5d4d72353ea50cde20848f4461874",
-        "mammoth": "3ed0c1e242884c0ee30f4dc1625a238b89496b6c"
+        "reference": "a5a7ea13c4b7bcdf156fb9504b9cd8129b498d9b",
+        "mammoth": "0b8f9ba31715352afccc7486c3ec64dce8a0fbc3"
       },
       "branch": "replay/scored/pr-20",
       "title": "Update dependency io.quarkus.platform:quarkus-bom to v3.40.1 (PR 13106)"
@@ -470,8 +476,8 @@
       "type": "main",
       "upstream": "b4b891bbee9388a6292ede9a021242f75fb4a420",
       "sha": {
-        "reference": "f3e3d86532e5d4d72353ea50cde20848f4461874",
-        "mammoth": "3ed0c1e242884c0ee30f4dc1625a238b89496b6c"
+        "reference": "a5a7ea13c4b7bcdf156fb9504b9cd8129b498d9b",
+        "mammoth": "0b8f9ba31715352afccc7486c3ec64dce8a0fbc3"
       }
     },
     {
@@ -480,8 +486,8 @@
       "type": "main",
       "upstream": "261e936e2b72a130ebc5e3a10b8b1e9d55eb6872",
       "sha": {
-        "reference": "96639b9dee7a1e772cfa8d77521a47e3ad25ed2d",
-        "mammoth": "0a06fd9d9489648e2443267dc84bee7ec549c724"
+        "reference": "acef217615202e70d7ca6fb270e74fe2b3017a47",
+        "mammoth": "020bec47f0445dcf38d492c1b4daf27b4ce0f022"
       }
     },
     {
@@ -490,8 +496,8 @@
       "type": "main",
       "upstream": "a2cc36ca425f564d175de47e58df94879265a78e",
       "sha": {
-        "reference": "978b554f129b392e50db1a1ad77d5dd8a35ed3b0",
-        "mammoth": "c7fd9d4a2d3cd21441eecc737246e80526717a3a"
+        "reference": "69acaebcc2e44a616af53a876da2470a27d1bf78",
+        "mammoth": "a169ada5730bbbcbd4f14937ef6864164192aea2"
       }
     },
     {
@@ -500,8 +506,8 @@
       "type": "main",
       "upstream": "e650968505b5e0c317a884dd5bee3e2c4dc00219",
       "sha": {
-        "reference": "97419a1234006cd9dbe742568d34d2b72fcf1679",
-        "mammoth": "2dccdff90ff41d49e038ef3d9d750920e575beef"
+        "reference": "9008f0f44a7f1e844da7918283e7d77278d78100",
+        "mammoth": "89ae18ede45c6f1ce65b92c57b2ef4bba1903f81"
       }
     },
     {
@@ -510,8 +516,8 @@
       "type": "main",
       "upstream": "e580a657c364cdf754704a28acc9f2f63546540f",
       "sha": {
-        "reference": "3192eecfd096b60570e28aedbce7b8de1e866bff",
-        "mammoth": "f9f819e4d94d7433c329dbd810e8bfc6bb2946be"
+        "reference": "f052eb85eb908ae6c6ae4775a8cdc11311af116e",
+        "mammoth": "612ed1e51e9f33a0414beda4a25e5334491e7d60"
       }
     },
     {
@@ -520,8 +526,8 @@
       "type": "main",
       "upstream": "d11828c7e2032d6fc990542fc0fcff5261eb6bb9",
       "sha": {
-        "reference": "d6dffc2ab800790f93bc66ff9a124a867c6fc04c",
-        "mammoth": "f7a9b552e37e30fd13968f6cecffc3eb49d11786"
+        "reference": "394236f47d243126e82f3ef0579a1ddb3bf0267e",
+        "mammoth": "affb0b1b4b925246acc29a3db2310df6986b6a57"
       }
     },
     {
@@ -530,8 +536,8 @@
       "type": "main",
       "upstream": "b21edc8d5e4bc469e82e61406cb258a0ba7c4768",
       "sha": {
-        "reference": "865e172a3b7525d5e2de4d13124880cef582baa2",
-        "mammoth": "93df57b74c635cd794da1a07d33b23d17e112cea"
+        "reference": "98fd4cf8bdfebd1506c786b7a9f9d9a07d98780c",
+        "mammoth": "9d09c730554d92b2e880b356d16d360d5a60b101"
       }
     },
     {
@@ -540,8 +546,8 @@
       "type": "main",
       "upstream": "962c91219489cc537815308fac6c0f4036b86175",
       "sha": {
-        "reference": "52ff3b236143feb536c1d35954b8776b5c984bf8",
-        "mammoth": "ae3f83d0b5cef18159f44d2d62b8d4a30060706d"
+        "reference": "c7e5071a2697916221b233a05cd45df23f584595",
+        "mammoth": "db9b7d22d806dcc6e4983210d20718a8045136ff"
       }
     },
     {
@@ -550,8 +556,8 @@
       "type": "main",
       "upstream": "21726fa79eee7566e6a7823c5fefefa689438194",
       "sha": {
-        "reference": "9b9d3bad35cdf388b96a4165d9c178c0bbafc167",
-        "mammoth": "95dcd5fcaf90bf6c5dfec2ad3e42f6a3592a0fdd"
+        "reference": "9fc4042d2d378dbc6d17af28b852b291f0c7da09",
+        "mammoth": "34370ecd1fd4cb30be16650783b5a57dea4c43c9"
       }
     },
     {
@@ -560,8 +566,8 @@
       "type": "main",
       "upstream": "154503ceab8793d88999c182cb0435935e67e3e5",
       "sha": {
-        "reference": "50bbffee4978c2b4357d38b5a51cfd03935cb0bc",
-        "mammoth": "30ea10288f182b8419309039e1e444b8e328ae0a"
+        "reference": "95226aa4dfd19995872d85addf606a882dfef235",
+        "mammoth": "134a4fa98a1a2c8735a28599c3c9628b8f6c802e"
       }
     },
     {
@@ -570,8 +576,8 @@
       "type": "main",
       "upstream": "dffaf8d280318643c4da66e0fb1d823c761f206d",
       "sha": {
-        "reference": "cdcc63a5cf950c562171129861c9cc4544250d97",
-        "mammoth": "0a8f7d600d78708d0ec91a9363d879aea30a706d"
+        "reference": "83975f5823a936c28771e80c404de503ee74b225",
+        "mammoth": "8755b38d5224f647931c0e4ab8c11636d4fa511c"
       }
     },
     {
@@ -580,8 +586,8 @@
       "type": "main",
       "upstream": "49fcad8f4cec66860f295a5bb7b10b94dc33fb0c",
       "sha": {
-        "reference": "bd7fc58c2788f4cbbaf4e01840bdfcca7372413f",
-        "mammoth": "71815af3f347e9d0f0fb4acb7752b4ce1908dff0"
+        "reference": "3368f3513e9de7d324e35259cfeeed5b7d93fc47",
+        "mammoth": "667afdbeb54b70303b5e1174c617a63d9191e8d4"
       }
     },
     {
@@ -590,8 +596,8 @@
       "type": "main",
       "upstream": "d01ccfa34663f2a1c1cb371871e84b6ca35d61a6",
       "sha": {
-        "reference": "2a9a7d30280dba781fe299279199eed09afcecd1",
-        "mammoth": "45865e12d822d4557add969a97b13b477bb0622a"
+        "reference": "233955cb6a949c3bf04d3c8f9eddeac7261c73b5",
+        "mammoth": "e0aa0c0fdf2b4e67800a47022232697628d682a6"
       }
     },
     {
@@ -600,8 +606,8 @@
       "type": "main",
       "upstream": "30013733e220e048d1ca0282536ad0755a322968",
       "sha": {
-        "reference": "2f5be6cd2f9d20dfc846777544c674e78e4d6fa7",
-        "mammoth": "bb66ddb372a329739ee21283c4d823ae9790cbac"
+        "reference": "866d9ee793dd72bd063a18a633c49f74920c7cff",
+        "mammoth": "0340dd50eb56a365ada42973d3683621b4cb8db9"
       }
     },
     {
@@ -611,8 +617,8 @@
       "upstream": "5b58912049544af3361a38b070ae485a3c593448",
       "push_after": true,
       "sha": {
-        "reference": "21a6dbd3f2f4d36c9faf5c895404633dabe3866c",
-        "mammoth": "4c07d8797c60d5a5082d1e4c09eb5270095e340a"
+        "reference": "e0d54178bd5c21dbfd1697d2e1ed0d8ef1b5f7cb",
+        "mammoth": "9f09fadcfee5d389e03e686f08cf5429c54434a2"
       },
       "branch": "replay/scored/pr-36",
       "title": "Update dependency io.netty:netty-bom to v4.2.19.Final (PR 13134)"
@@ -623,8 +629,8 @@
       "type": "main",
       "upstream": "5b58912049544af3361a38b070ae485a3c593448",
       "sha": {
-        "reference": "21a6dbd3f2f4d36c9faf5c895404633dabe3866c",
-        "mammoth": "4c07d8797c60d5a5082d1e4c09eb5270095e340a"
+        "reference": "e0d54178bd5c21dbfd1697d2e1ed0d8ef1b5f7cb",
+        "mammoth": "9f09fadcfee5d389e03e686f08cf5429c54434a2"
       }
     },
     {
@@ -633,8 +639,8 @@
       "type": "main",
       "upstream": "527a5d1663001ab661783da2c012de66089ef5d7",
       "sha": {
-        "reference": "4927bb1e03908b9b133cf75817f5c63dc07e1ada",
-        "mammoth": "ac8025feaf799f1096b19cb8f2ab695ceb4c4b41"
+        "reference": "3d851f23ff30db56a385b9245303e8c12cef1502",
+        "mammoth": "503c50b228affc9057e227f5ea3c033ad3b23204"
       }
     },
     {
@@ -643,8 +649,8 @@
       "type": "main",
       "upstream": "6241c5b862a321716be64f847caccedc319d853f",
       "sha": {
-        "reference": "d9bb545be206ace75cd42dd89d13570ff7936f0c",
-        "mammoth": "9cd01da5b6f3aca9507c6a998527af24326d59ce"
+        "reference": "a562b02559d5180555d02ff49e4a2c82bf0d87e9",
+        "mammoth": "3c7c9ad608d351883ebf2caef7c8799e0a4c2e7b"
       }
     },
     {
@@ -653,8 +659,8 @@
       "type": "main",
       "upstream": "4acc20c1d8a9f565e3c58cf024820c4f6f2e1b80",
       "sha": {
-        "reference": "9610266624b9a10d753b11de5d39d1f5bad93896",
-        "mammoth": "22b4b3913eb4d00a0c5054f863be306e4d0a8dda"
+        "reference": "801bee823497b066d32bb86590a1c92311e49f31",
+        "mammoth": "735f7ed1c420e183ca4ee1b35f87425e5fc938e5"
       }
     }
   ],
@@ -680,12 +686,12 @@
   ],
   "staging_refs": {
     "reference": {
-      "refs/tags/replay-staging/main": "9610266624b9a10d753b11de5d39d1f5bad93896",
-      "refs/tags/replay-staging/smoke-pr-02": "f34233f98016faad7fd79e09b8b3ae3a8dc372d5"
+      "refs/tags/replay-staging/main": "801bee823497b066d32bb86590a1c92311e49f31",
+      "refs/tags/replay-staging/smoke-pr-02": "0a2466eea787fedb3e7b0a54ee9c3b4bb6a62aa8"
     },
     "mammoth": {
-      "refs/tags/replay-staging/main": "22b4b3913eb4d00a0c5054f863be306e4d0a8dda",
-      "refs/tags/replay-staging/smoke-pr-02": "d6f8d0986fd99225c7434bd741c67da39ac62994"
+      "refs/tags/replay-staging/main": "735f7ed1c420e183ca4ee1b35f87425e5fc938e5",
+      "refs/tags/replay-staging/smoke-pr-02": "e25992646f14e8f0e1a7cadc7c113416b1777a40"
     }
   }
 }

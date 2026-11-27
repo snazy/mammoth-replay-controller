@@ -6,6 +6,7 @@ same commit SHAs. Messages carry no upstream body, issue references or mentions,
 cannot create cross-references, close issues or credit upstream authors.
 """
 
+import hashlib
 import json
 import re
 import shutil
@@ -168,6 +169,33 @@ def overlay_tree(repo: Path, overlay_dir: Path) -> str:
     return git(repo, "rev-parse", f"{root}:{OVERLAY_ROOT}").strip()
 
 
+def source_patch_paths(patch: Path) -> list[str]:
+    out = subprocess.run(["git", "apply", "--numstat", "-z", str(patch)], capture_output=True, check=True, env=gitops.isolated_env()).stdout.decode()
+    return [f.split("\t")[-1] for f in out.split("\0") if "\t" in f]
+
+
+def check_source_patches(patches: list[Path]) -> None:
+    for patch in patches:
+        inside = [f for f in source_patch_paths(patch) if f == OVERLAY_ROOT or f.startswith(f"{OVERLAY_ROOT}/")]
+        if inside:
+            raise BuildError(f"source patch {patch.name} changes {OVERLAY_ROOT}/, which belongs to the overlays: {inside}")
+
+
+def patched_tree(repo: Path, tree: str, patches: list[Path]) -> str:
+    """Upstream tree with the source patches applied (outside .github/), for every variant alike."""
+    if not patches:
+        return tree
+    with tempfile.TemporaryDirectory() as tmp:
+        env = {"GIT_INDEX_FILE": str(Path(tmp) / "index")}
+        git(repo, "read-tree", tree, env=env)
+        for patch in patches:
+            try:
+                git(repo, "apply", "--cached", "--whitespace=nowarn", str(patch), env=env)
+            except gitops.GitError as e:
+                raise BuildError(f"source patch {patch.name} does not apply to tree {tree[:10]}: {e}") from None
+        return git(repo, "write-tree", env=env).strip()
+
+
 def replay_tree(repo: Path, upstream_tree: str, ovl_tree: str) -> str:
     entries = [e for e in gitops.ls_tree(repo, upstream_tree) if e[3] != OVERLAY_ROOT]
     entries.append(("040000", "tree", ovl_tree, OVERLAY_ROOT))
@@ -283,6 +311,8 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
     paths_ignore = profile["workflow"].get("push_paths_ignore", [])
     identity = profile["identity"]
     ov = profile["overlay"]
+    source_patches = [overlay_base / name for name in ov.get("source_patches", [])]
+    check_source_patches(source_patches)
 
     plan_events = [{k: v for k, v in e.items()} | {"sha": {}} for e in events]
     dropped: dict[str, dict] = {}
@@ -316,7 +346,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
             if pe["type"] == "gate":
                 continue
             meta = gitops.commit_meta(upstream, pe["upstream"])
-            tree = replay_tree(repo, meta["tree"], ovl)
+            tree = replay_tree(repo, patched_tree(repo, meta["tree"], source_patches), ovl)
             changed = changed_paths(repo, tip_tree, tree) if tip_tree else ["<root>"]
             if pe["type"] in ("seed", "main"):
                 if not changed or (tip_tree and not triggers_push(changed, paths_ignore)):
@@ -369,6 +399,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
         "upstream": {"repo": profile["upstream"]["repo"], "seed": seed_sha},
         "root": next(iter(roots.values())),
         "variants": {v: {"repo": c["repo"], "overlay_tree": overlay_trees[v]} for v, c in profile["variants"].items()},
+        "source_patches": [{"path": name, "sha256": hashlib.sha256((overlay_base / name).read_bytes()).hexdigest()} for name in ov.get("source_patches", [])],
         "settings": profile["controller"],
         "workflow": {**profile["workflow"], "jobs": workflow_jobs},
         "jobs": profile["jobs"],
