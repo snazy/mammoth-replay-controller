@@ -1,25 +1,16 @@
 {
  "applied_events": 3,
- "at": "2026-11-27T14:26:19Z",
- "current": "smoke/pr-02",
+ "at": "2026-11-27T14:28:03Z",
+ "current": "scored/clear-caches",
  "exceptions": [],
  "finished": false,
  "not_before": null,
- "notes": [
-  "collected mammoth smoke/pr-02 run 46010860711 attempt 2",
-  "close_pr mammoth smoke/pr-02 done"
- ],
+ "notes": [],
  "paused": false,
- "planned_actions": [
-  {
-   "event": "smoke/pr-02",
-   "number": 1,
-   "repo": "snazy/nessie-mammoth-prototype",
-   "type": "close_pr",
-   "variant": "mammoth"
-  }
- ],
+ "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
- "waiting": []
+ "waiting": [
+  "scored/clear-caches: waiting for release (add it to REPLAY_RELEASED_GATES)"
+ ]
 }

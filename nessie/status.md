@@ -1,9 +1,8 @@
 # Replay status (nessie)
 
-As of 2026-11-27T14:26:19Z.
-Applied in all variants: 3 of 47 CI events. Current: `smoke/pr-02`.
+As of 2026-11-27T14:28:03Z.
+Applied in all variants: 3 of 47 CI events. Current: `scored/clear-caches`.
 
-## This tick
+## Waiting
 
-- collected mammoth smoke/pr-02 run 46010860711 attempt 2
-- close_pr mammoth smoke/pr-02 done
+- scored/clear-caches: waiting for release (add it to REPLAY_RELEASED_GATES)
