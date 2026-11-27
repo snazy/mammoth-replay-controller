@@ -1,36 +1,17 @@
 {
- "applied_events": 1,
- "at": "2026-11-27T12:28:39Z",
+ "applied_events": 2,
+ "at": "2026-11-27T12:37:21Z",
  "current": "smoke/main-01",
  "exceptions": [],
  "finished": false,
- "not_before": "2026-11-27T12:28:12Z",
- "notes": [
-  "update_ref mammoth smoke/main-01 done",
-  "update_ref reference smoke/main-01 done"
- ],
+ "not_before": null,
+ "notes": [],
  "paused": false,
- "planned_actions": [
-  {
-   "event": "smoke/main-01",
-   "expected": "b76c5716aded232ff38595349ef20aa4f3f0fd26",
-   "ref": "heads/main",
-   "repo": "snazy/nessie-mammoth-prototype",
-   "sha": "d475a0f22277a87f807da0392deb1f496cfbadfc",
-   "type": "update_ref",
-   "variant": "mammoth"
-  },
-  {
-   "event": "smoke/main-01",
-   "expected": "0d4bd78155c503d2848ebcdb407ba0df7cf7f608",
-   "ref": "heads/main",
-   "repo": "snazy/nessie-mammoth-reference",
-   "sha": "0f545a8deff7a8166f2000d1b995fd2ad648cb50",
-   "type": "update_ref",
-   "variant": "reference"
-  }
- ],
+ "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
- "waiting": []
+ "waiting": [
+  "reference: run 45998965334 attempt 1 in_progress",
+  "mammoth: run 45998963136 attempt 1 in_progress"
+ ]
 }
