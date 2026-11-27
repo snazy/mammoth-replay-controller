@@ -1,27 +1,18 @@
 {
  "applied_events": 4,
- "at": "2026-11-27T15:52:17Z",
+ "at": "2026-11-27T16:07:24Z",
  "current": "scored/seed",
  "exceptions": [],
  "finished": false,
  "not_before": null,
  "notes": [
-  "rerun_failed reference scored/seed done"
+  "collected mammoth scored/seed run 46018809569 attempt 2"
  ],
  "paused": false,
- "planned_actions": [
-  {
-   "attempt": 2,
-   "event": "scored/seed",
-   "repo": "snazy/nessie-mammoth-reference",
-   "run_id": 46018806957,
-   "type": "rerun_failed",
-   "variant": "reference"
-  }
- ],
+ "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
  "waiting": [
-  "mammoth: run 46018809569 attempt 2 in_progress"
+  "reference: run 46018806957 attempt 3 queued"
  ]
 }
