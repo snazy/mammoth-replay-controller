@@ -4,6 +4,30 @@ What the experiment showed so far, newest first. **Observed** entries are backed
 may stop working when runs are deleted or expire); **expected** entries are design properties still
 to be confirmed by evidence. Smoke-campaign observations don't count towards the scored comparison.
 
+## Mammoth's partial saves let reruns get past Maven Central throttling (observed, 2026-11-27)
+
+Scored seed, caches cleared just before. In both variants only `intTest` failed in attempt 1;
+the other 11 jobs resolved the same Gradle plugins and succeeded.
+
+| | `intTest` attempt 1 | `intTest` attempt 2 |
+| --- | --- | --- |
+| reference 46018806957 | failed after 14 s: could not resolve plugin artifact `com.gradle.develocity…:4.6.0` | failed after 11 s, same plugin |
+| prototype 46018809569 | failed after 17 s: could not resolve plugin artifact `com.gradleup.nmcp.settings…:1.6.2` | past plugin resolution (Gradle still running after 9 min) |
+
+Mechanism:
+
+- Mammoth's store-cache runs with `always()`, so attempt 1 already merged what the 11 successful
+  jobs had downloaded, plugins included. A rerun of the failed job restores that cache and doesn't
+  need Maven Central for them.
+- The incumbent saves only when all producer jobs succeed; its Store Cache was skipped in both
+  attempts. On a cold cache, every rerun of the failed job downloads everything again and gets
+  through only when Maven Central happens not to throttle.
+
+One case per side; the reference's next rerun may succeed by chance. The effect doesn't show in
+job timings (taken from first attempts) but in reruns per event and time until the run succeeds.
+To watch in the scored campaign: reruns per variant after `maven-central-429` and infrastructure
+failures.
+
 ## Incumbent: no cache save on a later attempt of the same commit (observed, 2026-11-27)
 
 The incumbent's `gradle-home` cache key ends in the commit SHA, and `gradle/actions` doesn't save
