@@ -1,0 +1,2995 @@
+{
+ "attempt": 1,
+ "collected_at": "2026-11-27T03:40:12Z",
+ "collector_version": 1,
+ "event": "smoke/seed",
+ "event_type": "seed",
+ "failures": [
+  {
+   "class": "unknown",
+   "conclusion": "failure",
+   "job": "int-test-stores"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "code-checks"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "failure",
+   "job": "test"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "int-test-quarkus-server"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "site"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "test-quarkus"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "int-test-integrations"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "failure",
+   "job": "int-test"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "int-test-quarkus-tool"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "docker-testing"
+  },
+  {
+   "class": "unknown",
+   "conclusion": "cancelled",
+   "job": "store-cache"
+  }
+ ],
+ "jobs": [
+  {
+   "api_id": 140176369679,
+   "completed_at": "2026-11-26T21:25:51Z",
+   "conclusion": "failure",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "int-test-stores",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "* What went wrong:",
+     "BUILD FAILED in 19s",
+     "##[error]Process completed with exit code 1."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 60434,
+    "scan_urls": []
+   },
+   "name": "CI intTest versioned/stores",
+   "runner_name": "GitHub Actions 1000019258",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:44Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:47Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:48Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:49Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:49Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:10Z",
+     "conclusion": "failure",
+     "name": "Gradle / intTest versioned/stores",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:10Z",
+     "conclusion": "success",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-26T21:25:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:12Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-26T21:25:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:48Z",
+     "conclusion": "success",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 16,
+     "started_at": "2026-11-26T21:25:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:48Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 17,
+     "started_at": "2026-11-26T21:25:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:48Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 18,
+     "started_at": "2026-11-26T21:25:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:48Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 19,
+     "started_at": "2026-11-26T21:25:48Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370038,
+   "completed_at": "2026-11-26T21:30:13Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "code-checks",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled.",
+     "##[error]Native directory changed during traversal."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 150548,
+    "scan_urls": []
+   },
+   "name": "CI Code Checks et al",
+   "runner_name": "GitHub Actions 1000019260",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:40Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:40Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:42Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:43Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:44Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:44Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "cancelled",
+     "name": "Gradle / Compile",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Gradle / Compile Quarkus",
+     "number": 8,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Gradle / Code checks",
+     "number": 9,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Gradle / Assemble",
+     "number": 10,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Gradle / Publish to Maven local",
+     "number": 11,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Gradle / build tools integration tests",
+     "number": 12,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 13,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "failure",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 24,
+     "started_at": "2026-11-26T21:30:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 25,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:12Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 26,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:12Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 27,
+     "started_at": "2026-11-26T21:30:12Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370057,
+   "completed_at": "2026-11-26T21:25:55Z",
+   "conclusion": "failure",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "test",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "* What went wrong:",
+     "BUILD FAILED in 18s",
+     "##[error]Process completed with exit code 1."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 60038,
+    "scan_urls": []
+   },
+   "name": "CI Test",
+   "runner_name": "GitHub Actions 1000019264",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:46Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:52Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:52Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:54Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:54Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:13Z",
+     "conclusion": "failure",
+     "name": "Gradle / test",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:54Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:13Z",
+     "conclusion": "success",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-26T21:25:13Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:15Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-26T21:25:13Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:51Z",
+     "conclusion": "success",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 16,
+     "started_at": "2026-11-26T21:25:15Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:52Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 17,
+     "started_at": "2026-11-26T21:25:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:52Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 18,
+     "started_at": "2026-11-26T21:25:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:52Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 19,
+     "started_at": "2026-11-26T21:25:52Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370065,
+   "completed_at": "2026-11-26T21:30:41Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "int-test-quarkus-server",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled.",
+     "##[error]Native directory changed during traversal."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 54668,
+    "scan_urls": []
+   },
+   "name": "CI intTest Quarkus Server",
+   "runner_name": "GitHub Actions 1000019261",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:42Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:45Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:46Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:48Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:48Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "cancelled",
+     "name": "Gradle / intTest Quarkus Server",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:37Z",
+     "conclusion": "failure",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 18,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:37Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-26T21:30:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:38Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-26T21:30:37Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:39Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-26T21:30:38Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370088,
+   "completed_at": "2026-11-26T21:30:15Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "site",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 91259,
+    "scan_urls": []
+   },
+   "name": "CI Website",
+   "runner_name": "GitHub Actions 1000019259",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:42Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:50Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:51Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:52Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (read-only)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:52Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:00Z",
+     "conclusion": "success",
+     "name": "Setup Python",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:52Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "cancelled",
+     "name": "Generate Static Site",
+     "number": 8,
+     "started_at": "2026-11-26T21:25:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Check code block indentation",
+     "number": 9,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Deploy Static Site to GitHub",
+     "number": 10,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 11,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Post Setup Python",
+     "number": 19,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:12Z",
+     "conclusion": "success",
+     "name": "Post Mammoth Gradle cache (read-only)",
+     "number": 20,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:12Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 21,
+     "started_at": "2026-11-26T21:30:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:13Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 22,
+     "started_at": "2026-11-26T21:30:12Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:13Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 23,
+     "started_at": "2026-11-26T21:30:13Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370134,
+   "completed_at": "2026-11-26T21:33:04Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "test-quarkus",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 107960,
+    "scan_urls": []
+   },
+   "name": "CI Test Quarkus",
+   "runner_name": "GitHub Actions 1000019262",
+   "started_at": "2026-11-26T21:24:38Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:39Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:46Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:49Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:50Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:49Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:51Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:50Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:51Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "cancelled",
+     "name": "Gradle / Test Quarkus Server",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:51Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "skipped",
+     "name": "Gradle / Test Quarkus Events",
+     "number": 8,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "skipped",
+     "name": "Gradle / Test Quarkus Events RI",
+     "number": 9,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 10,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 11,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 12,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:33:00Z",
+     "conclusion": "success",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 22,
+     "started_at": "2026-11-26T21:30:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:33:00Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 23,
+     "started_at": "2026-11-26T21:33:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:33:00Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 24,
+     "started_at": "2026-11-26T21:33:00Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:33:00Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 25,
+     "started_at": "2026-11-26T21:33:00Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370168,
+   "completed_at": "2026-11-26T21:29:33Z",
+   "conclusion": "success",
+   "created_at": "2026-11-26T21:24:34Z",
+   "job": "int-test-quarkus-events",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 68630,
+    "scan_urls": []
+   },
+   "name": "CI intTest Quarkus Events",
+   "runner_name": "GitHub Actions 1000019265",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:40Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:40Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:42Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:43Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:42Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:44Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:44Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:27:57Z",
+     "conclusion": "success",
+     "name": "Gradle / intTest Quarkus Events",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:27:57Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-26T21:27:57Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:27:57Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-26T21:27:57Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:27:59Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-26T21:27:57Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:29:31Z",
+     "conclusion": "success",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 18,
+     "started_at": "2026-11-26T21:27:59Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:29:31Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-26T21:29:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:29:32Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-26T21:29:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:29:32Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-26T21:29:32Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370173,
+   "completed_at": "2026-11-26T21:30:13Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "int-test-integrations",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled.",
+     "##[error]Native directory changed during traversal."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 61847,
+    "scan_urls": []
+   },
+   "name": "CI intTest integrations",
+   "runner_name": "GitHub Actions 1000019263",
+   "started_at": "2026-11-26T21:24:37Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:40Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:38Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:41Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:40Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:43Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:41Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:44Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:43Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:45Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:24:44Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:45Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:24:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "cancelled",
+     "name": "Gradle / intTest integrations",
+     "number": 7,
+     "started_at": "2026-11-26T21:24:45Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:09Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "failure",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 16,
+     "started_at": "2026-11-26T21:30:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 17,
+     "started_at": "2026-11-26T21:30:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 18,
+     "started_at": "2026-11-26T21:30:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 19,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370209,
+   "completed_at": "2026-11-26T21:24:50Z",
+   "conclusion": "success",
+   "created_at": "2026-11-26T21:24:34Z",
+   "job": "determine-jobs",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 6283,
+    "scan_urls": []
+   },
+   "name": "CI Determine jobs",
+   "runner_name": "GitHub Actions 1000019266",
+   "started_at": "2026-11-26T21:24:45Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:47Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:46Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:48Z",
+     "conclusion": "success",
+     "name": "install minimatch",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:47Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:48Z",
+     "conclusion": "success",
+     "name": "Determine conditional jobs to run",
+     "number": 3,
+     "started_at": "2026-11-26T21:24:48Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:24:48Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 4,
+     "started_at": "2026-11-26T21:24:48Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370229,
+   "completed_at": "2026-11-26T21:26:13Z",
+   "conclusion": "failure",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "int-test",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "* What went wrong:",
+     "BUILD FAILED in 20s",
+     "##[error]Process completed with exit code 1."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 62361,
+    "scan_urls": []
+   },
+   "name": "CI intTest",
+   "runner_name": "GitHub Actions 1000019267",
+   "started_at": "2026-11-26T21:24:53Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:24:56Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:24:53Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:01Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:24:56Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:06Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:25:01Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:07Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:25:06Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:08Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:25:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:08Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:25:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:31Z",
+     "conclusion": "failure",
+     "name": "Gradle / intTest",
+     "number": 7,
+     "started_at": "2026-11-26T21:25:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:32Z",
+     "conclusion": "success",
+     "name": "Capture Test Reports",
+     "number": 8,
+     "started_at": "2026-11-26T21:25:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:33Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 9,
+     "started_at": "2026-11-26T21:25:32Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:09Z",
+     "conclusion": "success",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 16,
+     "started_at": "2026-11-26T21:25:33Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:09Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 17,
+     "started_at": "2026-11-26T21:26:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:09Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 18,
+     "started_at": "2026-11-26T21:26:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:09Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 19,
+     "started_at": "2026-11-26T21:26:09Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176370355,
+   "completed_at": "2026-11-26T21:30:14Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:34Z",
+   "failure_class": "unknown",
+   "job": "int-test-quarkus-tool",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled.",
+     "##[error]Native directory changed during traversal."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 61720,
+    "scan_urls": []
+   },
+   "name": "CI intTest Admin Tool",
+   "runner_name": "GitHub Actions 1000019268",
+   "started_at": "2026-11-26T21:25:27Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:25:30Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:25:28Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:31Z",
+     "conclusion": "success",
+     "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 2,
+     "started_at": "2026-11-26T21:25:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:34Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:25:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:35Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:25:34Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:36Z",
+     "conclusion": "success",
+     "name": "Mammoth Gradle cache (distributed worker)",
+     "number": 5,
+     "started_at": "2026-11-26T21:25:35Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:25:36Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / begin",
+     "number": 6,
+     "started_at": "2026-11-26T21:25:36Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "cancelled",
+     "name": "Gradle / intTest Admin Tool",
+     "number": 7,
+     "started_at": "2026-11-26T21:25:36Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Dump quarkus.log",
+     "number": 8,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Capture Test Reports",
+     "number": 9,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 10,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "failure",
+     "name": "Post Mammoth Gradle cache (distributed worker)",
+     "number": 18,
+     "started_at": "2026-11-26T21:30:10Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:11Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 19,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:12Z",
+     "conclusion": "success",
+     "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+     "number": 20,
+     "started_at": "2026-11-26T21:30:11Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:12Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 21,
+     "started_at": "2026-11-26T21:30:12Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140176467289,
+   "completed_at": "2026-11-26T21:30:11Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:24:50Z",
+   "failure_class": "unknown",
+   "job": "docker-testing",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "failure_excerpt": [
+     "##[error]The operation was canceled."
+    ],
+    "http_429": 0,
+    "http_429_maven_central": 0,
+    "log_bytes": 90202,
+    "scan_urls": []
+   },
+   "name": "CI Docker and Helm checks",
+   "runner_name": "GitHub Actions 1000019271",
+   "started_at": "2026-11-26T21:26:15Z",
+   "status": "completed",
+   "steps": [
+    {
+     "completed_at": "2026-11-26T21:26:19Z",
+     "conclusion": "success",
+     "name": "Set up job",
+     "number": 1,
+     "started_at": "2026-11-26T21:26:15Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:22Z",
+     "conclusion": "success",
+     "name": "Checkout",
+     "number": 2,
+     "started_at": "2026-11-26T21:26:19Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:30Z",
+     "conclusion": "success",
+     "name": "Setup runner",
+     "number": 3,
+     "started_at": "2026-11-26T21:26:22Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:30Z",
+     "conclusion": "success",
+     "name": "Setup Java, Gradle",
+     "number": 4,
+     "started_at": "2026-11-26T21:26:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:26:30Z",
+     "conclusion": "success",
+     "name": "Extract version",
+     "number": 5,
+     "started_at": "2026-11-26T21:26:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:28:26Z",
+     "conclusion": "success",
+     "name": "Free disk space",
+     "number": 6,
+     "started_at": "2026-11-26T21:26:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:28:26Z",
+     "conclusion": "success",
+     "name": "Setup Helm",
+     "number": 7,
+     "started_at": "2026-11-26T21:28:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:28:30Z",
+     "conclusion": "success",
+     "name": "Setup chart-testing",
+     "number": 8,
+     "started_at": "2026-11-26T21:28:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:28:31Z",
+     "conclusion": "success",
+     "name": "Setup Python",
+     "number": 9,
+     "started_at": "2026-11-26T21:28:30Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:29:26Z",
+     "conclusion": "success",
+     "name": "Setup & Start Minikube",
+     "number": 10,
+     "started_at": "2026-11-26T21:28:31Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "cancelled",
+     "name": "Setup Docker registry",
+     "number": 11,
+     "started_at": "2026-11-26T21:29:26Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "skipped",
+     "name": "Mammoth Gradle cache (read-only)",
+     "number": 12,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:07Z",
+     "conclusion": "skipped",
+     "name": "Replay telemetry / begin",
+     "number": 13,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Docker images publishing",
+     "number": 14,
+     "started_at": "2026-11-26T21:30:07Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Cleanup buildx",
+     "number": 15,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Check if expected Docker images exist",
+     "number": 16,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Check if Server Docker Java image works",
+     "number": 17,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Check if GC Tool Docker Java image works",
+     "number": 18,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Check if Server Admin Tool Docker Java image works",
+     "number": 19,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Check if CLI Docker Java image works",
+     "number": 20,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Run chart-testing (list-changed)",
+     "number": 21,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Run 'helm template' validation",
+     "number": 22,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Run Helm unit tests",
+     "number": 23,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Run chart-testing (lint)",
+     "number": 24,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Show pods",
+     "number": 25,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Install fixtures",
+     "number": 26,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:08Z",
+     "conclusion": "skipped",
+     "name": "Run chart-testing (install)",
+     "number": 27,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:09Z",
+     "conclusion": "success",
+     "name": "Replay telemetry / end",
+     "number": 28,
+     "started_at": "2026-11-26T21:30:08Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:09Z",
+     "conclusion": "skipped",
+     "name": "Post Setup Python",
+     "number": 53,
+     "started_at": "2026-11-26T21:30:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:09Z",
+     "conclusion": "success",
+     "name": "Post Setup chart-testing",
+     "number": 54,
+     "started_at": "2026-11-26T21:30:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:09Z",
+     "conclusion": "success",
+     "name": "Post Setup Java, Gradle",
+     "number": 55,
+     "started_at": "2026-11-26T21:30:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "success",
+     "name": "Post Checkout",
+     "number": 56,
+     "started_at": "2026-11-26T21:30:09Z",
+     "status": "completed"
+    },
+    {
+     "completed_at": "2026-11-26T21:30:10Z",
+     "conclusion": "success",
+     "name": "Complete job",
+     "number": 57,
+     "started_at": "2026-11-26T21:30:10Z",
+     "status": "completed"
+    }
+   ]
+  },
+  {
+   "api_id": 140179571694,
+   "completed_at": "2026-11-26T21:33:04Z",
+   "conclusion": "cancelled",
+   "created_at": "2026-11-26T21:33:05Z",
+   "failure_class": "unknown",
+   "job": "store-cache",
+   "labels": [
+    "ubuntu-24.04"
+   ],
+   "log": {
+    "missing": "log download failed: HTTP Error 404: The specified blob does not exist."
+   },
+   "name": "CI Store Cache",
+   "runner_name": null,
+   "started_at": "2026-11-26T21:33:05Z",
+   "status": "completed",
+   "steps": []
+  }
+ ],
+ "run": {
+  "conclusion": "cancelled",
+  "created_at": "2026-11-26T21:24:34Z",
+  "event": "push",
+  "head_branch": "main",
+  "head_sha": "bc89b0f86d1624b918b3b84f72560debce040200",
+  "html_url": "https://github.com/snazy/nessie-mammoth-prototype/actions/runs/45897938717",
+  "run_attempt": 1,
+  "run_started_at": "2026-11-26T21:24:34Z",
+  "status": "completed",
+  "updated_at": "2026-11-26T21:33:05Z"
+ },
+ "run_id": 45897938717,
+ "schema": 1,
+ "sha": "bc89b0f86d1624b918b3b84f72560debce040200",
+ "telemetry": {
+  "code-checks": {
+   "deps": {
+    "begin": {
+     "at": 1795728284446,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728609042,
+     "bytes": 609506142,
+     "files": 5189,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261116.376.1",
+    "job": "code-checks",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "docker-testing": {
+   "deps": {
+    "end": {
+     "at": 1795728608203,
+     "bytes": 0,
+     "files": 0,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {},
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "docker-testing",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "int-test": {
+   "deps": {
+    "begin": {
+     "at": 1795728308482,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728332257,
+     "bytes": 0,
+     "files": 0,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261116.133.1",
+    "job": "int-test",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "int-test-integrations": {
+   "deps": {
+    "begin": {
+     "at": 1795728285337,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728608706,
+     "bytes": 936308175,
+     "files": 4652,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [
+    {
+     "endedAt": 1795728395921,
+     "gradle": "9.7.1",
+     "outcomes": {
+      "executed": 11,
+      "skipped": 2
+     },
+     "schema": 1,
+     "startedAt": 1795728299149,
+     "task_count": 13,
+     "tasks": [
+      {
+       "end": 1795728340784,
+       "outcome": "skipped",
+       "path": ":nessie-build-logic:checkKotlinGradlePluginConfigurationErrors",
+       "skip": "SKIPPED",
+       "start": 1795728340777
+      },
+      {
+       "end": 1795728341509,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:generateExternalPluginSpecBuilders",
+       "start": 1795728340792
+      },
+      {
+       "end": 1795728341551,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:extractPrecompiledScriptPluginPlugins",
+       "start": 1795728341510
+      },
+      {
+       "end": 1795728351432,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:generateScriptPluginAdapters",
+       "start": 1795728351412
+      },
+      {
+       "end": 1795728351448,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:pluginDescriptors",
+       "start": 1795728351433
+      },
+      {
+       "end": 1795728351484,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:processResources",
+       "start": 1795728351449
+      },
+      {
+       "end": 1795728358578,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:compilePluginsBlocks",
+       "start": 1795728341553
+      },
+      {
+       "end": 1795728368110,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:generatePrecompiledScriptPluginAccessors",
+       "start": 1795728358579
+      },
+      {
+       "end": 1795728389049,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:compileKotlin",
+       "start": 1795728368112
+      },
+      {
+       "end": 1795728389056,
+       "outcome": "skipped",
+       "path": ":nessie-build-logic:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728389051
+      },
+      {
+       "end": 1795728389057,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:classes",
+       "start": 1795728389057
+      },
+      {
+       "end": 1795728389280,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:jar",
+       "start": 1795728389057
+      },
+      {
+       "end": 1795728395869,
+       "outcome": "executed",
+       "path": ":listProjectsWithPrefix",
+       "start": 1795728395861
+      }
+     ]
+    }
+   ],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test-integrations",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "int-test-quarkus-events": {
+   "deps": {
+    "begin": {
+     "at": 1795728284302,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728478111,
+     "bytes": 292354716,
+     "files": 1406,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [
+    {
+     "endedAt": 1795728476874,
+     "gradle": "9.7.1",
+     "outcomes": {
+      "executed": 64,
+      "skipped": 20,
+      "up-to-date": 3
+     },
+     "schema": 1,
+     "startedAt": 1795728295484,
+     "task_count": 87,
+     "tasks": [
+      {
+       "end": 1795728347560,
+       "outcome": "skipped",
+       "path": ":nessie-build-logic:checkKotlinGradlePluginConfigurationErrors",
+       "skip": "SKIPPED",
+       "start": 1795728347552
+      },
+      {
+       "end": 1795728348189,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:generateExternalPluginSpecBuilders",
+       "start": 1795728347570
+      },
+      {
+       "end": 1795728348233,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:extractPrecompiledScriptPluginPlugins",
+       "start": 1795728348192
+      },
+      {
+       "end": 1795728356464,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:generateScriptPluginAdapters",
+       "start": 1795728356439
+      },
+      {
+       "end": 1795728356476,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:pluginDescriptors",
+       "start": 1795728356466
+      },
+      {
+       "end": 1795728356511,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:processResources",
+       "start": 1795728356477
+      },
+      {
+       "end": 1795728363808,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:compilePluginsBlocks",
+       "start": 1795728348235
+      },
+      {
+       "end": 1795728373781,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:generatePrecompiledScriptPluginAccessors",
+       "start": 1795728363809
+      },
+      {
+       "end": 1795728394982,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:compileKotlin",
+       "start": 1795728373783
+      },
+      {
+       "end": 1795728394991,
+       "outcome": "skipped",
+       "path": ":nessie-build-logic:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728394983
+      },
+      {
+       "end": 1795728394992,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:classes",
+       "start": 1795728394991
+      },
+      {
+       "end": 1795728395223,
+       "outcome": "executed",
+       "path": ":nessie-build-logic:jar",
+       "start": 1795728394992
+      },
+      {
+       "end": 1795728439976,
+       "outcome": "skipped",
+       "path": ":nessie-events-api:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728439972
+      },
+      {
+       "end": 1795728439977,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:compileQuarkusGeneratedSourcesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728439970
+      },
+      {
+       "end": 1795728439980,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728439978
+      },
+      {
+       "end": 1795728439982,
+       "outcome": "skipped",
+       "path": ":nessie-events-service:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728439978
+      },
+      {
+       "end": 1795728439983,
+       "outcome": "skipped",
+       "path": ":nessie-protobuf-relocated:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728439972
+      },
+      {
+       "end": 1795728439985,
+       "outcome": "skipped",
+       "path": ":nessie-events-spi:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728439980
+      },
+      {
+       "end": 1795728439988,
+       "outcome": "skipped",
+       "path": ":nessie-protobuf-relocated:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728439984
+      },
+      {
+       "end": 1795728439988,
+       "outcome": "up-to-date",
+       "path": ":nessie-protobuf-relocated:classes",
+       "start": 1795728439988
+      },
+      {
+       "end": 1795728439990,
+       "outcome": "skipped",
+       "path": ":nessie-immutables-std:compileJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728439973
+      },
+      {
+       "end": 1795728440004,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:processResources",
+       "start": 1795728439991
+      },
+      {
+       "end": 1795728440004,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:classes",
+       "start": 1795728440004
+      },
+      {
+       "end": 1795728440018,
+       "outcome": "skipped",
+       "path": ":nessie-protobuf-relocated:jandex",
+       "skip": "SKIPPED",
+       "start": 1795728440018
+      },
+      {
+       "end": 1795728440072,
+       "outcome": "executed",
+       "path": ":nessie-model:processResources",
+       "start": 1795728439984
+      },
+      {
+       "end": 1795728440198,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:jandex",
+       "start": 1795728440017
+      },
+      {
+       "end": 1795728440207,
+       "outcome": "executed",
+       "path": ":nessie-immutables-std:jar",
+       "start": 1795728440199
+      },
+      {
+       "end": 1795728442421,
+       "outcome": "executed",
+       "path": ":nessie-protobuf-relocated:shadowJar",
+       "start": 1795728440019
+      },
+      {
+       "end": 1795728444002,
+       "outcome": "executed",
+       "path": ":nessie-services-config:compileJava",
+       "start": 1795728440077
+      },
+      {
+       "end": 1795728444007,
+       "outcome": "executed",
+       "path": ":nessie-doc-generator-annotations:compileJava",
+       "start": 1795728439987
+      },
+      {
+       "end": 1795728444010,
+       "outcome": "skipped",
+       "path": ":nessie-services-config:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728444007
+      },
+      {
+       "end": 1795728444011,
+       "outcome": "executed",
+       "path": ":nessie-services-config:classes",
+       "start": 1795728444011
+      },
+      {
+       "end": 1795728444016,
+       "outcome": "skipped",
+       "path": ":nessie-quarkus-config:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728444009
+      },
+      {
+       "end": 1795728444029,
+       "outcome": "skipped",
+       "path": ":nessie-versioned-spi:processResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728444024
+      },
+      {
+       "end": 1795728444030,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:processTestFixturesResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728444029
+      },
+      {
+       "end": 1795728444036,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:compileQuarkusTestGeneratedSourcesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728444031
+      },
+      {
+       "end": 1795728444040,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:processIntTestResources",
+       "skip": "NO-SOURCE",
+       "start": 1795728444036
+      },
+      {
+       "end": 1795728444092,
+       "outcome": "executed",
+       "path": ":nessie-services-config:jandex",
+       "start": 1795728444022
+      },
+      {
+       "end": 1795728444108,
+       "outcome": "executed",
+       "path": ":nessie-services-config:jar",
+       "start": 1795728444094
+      },
+      {
+       "end": 1795728456022,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:compileJava",
+       "start": 1795728442424
+      },
+      {
+       "end": 1795728456046,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:processResources",
+       "start": 1795728456027
+      },
+      {
+       "end": 1795728456048,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:classes",
+       "start": 1795728456048
+      },
+      {
+       "end": 1795728456561,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:jandex",
+       "start": 1795728456057
+      },
+      {
+       "end": 1795728456654,
+       "outcome": "executed",
+       "path": ":nessie-versioned-storage-common:jar",
+       "start": 1795728456563
+      },
+      {
+       "end": 1795728456823,
+       "outcome": "executed",
+       "path": ":nessie-model:compileJava",
+       "start": 1795728440209
+      },
+      {
+       "end": 1795728456825,
+       "outcome": "executed",
+       "path": ":nessie-model:classes",
+       "start": 1795728456825
+      },
+      {
+       "end": 1795728461220,
+       "outcome": "executed",
+       "path": ":nessie-events-api:compileJava",
+       "start": 1795728456827
+      },
+      {
+       "end": 1795728461221,
+       "outcome": "executed",
+       "path": ":nessie-events-api:classes",
+       "start": 1795728461221
+      },
+      {
+       "end": 1795728461459,
+       "outcome": "executed",
+       "path": ":nessie-events-api:jandex",
+       "start": 1795728461224
+      },
+      {
+       "end": 1795728461479,
+       "outcome": "executed",
+       "path": ":nessie-events-api:jar",
+       "start": 1795728461460
+      },
+      {
+       "end": 1795728461822,
+       "outcome": "executed",
+       "path": ":nessie-model:generateOpenApiSpec",
+       "start": 1795728456826
+      },
+      {
+       "end": 1795728461925,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-config:compileJava",
+       "start": 1795728456029
+      },
+      {
+       "end": 1795728461927,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-config:classes",
+       "start": 1795728461927
+      },
+      {
+       "end": 1795728462055,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-config:jandex",
+       "start": 1795728461930
+      },
+      {
+       "end": 1795728462081,
+       "outcome": "executed",
+       "path": ":nessie-quarkus-config:jar",
+       "start": 1795728462056
+      },
+      {
+       "end": 1795728462421,
+       "outcome": "executed",
+       "path": ":nessie-model:jandex",
+       "start": 1795728461826
+      },
+      {
+       "end": 1795728462562,
+       "outcome": "executed",
+       "path": ":nessie-model:jar",
+       "start": 1795728462422
+      },
+      {
+       "end": 1795728464072,
+       "outcome": "executed",
+       "path": ":nessie-events-spi:compileJava",
+       "start": 1795728461481
+      },
+      {
+       "end": 1795728464074,
+       "outcome": "executed",
+       "path": ":nessie-events-spi:classes",
+       "start": 1795728464074
+      },
+      {
+       "end": 1795728464164,
+       "outcome": "executed",
+       "path": ":nessie-events-spi:jandex",
+       "start": 1795728464078
+      },
+      {
+       "end": 1795728464183,
+       "outcome": "executed",
+       "path": ":nessie-events-spi:jar",
+       "start": 1795728464165
+      },
+      {
+       "end": 1795728464192,
+       "outcome": "executed",
+       "path": ":nessie-versioned-spi:compileJava",
+       "start": 1795728456825
+      },
+      {
+       "end": 1795728464193,
+       "outcome": "executed",
+       "path": ":nessie-versioned-spi:classes",
+       "start": 1795728464193
+      },
+      {
+       "end": 1795728464395,
+       "outcome": "executed",
+       "path": ":nessie-versioned-spi:jandex",
+       "start": 1795728464196
+      },
+      {
+       "end": 1795728464440,
+       "outcome": "executed",
+       "path": ":nessie-versioned-spi:jar",
+       "start": 1795728464397
+      },
+      {
+       "end": 1795728465865,
+       "outcome": "executed",
+       "path": ":nessie-events-service:compileJava",
+       "start": 1795728464196
+      },
+      {
+       "end": 1795728465866,
+       "outcome": "executed",
+       "path": ":nessie-events-service:classes",
+       "start": 1795728465866
+      },
+      {
+       "end": 1795728465937,
+       "outcome": "executed",
+       "path": ":nessie-events-service:jandex",
+       "start": 1795728465871
+      },
+      {
+       "end": 1795728465946,
+       "outcome": "executed",
+       "path": ":nessie-events-service:jar",
+       "start": 1795728465938
+      },
+      {
+       "end": 1795728466664,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusGenerateAppModel",
+       "start": 1795728465948
+      },
+      {
+       "end": 1795728468454,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusGenerateCode",
+       "start": 1795728466665
+      },
+      {
+       "end": 1795728470943,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:compileJava",
+       "start": 1795728468458
+      },
+      {
+       "end": 1795728470943,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:classes",
+       "start": 1795728470943
+      },
+      {
+       "end": 1795728470953,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:compileTestFixturesJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728470950
+      },
+      {
+       "end": 1795728470955,
+       "outcome": "up-to-date",
+       "path": ":nessie-events-quarkus:testFixturesClasses",
+       "start": 1795728470955
+      },
+      {
+       "end": 1795728470964,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:testFixturesJar",
+       "start": 1795728470955
+      },
+      {
+       "end": 1795728471010,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusBuildAppModel",
+       "start": 1795728470966
+      },
+      {
+       "end": 1795728471031,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:jandex",
+       "start": 1795728470945
+      },
+      {
+       "end": 1795728471041,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:jar",
+       "start": 1795728471032
+      },
+      {
+       "end": 1795728472667,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusGenerateTestAppModel",
+       "start": 1795728471042
+      },
+      {
+       "end": 1795728473182,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusGenerateCodeTests",
+       "start": 1795728472668
+      },
+      {
+       "end": 1795728473188,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:compileIntTestJava",
+       "skip": "NO-SOURCE",
+       "start": 1795728473184
+      },
+      {
+       "end": 1795728473189,
+       "outcome": "up-to-date",
+       "path": ":nessie-events-quarkus:intTestClasses",
+       "start": 1795728473188
+      },
+      {
+       "end": 1795728476528,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusAppPartsBuild",
+       "start": 1795728473191
+      },
+      {
+       "end": 1795728476635,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusDependenciesBuild",
+       "start": 1795728476530
+      },
+      {
+       "end": 1795728476811,
+       "outcome": "executed",
+       "path": ":nessie-events-quarkus:quarkusBuild",
+       "start": 1795728476635
+      },
+      {
+       "end": 1795728476815,
+       "outcome": "skipped",
+       "path": ":nessie-events-quarkus:intTest",
+       "skip": "NO-SOURCE",
+       "start": 1795728476813
+      }
+     ]
+    }
+   ],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test-quarkus-events",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "int-test-quarkus-server": {
+   "deps": {
+    "begin": {
+     "at": 1795728288183,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728609454,
+     "bytes": 686954627,
+     "files": 3865,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test-quarkus-server",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "int-test-quarkus-tool": {
+   "deps": {
+    "begin": {
+     "at": 1795728336203,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728608516,
+     "bytes": 614874049,
+     "files": 2888,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test-quarkus-tool",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "int-test-stores": {
+   "deps": {
+    "begin": {
+     "at": 1795728289270,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728311177,
+     "bytes": 0,
+     "files": 0,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "int-test-stores",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "site": {
+   "deps": {
+    "begin": {
+     "at": 1795728292633,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728609501,
+     "bytes": 515408282,
+     "files": 3345,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "standalone",
+     "read-only": "true",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "site",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "test": {
+   "deps": {
+    "begin": {
+     "at": 1795728294092,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728313952,
+     "bytes": 0,
+     "files": 0,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261122.23.1",
+    "job": "test",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  },
+  "test-quarkus": {
+   "deps": {
+    "begin": {
+     "at": 1795728291445,
+     "bytes": 0,
+     "files": 0,
+     "phase": "begin",
+     "roDepCache": ""
+    },
+    "end": {
+     "at": 1795728608586,
+     "bytes": 800513368,
+     "files": 4174,
+     "phase": "end",
+     "roDepCache": ""
+    }
+   },
+   "invocations": [],
+   "job": {
+    "cacheOutputs": {
+     "base-cache-restore-status": "miss",
+     "cache-family-key": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b",
+     "cache-lineage-prefix": "mammoth-s1-gradle-5c40a2c1a1d97f065902b32bbfe1fbbeb9d1497072f79884a03bb728d967d35b-r-4a031c6fd1f125f218bbd1f465cc349ed8f67495ca55594b6b0af030aa26600c-g-",
+     "dependency-gc-due": "unknown",
+     "dependent-delta-artifact-count": "0",
+     "dependent-delta-status": "not-configured",
+     "gradle-ro-dep-cache": "",
+     "gradle-versions": "9.7.1",
+     "job-mode": "distributed-worker",
+     "read-only": "false",
+     "restored-cache-key": "",
+     "wrapper-count": "1",
+     "wrapper-downloaded-count": "1",
+     "wrapper-reused-count": "0"
+    },
+    "event": "push",
+    "imageVersion": "20261116.133.1",
+    "job": "test-quarkus",
+    "runAttempt": "1",
+    "runId": "45897938717",
+    "runnerArch": "X64",
+    "runnerOs": "Linux",
+    "schema": 1,
+    "sha": "bc89b0f86d1624b918b3b84f72560debce040200"
+   }
+  }
+ },
+ "upstream": "f400e1dfddd6336f30a54c688529d4d70bcfc607",
+ "variant": "mammoth"
+}
