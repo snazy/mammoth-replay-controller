@@ -188,6 +188,30 @@ class TestFailures(Harness):
         self.assertEqual(rec["failures"][0]["class"], "maven-central-429")
         self.assertEqual(rec["jobs"][0]["log"]["http_429_maven_central"], 1)
 
+    def test_planned_job_rerun_after_429_rerun(self):
+        # smoke/main-01 plans a rerun of "build"; a 429 rerun first must not skip it
+        self.start_seed()
+        self.finish_all()
+        self.advance(SPACING + 1)
+        self.tick()
+        self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s1") for v in VARIANTS})
+        self.advance(20)
+        log = "2026-01-01T00:00:00Z Could not GET 'https://repo.maven.apache.org/x.pom'. Received status code 429 from server: Too Many Requests\n"
+        self.gh.finish_run("me/mam", self.gh.repo("me/mam").runs[0]["id"], "failure", failed_job_log=log)
+        self.gh.finish_run("me/ref", self.gh.repo("me/ref").runs[0]["id"])
+        self.tick()  # mammoth: rerun failed jobs (attempt 2); reference: planned rerun of "build"
+        self.assertEqual([c[1] for c in self.mutations("rerun_failed_jobs")], ["me/mam"])
+        self.assertEqual([c[1] for c in self.mutations("rerun_job")], ["me/ref"])
+        self.advance(20)
+        self.finish_all()
+        self.tick()  # mammoth attempt 2 succeeded: the planned rerun still happens; reference is done
+        self.assertEqual(sorted(c[1] for c in self.mutations("rerun_job")), ["me/mam", "me/ref"])
+        self.advance(20)
+        self.finish_all()
+        d, _ = self.tick()
+        self.assertEqual(len(self.mutations("rerun_job")), 2)  # no second planned rerun
+        self.assertEqual(d.current, "smoke/pr-02")
+
     def test_unknown_failure_pauses_until_manual_rerun(self):
         self.start_seed()
         self.gh.finish_run("me/ref", self.gh.repo("me/ref").runs[0]["id"], "failure", failed_job_log="Z AssertionError\n> Task :x:test FAILED\n")

@@ -121,6 +121,18 @@ def last_mutation(ctx: _Ctx, variant: str, key: str) -> datetime | None:
     return max(times) if times else None
 
 
+def job_rerun_made(ctx: _Ctx, variant: str, run_id: int) -> bool:
+    """Whether the event's planned job rerun was already requested for this run.
+
+    Not derived from the attempt number: a rerun of failed jobs (e.g. after an HTTP 429) also
+    raises it. A request that failed with an error doesn't count; one whose response was lost does.
+    """
+    rows = [r for r in ctx.log if r.get("type") == "rerun_job" and r.get("variant") == variant and r.get("run_id") == run_id]
+    intents = sum(1 for r in rows if r.get("phase") == "intent")
+    errors = sum(1 for r in rows if r.get("phase") == "error")
+    return intents > errors
+
+
 def ci_status(ctx: _Ctx, variant: str, e: dict, d: Decision) -> tuple[str, datetime | None]:
     """Status of an applied CI event in one variant: running | done | waiting | exception."""
     key = event_key(e)
@@ -160,7 +172,7 @@ def ci_status(ctx: _Ctx, variant: str, e: dict, d: Decision) -> tuple[str, datet
     conclusion = run["conclusion"]
     attempt = run["run_attempt"]
     if conclusion == "success":
-        if e.get("rerun_job") and attempt < 2:
+        if e.get("rerun_job") and not job_rerun_made(ctx, variant, run["id"]):
             d.actions.append({"variant": variant, "event": key, "type": "rerun_job", "repo": repo, "run_id": run["id"], "attempt": attempt, "job": e["rerun_job"]})
             return "running", None
         if e["type"] == "pr":
