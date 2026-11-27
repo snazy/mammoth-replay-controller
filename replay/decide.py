@@ -294,13 +294,19 @@ def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) ->
             else:
                 current = furthest
     # Gates that a later applied event already passed are done.
+    passed_gate = False
     while current < len(ctx.events) and ctx.events[current]["type"] == "gate":
         g = ctx.events[current]
         status = gate_status(ctx, g, d)
         if status != "done":
             d.current = event_key(g)
             return d
+        passed_gate = True
         current += 1
+    # The spacing separates events within a campaign; a released gate already separates the
+    # campaigns, so the first event after it starts right away.
+    if passed_gate:
+        last_done_at = None
 
     if current >= len(ctx.events):
         d.finished = True

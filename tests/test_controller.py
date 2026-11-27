@@ -384,6 +384,12 @@ class TestReconciliation(Harness):
         for r in VARIANTS.values():
             self.assertEqual(self.gh.repo(r).caches, [])
             self.assertEqual(self.gh.repo(r).artifacts, [])
+        # the first event after the gate doesn't wait for the spacing
+        self.plan["settings"]["min_event_spacing_minutes"] = 100_000
+        self.advance(1)
+        d, _ = self.tick()
+        self.assertEqual(d.current, "scored/seed")
+        self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "c0") for v in VARIANTS})
 
 
 class TestClassify(unittest.TestCase):
