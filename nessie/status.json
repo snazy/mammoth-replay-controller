@@ -1,13 +1,11 @@
 {
  "applied_events": 2,
- "at": "2026-11-27T13:34:14Z",
+ "at": "2026-11-27T13:37:20Z",
  "current": "smoke/pr-02",
  "exceptions": [],
  "finished": false,
  "not_before": "2026-11-27T13:47:52Z",
- "notes": [
-  "collected reference smoke/main-01 run 45998965334 attempt 3"
- ],
+ "notes": [],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
