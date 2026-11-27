@@ -19,7 +19,7 @@ from replay.gitops import git
 ROOT = Path(__file__).resolve().parent.parent
 PROFILE = json.loads((ROOT / "profiles" / "nessie.json").read_text())
 SEED = PROFILE["campaigns"][0]["events"][0]["upstream"]
-MAMMOTH_ACTION = "buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122 # v0.5.1"
+MAMMOTH_ACTION = "buildish-tooling/buildish-mammoth-cache/actions/github/gradle@5befea0047cb7f46d468765ffd8061475941c3dc # v0.6.0"
 MAMMOTH_CONFIG = ".github/mammoth-gradle.yml"
 PREPARE_USES = "uses: ./.github/actions/ci-incr-build-cache-prepare"
 SAVE_USES = "uses: ./.github/actions/ci-incr-build-cache-save"
@@ -151,9 +151,6 @@ def mammoth(text: str) -> str:
             f"uses: {MAMMOTH_ACTION}",
             "with:",
             f"  config-file: {MAMMOTH_CONFIG}",
-            "  # Same value as in the config file. Works around a bug in Mammoth 0.5.1: the action's input",
-            "  # default (14) overrides the config file's value. Fixed with the next Mammoth release.",
-            "  cache-gc-older-than-days: '2'",
             *[f"  {i}" for i in inputs],
         )
         if job.name == AGGREGATOR:

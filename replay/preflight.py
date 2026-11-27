@@ -1,7 +1,7 @@
 """Read-only launch checks. Prints OK/WARN/FAIL lines; changes nothing."""
 
 MAMMOTH_REPO = "buildish-tooling/buildish-mammoth-cache"
-MAMMOTH_COMMIT = "ef15e2461c37cbfbb0ed915f015f50bec2a7f122"
+MAMMOTH_COMMIT = "5befea0047cb7f46d468765ffd8061475941c3dc"
 
 
 def preflight(plan: dict, api) -> list[tuple[str, str]]:

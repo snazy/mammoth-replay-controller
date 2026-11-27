@@ -3,11 +3,12 @@
 Replays a stretch of upstream Nessie history into two public repositories and compares their CI:
 
 - `snazy/nessie-mammoth-reference` keeps Nessie's incumbent distributed Gradle caching.
-- `snazy/nessie-mammoth-prototype` replaces it with the Mammoth cache action (v0.5.1).
+- `snazy/nessie-mammoth-prototype` replaces it with the Mammoth cache action (v0.6.0).
 
 Both get identical telemetry. A scheduled workflow in this repository is the only driver; no local
 machine is needed once the experiment runs. Launch steps and their approval scope are in
 [docs/launch-plan.md](docs/launch-plan.md).
+What the experiment showed so far is collected in [docs/observations.md](docs/observations.md).
 
 ## How it works
 

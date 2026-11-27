@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NESSIE = Path(os.environ.get("NESSIE_CHECKOUT", ROOT.parent.parent / "nessie"))
 PROFILE = json.loads((ROOT / "profiles" / "nessie.json").read_text())
 SEED = PROFILE["campaigns"][0]["events"][0]["upstream"]
-MAMMOTH = "buildish-tooling/buildish-mammoth-cache/actions/github/gradle@ef15e2461c37cbfbb0ed915f015f50bec2a7f122"
+MAMMOTH = "buildish-tooling/buildish-mammoth-cache/actions/github/gradle@5befea0047cb7f46d468765ffd8061475941c3dc"
 INCUMBENT = ("./.github/actions/ci-incr-build-cache-prepare", "./.github/actions/ci-incr-build-cache-save")
 
 
@@ -102,9 +102,8 @@ class TestNessieOverlay(unittest.TestCase):
             self.assertTrue(step["uses"].startswith(MAMMOTH))
             w = step["with"]
             self.assertEqual(w["config-file"], ".github/mammoth-gradle.yml")
-            # Mammoth 0.5.1 lets the action default (14) win over the config file
-            cfg = yaml.safe_load((self.dirs["mammoth"] / ".github/mammoth-gradle.yml").read_text())
-            self.assertEqual(int(w["cache-gc-older-than-days"]), cfg["cache-gc-older-than-days"], name)
+            # all other settings come from the config file only (Mammoth >= 0.6.0 applies them)
+            self.assertNotIn("cache-gc-older-than-days", w, name)
             if name in jobs["producers"]:
                 self.assertEqual(w["job-mode"], "distributed-worker")
             elif name == jobs["aggregator"]:
