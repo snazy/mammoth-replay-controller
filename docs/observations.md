@@ -4,6 +4,24 @@ What the experiment showed so far, newest first. **Observed** entries are backed
 may stop working when runs are deleted or expire); **expected** entries are design properties still
 to be confirmed by evidence. Smoke-campaign observations don't count towards the scored comparison.
 
+## Incumbent: no cache save on a later attempt of the same commit (observed, 2026-11-27)
+
+The incumbent's `gradle-home` cache key ends in the commit SHA, and `gradle/actions` doesn't save
+on an exact key hit (GitHub cache entries can't be overwritten either). In reference run
+45998965334 (`smoke/main-01`, head `0f545a8def`):
+
+- attempt 1: Store Cache skipped, because `intTest Quarkus Server` failed (`ContainerFetchException`);
+- attempt 2: Store Cache merged the 4 deltas and saved `gradle-home-v1|java-21|nessie-ci[ci]-0f545a8d…`
+  (542 MiB);
+- attempt 3 (the planned `code-checks` rerun): Store Cache restored that exact key and logged
+  "Cache hit occurred on the cache key …, not saving cache". The new `code-checks` delta never
+  reached the cache.
+
+So once a commit has a cache entry, later attempts on it can't add to it. Not a defect of the replay
+setup. It doesn't distort the scored comparison: there, the incumbent's Store Cache runs only in
+the first fully successful attempt, and that attempt saves. (Of the artifacts that job downloads,
+only `ci-gradle-caches-*-21` are cache deltas; reports and replay telemetry are ignored.)
+
 ## Mammoth reuses what failed and cancelled runs downloaded (observed, 2026-11-27)
 
 The Mammoth store-cache job runs with `always()` on pushes to `main` (see DESIGN.md, "store-cache
