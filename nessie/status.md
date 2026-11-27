@@ -1,9 +1,11 @@
 # Replay status (nessie)
 
-As of 2026-11-27T15:07:21Z.
+As of 2026-11-27T15:22:22Z.
 Applied in all variants: 4 of 47 CI events. Current: `scored/seed`.
 
-## Waiting
+## This tick
 
-- reference: run 46018806957 attempt 1 in_progress
-- mammoth: run 46018809569 attempt 1 in_progress
+- collected reference scored/seed run 46018806957 attempt 1
+- collected mammoth scored/seed run 46018809569 attempt 1
+- rerun_failed reference scored/seed done
+- rerun_failed mammoth scored/seed done
