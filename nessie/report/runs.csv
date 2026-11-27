@@ -2,7 +2,7 @@ event,event_type,variant,run_id,attempts,final_conclusion,total_exec_s,critical_
 smoke/seed,seed,reference,45989126099,2,success,,,,23.0,12,"[""code-checks""]","[""infrastructure""]","{""executed"": 4480, ""skipped"": 1790, ""up-to-date"": 900, ""from-cache"": 21}",38925,0,0,[],"[""smoke"", ""rerun""]",
 smoke/seed,seed,mammoth,45991379878,2,success,,,,25.0,13,"[""int-test""]","[""maven-central-429""]","{""executed"": 4340, ""from-cache"": 1967, ""skipped"": 3534, ""up-to-date"": 5866}",0,3,0,[],"[""smoke"", ""rerun""]",
 smoke/main-01,main,reference,,,,,,,,,,,,,,,,"[""smoke""]",not collected
-smoke/main-01,main,mammoth,,,,,,,,,,,,,,,,"[""smoke""]",not collected
+smoke/main-01,main,mammoth,45998963136,1,failure,,,,29.0,13,"[""site""]","[""maven-central-429""]","{""executed"": 4596, ""from-cache"": 2090, ""skipped"": 3984, ""up-to-date"": 6078}",1132,1,0,[],"[""smoke"", ""rerun""]",
 smoke/pr-02,pr,reference,,,,,,,,,,,,,,,,"[""smoke""]",not collected
 smoke/pr-02,pr,mammoth,,,,,,,,,,,,,,,,"[""smoke""]",not collected
 scored/seed,seed,reference,,,,,,,,,,,,,,,,"[""warm-up""]",not collected
