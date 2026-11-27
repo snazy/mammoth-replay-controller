@@ -1,22 +1,15 @@
 {
  "applied_events": 3,
- "at": "2026-11-27T14:33:36Z",
+ "at": "2026-11-27T14:37:22Z",
  "current": "scored/clear-caches",
  "exceptions": [],
  "finished": false,
  "not_before": null,
  "notes": [
-  "delete_caches_and_artifacts reference scored/clear-caches done",
   "delete_caches_and_artifacts mammoth scored/clear-caches done"
  ],
  "paused": false,
  "planned_actions": [
-  {
-   "event": "scored/clear-caches",
-   "repo": "snazy/nessie-mammoth-reference",
-   "type": "delete_caches_and_artifacts",
-   "variant": "reference"
-  },
   {
    "event": "scored/clear-caches",
    "repo": "snazy/nessie-mammoth-prototype",
