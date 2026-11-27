@@ -1,18 +1,18 @@
 {
  "applied_events": 4,
- "at": "2026-11-27T16:07:24Z",
- "current": "scored/seed",
+ "at": "2026-11-27T16:22:18Z",
+ "current": "scored/main-01",
  "exceptions": [],
  "finished": false,
- "not_before": null,
+ "not_before": "2026-11-27T20:09:39Z",
  "notes": [
-  "collected mammoth scored/seed run 46018809569 attempt 2"
+  "collected reference scored/seed run 46018806957 attempt 3"
  ],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
  "waiting": [
-  "reference: run 46018806957 attempt 3 queued"
+  "scored/main-01: not before 2026-11-27T20:09:39Z"
  ]
 }
