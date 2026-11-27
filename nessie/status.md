@@ -1,8 +1,9 @@
 # Replay status (nessie)
 
-As of 2026-11-27T14:28:03Z.
+As of 2026-11-27T14:33:36Z.
 Applied in all variants: 3 of 47 CI events. Current: `scored/clear-caches`.
 
-## Waiting
+## This tick
 
-- scored/clear-caches: waiting for release (add it to REPLAY_RELEASED_GATES)
+- delete_caches_and_artifacts reference scored/clear-caches done
+- delete_caches_and_artifacts mammoth scored/clear-caches done
