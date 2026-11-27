@@ -1,12 +1,11 @@
 {
  "applied_events": 0,
- "at": "2026-11-27T11:16:30Z",
+ "at": "2026-11-27T11:32:54Z",
  "current": "smoke/seed",
  "exceptions": [],
  "finished": false,
  "not_before": null,
  "notes": [
-  "update_ref reference smoke/seed done",
   "update_ref mammoth smoke/seed done"
  ],
  "paused": false,
@@ -15,22 +14,15 @@
    "event": "smoke/seed",
    "expected": "ed6cd37a3fd8a5a2e2248fcd6c48f9e4715a1235",
    "ref": "heads/main",
-   "repo": "snazy/nessie-mammoth-reference",
-   "sha": "0d4bd78155c503d2848ebcdb407ba0df7cf7f608",
-   "type": "update_ref",
-   "variant": "reference"
-  },
-  {
-   "event": "smoke/seed",
-   "expected": "ed6cd37a3fd8a5a2e2248fcd6c48f9e4715a1235",
-   "ref": "heads/main",
    "repo": "snazy/nessie-mammoth-prototype",
-   "sha": "de7908a8dd17757d67c41f22f4d4aaa6e9e9814c",
+   "sha": "b76c5716aded232ff38595349ef20aa4f3f0fd26",
    "type": "update_ref",
    "variant": "mammoth"
   }
  ],
  "profile": "nessie",
  "total_events": 47,
- "waiting": []
+ "waiting": [
+  "reference: run 45989126099 attempt 1 in_progress"
+ ]
 }
