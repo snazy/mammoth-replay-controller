@@ -401,6 +401,7 @@ def build_plan(profile: dict, upstream: Path, overlay_base: Path, repos: dict[st
         "variants": {v: {"repo": c["repo"], "overlay_tree": overlay_trees[v]} for v, c in profile["variants"].items()},
         "source_patches": [{"path": name, "sha256": hashlib.sha256((overlay_base / name).read_bytes()).hexdigest()} for name in ov.get("source_patches", [])],
         "settings": profile["controller"],
+        "campaign_settings": {c["id"]: c["settings"] for c in profile["campaigns"] if c.get("settings")},
         "workflow": {**profile["workflow"], "jobs": workflow_jobs},
         "jobs": profile["jobs"],
         "events": final_events,

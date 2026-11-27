@@ -77,6 +77,7 @@
   "campaigns": [
     {
       "id": "smoke",
+      "settings": {"min_event_spacing_minutes": 15},
       "events": [
         {"id": "seed", "type": "seed", "upstream": "f400e1dfdd"},
         {"id": "main-01", "type": "main", "upstream": "cc135c7088", "rerun_job": "code-checks"},

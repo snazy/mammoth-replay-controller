@@ -28,7 +28,8 @@ What the experiment showed so far is collected in [docs/observations.md](docs/ob
 - The controller holds no state of its own: progress is derived from `main`, the replay PRs and the
   CI runs. Each change is logged as an intent first; lost responses are reconciled on the next tick.
 - Each event goes to both repos together. The next event starts only when both variants finished
-  the current one, and at least `min_event_spacing_minutes` (4 h) later.
+  the current one, and at least `min_event_spacing_minutes` later: 4 h in the scored campaign,
+  15 min in the smoke campaign (a campaign's `settings` override the default).
 
 ## Operating it
 

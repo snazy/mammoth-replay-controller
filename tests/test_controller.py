@@ -6,6 +6,7 @@ from pathlib import Path
 
 from replay import classify, collect, controller
 from replay.decide import Env
+from replay.decide import spacing_minutes as controller_spacing
 
 from tests.fake_github import FakeGitHub
 
@@ -151,6 +152,20 @@ class TestHappyPath(Harness):
         self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s1") for v in VARIANTS})
         status = json.loads((self.data / "status.json").read_text())
         self.assertEqual(status["current"], "smoke/main-01")
+
+    def test_campaign_spacing_override(self):
+        self.plan["campaign_settings"] = {"smoke": {"min_event_spacing_minutes": 15}}
+        self.tick()
+        self.advance(30)
+        self.finish_all()
+        d, _ = self.tick()
+        # smoke events use the campaign's spacing, not the default
+        self.assertEqual(d.not_before, self.now + timedelta(minutes=15))
+        self.advance(16)
+        self.tick()
+        self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s1") for v in VARIANTS})
+        # a scored event falls back to the default
+        self.assertEqual(controller_spacing(self.plan, {"campaign": "scored"}), SPACING)
 
 
 class TestFailures(Harness):

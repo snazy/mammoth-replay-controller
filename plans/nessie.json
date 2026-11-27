@@ -60,6 +60,11 @@
       "scored/main-21"
     ]
   },
+  "campaign_settings": {
+    "smoke": {
+      "min_event_spacing_minutes": 15
+    }
+  },
   "workflow": {
     "file": "ci.yml",
     "name": "CI build",

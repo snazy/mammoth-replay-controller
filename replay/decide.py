@@ -214,6 +214,12 @@ def apply_actions(ctx: _Ctx, variant: str, e: dict) -> list[dict]:
     return actions
 
 
+def spacing_minutes(plan: dict, e: dict) -> float:
+    """Minimum wait before event e, after the previous event finished: the event's campaign may override the default."""
+    campaign = plan.get("campaign_settings", {}).get(e["campaign"], {})
+    return campaign.get("min_event_spacing_minutes", plan["settings"]["min_event_spacing_minutes"])
+
+
 def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) -> Decision:
     ctx = _Ctx(plan, snap, evidence, log, env)
     d = Decision()
@@ -276,7 +282,7 @@ def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) ->
 
     if not any(flags.values()):
         if last_done_at is not None:
-            not_before = last_done_at + timedelta(minutes=ctx.settings["min_event_spacing_minutes"])
+            not_before = last_done_at + timedelta(minutes=spacing_minutes(ctx.plan, e))
             d.not_before = not_before
             if env.now < not_before:
                 d.waiting.append(f"{key}: not before {iso(not_before)}")
