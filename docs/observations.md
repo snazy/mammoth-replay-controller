@@ -33,7 +33,9 @@ version of MongoDB" ([SERVER-121912](https://jira.mongodb.org/browse/SERVER-1219
 Mongo-based ITs in both variants (reference seed run 45897936513, the manual test run above), and
 looked like test flakiness until the container log was visible. Fixed for the replay by the source
 patch `02-mongodb-kernel-6.19.patch` (`GLIBC_TUNABLES=glibc.pthread.rseq=1`, as in Apache
-Polaris); `01-container-startup-retry.patch` adds the container-state diagnostics.
+Polaris); `01-container-startup-retry.patch` adds the container-state diagnostics. Confirmed: all
+Mongo-based ITs passed in the first attempt of both smoke seed runs (reference 45989126099,
+prototype 45991379878).
 
 ## No push run when `main` is force-pushed to an unrelated root commit (observed, 2026-11-27)
 
@@ -46,8 +48,10 @@ workflow run, not even a pending one, in either repository; a commit on top did 
 
 The tick cron (every 15 minutes) fired once in the first ~14 hours after the controller was pushed
 (03:40 UTC; it failed, most likely on the expected state-mismatch exception while the replay repos
-were being reset; its log was not retrievable). All progress so far came from manual ticks. Open:
-whether GitHub's schedule settles for the new repository, or the controller needs another trigger.
+were being reset; its log was not retrievable). A failed run doesn't disable a schedule, and the
+workflow stayed `active`; the slots before that run didn't fire either. `REPLAY_PAUSED` doesn't
+affect whether ticks start. Worked around since 12:00 UTC: an always-on machine dispatches the
+ticks every 15 minutes (`tools/dispatch`); the cron stays as a backup.
 
 ## Mammoth 0.5.1: config-file values overridden by action defaults (observed, 2026-11-26)
 
@@ -56,14 +60,23 @@ won, because GitHub passes metadata defaults like explicit inputs. Fixed in Mamm
 the replay uses since 2026-11-27; 0.6.0 also stops counting failed Gradle workers towards GC sweep
 coverage and lets the aggregator merge when a worker uploaded nothing.
 
-## Gradle settings-plugin resolution failures, only on the Mammoth side (observed, 2026-11-26)
+## Early Gradle failures from Maven Central errors, on both sides (observed, 2026-11-26/27)
 
-Three, then four Mammoth jobs of the first prototype seed run failed within ~20 s with "could not
-resolve plugin artifact" for `com.gradle.develocity` / `com.gradleup.nmcp.settings`; no reference
-job did. `pluginManagement` resolves from Maven Central first, so this is probably a non-404
-response from Maven Central; Gradle shows the HTTP status only with `--info`. Mammoth changes no
-Gradle networking before the build, so the asymmetry is unexplained. Classified as infrastructure
-(rerun) since then. To watch: whether it recurs, and whether only on one side.
+Three, then four Mammoth jobs of the first prototype seed run (2026-11-26) failed within ~20 s with
+"could not resolve plugin artifact" for `com.gradle.develocity` / `com.gradleup.nmcp.settings`,
+while no reference job did. `pluginManagement` resolves from Maven Central first, so this is
+probably a non-404 response from Maven Central; Gradle shows the HTTP status only with `--info`.
+
+The smoke seed runs (2026-11-27) showed it isn't Mammoth-specific:
+
+- reference 45989126099, attempt 1: `code-checks` failed after 14 s with the same "could not resolve
+  plugin artifact … com.gradle.develocity"; classified as infrastructure;
+- prototype 45991379878, attempt 1: `int-test` failed after 16 s with three HTTP 429 responses from
+  Maven Central; classified as `maven-central-429`.
+
+Both passed on a manual rerun (attempt 2). So the failures are Maven Central throttling or errors
+early in the build, hitting whichever jobs resolve first, on both sides. Both classes are rerun
+automatically (at most twice per run).
 
 ## Other
 
