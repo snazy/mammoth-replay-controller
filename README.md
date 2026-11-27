@@ -56,6 +56,9 @@ names the run and what to do.
   repos (after every smoke attempt is collected); the scored campaign then starts cold.
 - **Stop**: set `REPLAY_PAUSED=true`, or disable the "Replay tick" workflow. Running CI is never
   cancelled.
+- **Tick trigger**: GitHub's schedule barely fires for this repository, so an always-on machine
+  starts the ticks with `workflow_dispatch`; see [tools/dispatch](tools/dispatch/README.md). The cron
+  in `replay.yml` stays as a backup.
 - **Manual tick or read-only checks**: run the "Replay tick" workflow manually, with `command`
   `tick` or `preflight`.
 

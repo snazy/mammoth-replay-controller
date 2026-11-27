@@ -1,0 +1,11 @@
+[Unit]
+Description=Start a Mammoth replay controller tick every 15 minutes
+
+[Timer]
+OnCalendar=*:07,22,37,52
+# No catch-up of missed ticks after downtime: the next regular tick reconciles everything.
+Persistent=false
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

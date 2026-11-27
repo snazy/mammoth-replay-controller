@@ -1,0 +1,15 @@
+[Unit]
+Description=Start one Mammoth replay controller tick on GitHub
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Holds REPLAY_DISPATCH_TOKEN=...; readable by root only (chmod 600).
+EnvironmentFile=/etc/mammoth-replay/dispatch.env
+ExecStart=/usr/local/bin/mammoth-replay-dispatch-tick
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
