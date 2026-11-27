@@ -46,3 +46,5 @@
 {"at": "2026-11-27T14:33:36Z", "event": "scored/clear-caches", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": {"artifacts": 103, "caches": 34}, "type": "delete_caches_and_artifacts", "variant": "mammoth"}
 {"at": "2026-11-27T14:37:22Z", "event": "scored/clear-caches", "phase": "intent", "repo": "snazy/nessie-mammoth-prototype", "type": "delete_caches_and_artifacts", "variant": "mammoth"}
 {"at": "2026-11-27T14:37:22Z", "event": "scored/clear-caches", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": {"artifacts": 0, "caches": 0}, "type": "delete_caches_and_artifacts", "variant": "mammoth"}
+{"at": "2026-11-27T14:42:32Z", "event": "scored/clear-caches", "phase": "intent", "repo": "snazy/nessie-mammoth-prototype", "type": "delete_caches_and_artifacts", "variant": "mammoth"}
+{"at": "2026-11-27T14:42:32Z", "event": "scored/clear-caches", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": {"artifacts": 0, "caches": 0}, "type": "delete_caches_and_artifacts", "variant": "mammoth"}
