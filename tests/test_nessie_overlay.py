@@ -67,7 +67,8 @@ class TestNessieOverlay(unittest.TestCase):
             mam_steps = [s for s in mam_job["steps"] if not is_cache_step(s)]
             self.assertEqual(ref_steps, mam_steps, name)
             for key in set(ref_job) | set(mam_job):
-                if key != "steps":
+                # the aggregator's condition differs by design (see test_mammoth_roles)
+                if key != "steps" and (name, key) != (PROFILE["jobs"]["aggregator"], "if"):
                     self.assertEqual(ref_job.get(key), mam_job.get(key), f"{name}.{key}")
 
     def test_telemetry_around_cache_steps(self):
@@ -101,12 +102,18 @@ class TestNessieOverlay(unittest.TestCase):
             self.assertTrue(step["uses"].startswith(MAMMOTH))
             w = step["with"]
             self.assertEqual(w["config-file"], ".github/mammoth-gradle.yml")
+            # Mammoth 0.5.1 lets the action default (14) win over the config file
+            cfg = yaml.safe_load((self.dirs["mammoth"] / ".github/mammoth-gradle.yml").read_text())
+            self.assertEqual(int(w["cache-gc-older-than-days"]), cfg["cache-gc-older-than-days"], name)
             if name in jobs["producers"]:
                 self.assertEqual(w["job-mode"], "distributed-worker")
             elif name == jobs["aggregator"]:
                 self.assertEqual(w["job-mode"], "distributed-aggregator")
                 self.assertEqual([j.strip() for j in w["dependent-jobs"].split(",")], jobs["producers"])
                 self.assertEqual(set(job["needs"]), set(jobs["producers"]))
+                # Mammoth also stores after failed builds; the reference keeps the incumbent's condition
+                self.assertEqual(job["if"], "always() && github.event_name == 'push' && github.ref == 'refs/heads/main'")
+                self.assertEqual(self.jobs("reference")[name]["if"], "github.event_name == 'push' && github.ref == 'refs/heads/main'")
             else:
                 self.assertEqual(w["job-mode"], "standalone")
                 self.assertEqual(w["read-only"], "true")

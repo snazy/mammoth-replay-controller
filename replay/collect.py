@@ -80,6 +80,22 @@ def parse_telemetry(files: dict[str, bytes]) -> dict:
     return out
 
 
+def mark_follow_on_failures(plan: dict, failures: list[dict], job_records: list[dict]) -> None:
+    """An aggregator failing next to a failed producer (e.g. its delta is missing) follows that failure.
+
+    The class of the attempt is then decided by the producers' failures; rerunning the failed jobs
+    reruns the aggregator, too.
+    """
+    producers = set(plan["jobs"]["producers"])
+    if any(f["job"] in producers for f in failures):
+        for f in failures:
+            if f["job"] == plan["jobs"]["aggregator"] and f["class"] == "unknown":
+                f["class"] = "follow-on"
+        for rec in job_records:
+            if rec["job"] == plan["jobs"]["aggregator"] and rec.get("failure_class") == "unknown":
+                rec["failure_class"] = "follow-on"
+
+
 def collect_attempt(plan: dict, api, variant: str, e: dict, run: dict, attempt: int, now: datetime) -> dict:
     repo = plan["variants"][variant]["repo"]
     patterns = plan["settings"].get("failure_patterns", {})
@@ -123,6 +139,7 @@ def collect_attempt(plan: dict, api, variant: str, e: dict, run: dict, attempt: 
             rec["failure_class"] = cls
             failures.append({"job": rec["job"] or j["name"], "conclusion": j["conclusion"], "class": cls})
         job_records.append(rec)
+    mark_follow_on_failures(plan, failures, job_records)
     return {
         "schema": 1,
         "collector_version": classify.COLLECTOR_VERSION,

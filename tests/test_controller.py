@@ -343,6 +343,21 @@ class TestClassify(unittest.TestCase):
         self.assertEqual(classify.classify("failure", x, patterns), "infrastructure")
         self.assertEqual(classify.classify("failure", classify.extract(log), {}), "unknown")
 
+    def test_aggregator_failure_follows_producer_failure(self):
+        plan = {"jobs": {"producers": ["test"], "aggregator": "store-cache"}}
+
+        def attempt(*jobs):
+            failures = [{"job": j, "conclusion": "failure", "class": c} for j, c in jobs]
+            records = [{"job": j, "failure_class": c} for j, c in jobs]
+            collect.mark_follow_on_failures(plan, failures, records)
+            return [f["class"] for f in failures], [r["failure_class"] for r in records]
+
+        self.assertEqual(attempt(("test", "infrastructure"), ("store-cache", "unknown")), (["infrastructure", "follow-on"], ["infrastructure", "follow-on"]))
+        # the producer's own class still decides: an unknown producer failure keeps pausing
+        self.assertEqual(attempt(("test", "unknown"), ("store-cache", "unknown"))[0], ["unknown", "follow-on"])
+        # without a failed producer, an aggregator failure stays unknown
+        self.assertEqual(attempt(("store-cache", "unknown"))[0], ["unknown"])
+
     def test_parse_telemetry(self):
         files = {
             "job.json": b'{"job":"test"}',

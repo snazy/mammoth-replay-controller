@@ -42,6 +42,9 @@ names the run and what to do.
   jobs in the GitHub UI (or `gh run rerun <id> --failed --repo <repo>`) to continue. Known
   patterns (Maven Central HTTP 429, infrastructure errors, configured flaky tests in
   `failure_patterns`) are rerun automatically, at most twice per run.
+  A `store-cache` failure next to a failed producer job is a follow-on failure (Mammoth's aggregator
+  runs after failed builds, too, and fails when a worker's delta is missing); the producers' failures
+  decide.
 - **Smoke run → scored run**: after the smoke campaign the controller waits at gate
   `scored/clear-caches`. Release it to delete all Actions caches and artifacts in both replay
   repos (after every smoke attempt is collected); the scored campaign then starts cold.

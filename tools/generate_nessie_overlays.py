@@ -111,6 +111,19 @@ def common(text: str) -> str:
     return join(head, jobs)
 
 
+AGGREGATOR_IF = "    if: github.event_name == 'push' && github.ref == 'refs/heads/main'\n"
+
+
+def aggregate_after_failures(job: Job) -> None:
+    """Mammoth publishes the additions of failed workers too, so the aggregator runs after failures."""
+    i = job.lines.index(AGGREGATOR_IF)
+    job.lines[i : i + 1] = [
+        "    # Unlike the incumbent, also store after failed builds: Mammoth consumes the deltas of failed\n",
+        "    # workers, so a later build doesn't download (e.g. from Maven Central) the same things again.\n",
+        "    if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'\n",
+    ]
+
+
 def mammoth(text: str) -> str:
     head, jobs = split_jobs(text)
     for job in jobs:
@@ -138,8 +151,14 @@ def mammoth(text: str) -> str:
             f"uses: {MAMMOTH_ACTION}",
             "with:",
             f"  config-file: {MAMMOTH_CONFIG}",
+            "  # Same value as in the config file. Works around a bug in Mammoth 0.5.1: the action's input",
+            "  # default (14) overrides the config file's value. Fixed with the next Mammoth release.",
+            "  cache-gc-older-than-days: '2'",
             *[f"  {i}" for i in inputs],
         )
+        if job.name == AGGREGATOR:
+            # after replacing the step: this inserts lines before it
+            aggregate_after_failures(job)
     out = join(head, jobs)
     for needle in (PREPARE_USES, SAVE_USES):
         if needle in out:
