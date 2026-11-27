@@ -21,7 +21,7 @@
   "overlay": {
     "keep": [".github/workflows/ci.yml", ".github/actions"],
     "common_layers": ["nessie/common"],
-    "source_patches": ["nessie/source/01-container-startup-retry.patch"]
+    "source_patches": ["nessie/source/01-container-startup-retry.patch", "nessie/source/02-mongodb-kernel-6.19.patch"]
   },
   "workflow": {
     "file": "ci.yml",
