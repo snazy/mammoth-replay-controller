@@ -45,7 +45,8 @@ def take_snapshot(plan: dict, api) -> dict:
             "staging": tags,
             "prs": prs,
             "runs": api.list_workflow_runs(repo, plan["workflow"]["file"]),
-            "cache_count": usage.get("active_caches_count", 0),
+            # the usage endpoint lags by minutes after deletions; the listing doesn't
+            "cache_count": len(api.list_caches(repo)),
             "cache_bytes": usage.get("active_caches_size_in_bytes", 0),
             "artifact_count": len(api.list_artifacts(repo)),
         }

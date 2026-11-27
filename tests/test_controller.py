@@ -391,6 +391,23 @@ class TestReconciliation(Harness):
         self.assertEqual(d.current, "scored/seed")
         self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "c0") for v in VARIANTS})
 
+    def test_gate_ignores_lagging_cache_usage(self):
+        # GitHub's cache usage endpoint still reports deleted caches for a few minutes
+        real_usage = self.gh.cache_usage
+        self.gh.cache_usage = lambda repo: {**real_usage(repo), "active_caches_count": 7}
+        for _ in range(60):
+            d, _ = self.tick()
+            if d.current == "scored/clear-caches":
+                break
+            self.advance(SPACING + 1)
+            self.finish_all()
+        self.released.add("scored/clear-caches")
+        self.tick()  # deletes
+        self.advance(1)
+        d, _ = self.tick()
+        self.assertEqual(d.current, "scored/seed")
+        self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "c0") for v in VARIANTS})
+
 
 class TestClassify(unittest.TestCase):
     def test_extract(self):
