@@ -1,6 +1,6 @@
 # Replay status (nessie)
 
-As of 2026-11-27T16:52:17Z.
+As of 2026-11-27T17:07:17Z.
 Applied in all variants: 4 of 47 CI events. Current: `scored/main-01`.
 Next mutation not before 2026-11-27T20:09:39Z.
 
