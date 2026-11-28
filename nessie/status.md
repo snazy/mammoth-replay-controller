@@ -1,9 +1,9 @@
 # Replay status (nessie)
 
-As of 2026-11-28T09:37:15Z.
-Applied in all variants: 7 of 47 CI events. Current: `scored/pr-03`.
+As of 2026-11-28T09:38:20Z.
+Applied in all variants: 7 of 47 CI events. Current: `scored/main-03`.
+Next mutation not before 2026-11-28T12:56:56Z.
 
-## This tick
+## Waiting
 
-- collected mammoth scored/pr-03 run 46128165120 attempt 2
-- close_pr mammoth scored/pr-03 done
+- scored/main-03: not before 2026-11-28T12:56:56Z
