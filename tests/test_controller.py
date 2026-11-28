@@ -6,6 +6,7 @@ from pathlib import Path
 
 from replay import classify, collect, controller
 from replay.decide import Env
+from replay.decide import event_not_before as controller_not_before
 from replay.decide import rerun_wait as controller_rerun_wait
 from replay.decide import spacing_minutes as controller_spacing
 
@@ -131,6 +132,7 @@ class TestHappyPath(Harness):
         self.assertTrue(deletes and scored_seed and max(deletes) < min(scored_seed))
 
     def test_spacing_and_barrier(self):
+        started = self.now
         self.tick()  # creates main for the seed in both variants
         self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s0") for v in VARIANTS})
         # one variant finishes, the other is still running: no next event
@@ -143,9 +145,10 @@ class TestHappyPath(Harness):
         self.finish_all()
         d, _ = self.tick()
         self.assertEqual(d.current, "smoke/main-01")
-        self.assertEqual(d.not_before, self.now + timedelta(minutes=SPACING))
+        # the spacing counts from the start of the previous event
+        self.assertEqual(d.not_before, started + timedelta(minutes=SPACING))
         self.assertEqual(self.main("mammoth"), sha("mammoth", "s0"))
-        self.advance(SPACING - 1)
+        self.advance(SPACING - 60 - 1)
         self.tick()
         self.assertEqual(self.main("mammoth"), sha("mammoth", "s0"))
         self.advance(2)
@@ -167,6 +170,31 @@ class TestHappyPath(Harness):
         self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s1") for v in VARIANTS})
         # a scored event falls back to the default
         self.assertEqual(controller_spacing(self.plan, {"campaign": "scored"}), SPACING)
+
+    def test_spacing_after_a_long_previous_event(self):
+        # the previous event took longer than the spacing (e.g. paused overnight): only the gap applies
+        started = self.now
+        self.tick()
+        self.advance(SPACING + 120)
+        self.finish_all()
+        d, _ = self.tick()
+        self.assertEqual(d.not_before, self.now + timedelta(minutes=15))
+        self.assertGreater(d.not_before, started + timedelta(minutes=SPACING))
+        self.advance(16)
+        self.tick()
+        self.assertEqual({v: self.main(v) for v in VARIANTS}, {v: sha(v, "s1") for v in VARIANTS})
+
+    def test_event_not_before(self):
+        plan = {"settings": {"min_event_spacing_minutes": 240}}
+        e = {"campaign": "scored"}
+        t = datetime(2026, 11, 28, 1, 7, tzinfo=timezone.utc)
+        h = lambda n: timedelta(hours=n)  # noqa: E731
+        # scored/main-02: started 01:07, finished 08:40 after a manual rerun
+        self.assertEqual(controller_not_before(plan, e, t, t + h(7.5)), t + h(7.5) + timedelta(minutes=15))
+        # a normal event: 4 h from its start
+        self.assertEqual(controller_not_before(plan, e, t, t + h(1)), t + h(4))
+        # no recorded start: from the finish, as before
+        self.assertEqual(controller_not_before(plan, e, None, t + h(1)), t + h(5))
 
 
 class TestFailures(Harness):

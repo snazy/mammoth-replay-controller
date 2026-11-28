@@ -12,7 +12,7 @@ touches `projectnessie/nessie` or any other upstream repository.
 | Pushed later by the controller only | Replay repos: `main` (moved through 40 plan commits), 7 branches `replay/<campaign>/pr-NN`, 7 PRs (opened and closed, never merged) |
 | CI runs per replay repo | Smoke: 3 runs plus 1 job rerun. Scored: 44 runs (37 `main` pushes, 6 PRs, 1 seed). Automatic reruns of failed jobs: smoke at most 2 per run; scored at most 5 per run, with 15/30/60/120 min waits before reruns 2–5. |
 | Deletions | Once, at gate `scored/clear-caches` after you release it: all Actions caches and artifacts in both replay repos |
-| Duration | Smoke a few hours (15 min spacing plus CI time per event), then about 9 days for the scored campaign (4 h spacing plus CI time per event) |
+| Duration | Smoke a few hours (15 min spacing plus CI time per event), then about 7.5 days for the scored campaign (4 h from event start to event start), plus the length of any pauses |
 | Cost | Public repositories on standard runners: no Actions minutes billed. Controller ticks: about 1–2 min every 15 min. |
 | Limits | At most 6 mutations per tick; no force-push; runs are never cancelled; unrecognised failures pause the replay |
 | Who can open issues and PRs | Collaborators only (repository settings), in all three repositories. No collaborators are invited, so effectively only the owner and the controller's token. |

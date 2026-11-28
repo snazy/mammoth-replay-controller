@@ -239,8 +239,31 @@ def campaign_setting(plan: dict, e: dict, name: str, default=None):
 
 
 def spacing_minutes(plan: dict, e: dict) -> float:
-    """Minimum wait before event e, after the previous event finished."""
+    """Minimum time from the start of the previous event to the start of event e."""
     return campaign_setting(plan, e, "min_event_spacing_minutes")
+
+
+def event_not_before(plan: dict, e: dict, prev_started_at: datetime | None, prev_done_at: datetime) -> datetime:
+    """Earliest start of event e.
+
+    The spacing counts from the start of the previous event, so a pause or rerun of that event
+    doesn't delay the cadence a second time; min_event_gap_minutes keeps a short gap after its runs
+    finished. Without a recorded start, the spacing counts from the finish.
+    """
+    spacing = timedelta(minutes=spacing_minutes(plan, e))
+    if prev_started_at is None:
+        return prev_done_at + spacing
+    gap = timedelta(minutes=campaign_setting(plan, e, "min_event_gap_minutes", 15))
+    return max(prev_started_at + spacing, prev_done_at + gap)
+
+
+def event_started_at(ctx: _Ctx, key: str) -> datetime | None:
+    """When the controller first applied the event in any variant (moved main or opened its PR)."""
+    times = [
+        parse_ts(r["at"]) for r in ctx.log
+        if r.get("event") == key and r.get("phase") == "done" and r.get("type") in ("update_ref", "create_ref", "create_pr")
+    ]
+    return min(times) if times else None
 
 
 def rerun_wait(plan: dict, e: dict, rerun: int) -> timedelta:
@@ -279,6 +302,7 @@ def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) ->
             d.progress[event_key(e)] = {v: applied(ctx, v, i) for v in ctx.variants}
 
     last_done_at = None
+    last_started_at = None
     if furthest is None:
         current = 0
     else:
@@ -291,6 +315,7 @@ def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) ->
             results = [ci_status(ctx, v, e, sub) for v in ctx.variants]
             if all(s == "done" for s, _ in results):
                 last_done_at = max(t for _, t in results)
+                last_started_at = event_started_at(ctx, event_key(e))
                 current = furthest + 1
             else:
                 current = furthest
@@ -321,7 +346,7 @@ def decide(plan: dict, snap: dict, evidence: dict, log: list[dict], env: Env) ->
 
     if not any(flags.values()):
         if last_done_at is not None:
-            not_before = last_done_at + timedelta(minutes=spacing_minutes(ctx.plan, e))
+            not_before = event_not_before(ctx.plan, e, last_started_at, last_done_at)
             d.not_before = not_before
             if env.now < not_before:
                 d.waiting.append(f"{key}: not before {iso(not_before)}")
