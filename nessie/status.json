@@ -1,17 +1,20 @@
 {
  "applied_events": 6,
- "at": "2026-11-28T01:22:17Z",
+ "at": "2026-11-28T01:37:15Z",
  "current": "scored/main-02",
- "exceptions": [],
+ "exceptions": [
+  "reference: run https://github.com/snazy/nessie-mammoth-reference/actions/runs/46091488490 attempt 1 has unclassified failures in site. Inspect it; rerun the failed jobs manually to continue, or adjust failure patterns."
+ ],
  "finished": false,
  "not_before": null,
- "notes": [],
+ "notes": [
+  "collected reference scored/main-02 run 46091488490 attempt 1",
+  "collected mammoth scored/main-02 run 46091490121 attempt 1",
+  "exceptions present; no mutations"
+ ],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
- "waiting": [
-  "reference: run 46091488490 attempt 1 in_progress",
-  "mammoth: run 46091490121 attempt 1 in_progress"
- ]
+ "waiting": []
 }
