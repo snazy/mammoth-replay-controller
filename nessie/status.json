@@ -1,13 +1,11 @@
 {
  "applied_events": 8,
- "at": "2026-11-28T13:52:20Z",
+ "at": "2026-11-28T14:07:20Z",
  "current": "scored/main-04",
  "exceptions": [],
  "finished": false,
  "not_before": "2026-11-28T17:07:19Z",
- "notes": [
-  "collected mammoth scored/main-03 run 46148029045 attempt 2"
- ],
+ "notes": [],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
