@@ -9,24 +9,30 @@ to be confirmed by evidence. Smoke-campaign observations don't count towards the
 Scored seed, caches cleared just before. In both variants only `intTest` failed in attempt 1;
 the other 11 jobs resolved the same Gradle plugins and succeeded.
 
-| | `intTest` attempt 1 | `intTest` attempt 2 |
-| --- | --- | --- |
-| reference 46018806957 | failed after 14 s: could not resolve plugin artifact `com.gradle.develocity…:4.6.0` | failed after 11 s, same plugin |
-| prototype 46018809569 | failed after 17 s: could not resolve plugin artifact `com.gradleup.nmcp.settings…:1.6.2` | past plugin resolution (Gradle still running after 9 min) |
+| | `intTest` attempt 1 | `intTest` attempt 2 | `intTest` attempt 3 | Run succeeded |
+| --- | --- | --- | --- | --- |
+| reference 46018806957 | failed after 14 s: could not resolve plugin artifact `com.gradle.develocity…:4.6.0` | failed after 11 s, same plugin | succeeded (cold) | 16:09:39Z, 3 attempts |
+| prototype 46018809569 | failed after 17 s: could not resolve plugin artifact `com.gradleup.nmcp.settings…:1.6.2` | succeeded, every Mammoth partition restored (hits) | – | 15:53:38Z, 2 attempts |
 
-Mechanism:
+Both runs started at 14:45:41Z.
 
-- Mammoth's store-cache runs with `always()`, so attempt 1 already merged what the 11 successful
-  jobs had downloaded, plugins included. A rerun of the failed job restores that cache and doesn't
-  need Maven Central for them.
-- The incumbent saves only when all producer jobs succeed; its Store Cache was skipped in both
-  attempts. On a cold cache, every rerun of the failed job downloads everything again and gets
-  through only when Maven Central happens not to throttle.
+Mechanism, confirmed for the prototype:
 
-One case per side; the reference's next rerun may succeed by chance. The effect doesn't show in
-job timings (taken from first attempts) but in reruns per event and time until the run succeeds.
-To watch in the scored campaign: reruns per variant after `maven-central-429` and infrastructure
-failures.
+- Mammoth's store-cache runs with `always()`. Attempt 1's Store Cache (15:05:41–15:14:30Z) merged
+  the deltas of all 9 workers and saved every Mammoth cache entry that existed before attempt 2
+  (created 15:14:08–15:14:21Z; the gate had deleted all caches at 14:37Z). The attempt-2 `intTest`
+  restored all partitions from those entries, and its log has no `Download https://` lines, so the
+  plugins came from the cache, not Maven Central.
+- The incumbent saves only when all producer jobs succeed; its Store Cache was skipped in attempts
+  1 and 2. On a cold cache, every rerun of the failed job downloads everything again and gets
+  through only when Maven Central happens not to throttle. That happened in attempt 3, about
+  30 min later (reruns 2 and later wait in the scored campaign).
+
+Result here: one rerun fewer, and the run succeeded 16 min earlier. Still one case; the
+reference's success in attempt 3 shows that a cold rerun can also get through by chance. The
+effect doesn't show in job timings (taken from first attempts) but in reruns per event and time
+until the run succeeds. To watch in the scored campaign: reruns per variant after
+`maven-central-429` and infrastructure failures.
 
 ## Incumbent: no cache save on a later attempt of the same commit (observed, 2026-11-27)
 
