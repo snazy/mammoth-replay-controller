@@ -1,13 +1,11 @@
 {
  "applied_events": 6,
- "at": "2026-11-28T08:43:40Z",
+ "at": "2026-11-28T08:52:15Z",
  "current": "scored/pr-03",
  "exceptions": [],
  "finished": false,
  "not_before": "2026-11-28T12:40:49Z",
- "notes": [
-  "collected reference scored/main-02 run 46091488490 attempt 2"
- ],
+ "notes": [],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
