@@ -1,16 +1,54 @@
 {
  "applied_events": 6,
- "at": "2026-11-28T08:52:15Z",
+ "at": "2026-11-28T08:56:56Z",
  "current": "scored/pr-03",
  "exceptions": [],
  "finished": false,
- "not_before": "2026-11-28T12:40:49Z",
- "notes": [],
+ "not_before": "2026-11-28T08:55:49Z",
+ "notes": [
+  "create_ref mammoth scored/pr-03 done",
+  "create_pr mammoth scored/pr-03 done",
+  "create_ref reference scored/pr-03 done",
+  "create_pr reference scored/pr-03 done"
+ ],
  "paused": false,
- "planned_actions": [],
+ "planned_actions": [
+  {
+   "event": "scored/pr-03",
+   "ref": "heads/replay/scored/pr-03",
+   "repo": "snazy/nessie-mammoth-prototype",
+   "sha": "e2331d2bdb60cbb8f38e16468a6099f9873f18d3",
+   "type": "create_ref",
+   "variant": "mammoth"
+  },
+  {
+   "base": "main",
+   "event": "scored/pr-03",
+   "head": "replay/scored/pr-03",
+   "repo": "snazy/nessie-mammoth-prototype",
+   "title": "feat(helm): add optional Nessie GC CronJob (PR 12643)",
+   "type": "create_pr",
+   "variant": "mammoth"
+  },
+  {
+   "event": "scored/pr-03",
+   "ref": "heads/replay/scored/pr-03",
+   "repo": "snazy/nessie-mammoth-reference",
+   "sha": "b2bad709e95001237d2d5843c294a73284567a15",
+   "type": "create_ref",
+   "variant": "reference"
+  },
+  {
+   "base": "main",
+   "event": "scored/pr-03",
+   "head": "replay/scored/pr-03",
+   "repo": "snazy/nessie-mammoth-reference",
+   "title": "feat(helm): add optional Nessie GC CronJob (PR 12643)",
+   "type": "create_pr",
+   "variant": "reference"
+  }
+ ],
  "profile": "nessie",
  "total_events": 47,
- "waiting": [
-  "scored/pr-03: not before 2026-11-28T12:40:49Z"
- ]
+ "waiting": []
 }
