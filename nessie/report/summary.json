@@ -35,8 +35,8 @@
     "pr": {
       "total_exec_s": {
         "reference": {
-          "n": 0,
-          "median": null
+          "n": 1,
+          "median": 4377.0
         },
         "mammoth": {
           "n": 0,
@@ -45,8 +45,8 @@
       },
       "critical_path_s": {
         "reference": {
-          "n": 0,
-          "median": null
+          "n": 1,
+          "median": 876.0
         },
         "mammoth": {
           "n": 0,
@@ -55,8 +55,8 @@
       },
       "cache_s": {
         "reference": {
-          "n": 0,
-          "median": null
+          "n": 1,
+          "median": 383.0
         },
         "mammoth": {
           "n": 0,
