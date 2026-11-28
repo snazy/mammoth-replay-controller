@@ -1,16 +1,18 @@
 {
  "applied_events": 6,
- "at": "2026-11-28T08:37:15Z",
- "current": "scored/main-02",
+ "at": "2026-11-28T08:43:40Z",
+ "current": "scored/pr-03",
  "exceptions": [],
  "finished": false,
- "not_before": null,
- "notes": [],
+ "not_before": "2026-11-28T12:40:49Z",
+ "notes": [
+  "collected reference scored/main-02 run 46091488490 attempt 2"
+ ],
  "paused": false,
  "planned_actions": [],
  "profile": "nessie",
  "total_events": 47,
  "waiting": [
-  "reference: run 46091488490 attempt 2 in_progress"
+  "scored/pr-03: not before 2026-11-28T12:40:49Z"
  ]
 }
