@@ -1,16 +1,36 @@
 {
  "applied_events": 5,
- "at": "2026-11-28T00:52:09Z",
+ "at": "2026-11-28T01:07:19Z",
  "current": "scored/main-02",
  "exceptions": [],
  "finished": false,
  "not_before": "2026-11-28T01:06:46Z",
- "notes": [],
+ "notes": [
+  "update_ref reference scored/main-02 done",
+  "update_ref mammoth scored/main-02 done"
+ ],
  "paused": false,
- "planned_actions": [],
+ "planned_actions": [
+  {
+   "event": "scored/main-02",
+   "expected": "9a8ce110f7c7ce4cafa7a0f074c553cfc6884302",
+   "ref": "heads/main",
+   "repo": "snazy/nessie-mammoth-reference",
+   "sha": "b42d1e87fb44a5241b2fc6606b1ad80bd96aa6aa",
+   "type": "update_ref",
+   "variant": "reference"
+  },
+  {
+   "event": "scored/main-02",
+   "expected": "e534e079a219dbf8dc3564fc9d8d55dadb10ab09",
+   "ref": "heads/main",
+   "repo": "snazy/nessie-mammoth-prototype",
+   "sha": "22e0c0cc31baed76bb40c2c2b4a9d3abe6d2adbd",
+   "type": "update_ref",
+   "variant": "mammoth"
+  }
+ ],
  "profile": "nessie",
  "total_events": 47,
- "waiting": [
-  "scored/main-02: not before 2026-11-28T01:06:46Z"
- ]
+ "waiting": []
 }
