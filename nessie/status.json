@@ -1,31 +1,21 @@
 {
  "applied_events": 7,
- "at": "2026-11-28T09:22:16Z",
+ "at": "2026-11-28T09:37:15Z",
  "current": "scored/pr-03",
  "exceptions": [],
  "finished": false,
  "not_before": null,
  "notes": [
-  "collected reference scored/pr-03 run 46128167871 attempt 1",
-  "collected mammoth scored/pr-03 run 46128165120 attempt 1",
-  "close_pr reference scored/pr-03 done",
-  "rerun_failed mammoth scored/pr-03 done"
+  "collected mammoth scored/pr-03 run 46128165120 attempt 2",
+  "close_pr mammoth scored/pr-03 done"
  ],
  "paused": false,
  "planned_actions": [
   {
    "event": "scored/pr-03",
    "number": 2,
-   "repo": "snazy/nessie-mammoth-reference",
-   "type": "close_pr",
-   "variant": "reference"
-  },
-  {
-   "attempt": 1,
-   "event": "scored/pr-03",
    "repo": "snazy/nessie-mammoth-prototype",
-   "run_id": 46128165120,
-   "type": "rerun_failed",
+   "type": "close_pr",
    "variant": "mammoth"
   }
  ],

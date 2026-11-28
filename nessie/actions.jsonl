@@ -80,3 +80,5 @@
 {"at": "2026-11-28T09:22:16Z", "event": "scored/pr-03", "number": 2, "phase": "done", "repo": "snazy/nessie-mammoth-reference", "result": null, "type": "close_pr", "variant": "reference"}
 {"at": "2026-11-28T09:22:16Z", "attempt": 1, "event": "scored/pr-03", "phase": "intent", "repo": "snazy/nessie-mammoth-prototype", "run_id": 46128165120, "type": "rerun_failed", "variant": "mammoth"}
 {"at": "2026-11-28T09:22:16Z", "attempt": 1, "event": "scored/pr-03", "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": null, "run_id": 46128165120, "type": "rerun_failed", "variant": "mammoth"}
+{"at": "2026-11-28T09:37:15Z", "event": "scored/pr-03", "number": 2, "phase": "intent", "repo": "snazy/nessie-mammoth-prototype", "type": "close_pr", "variant": "mammoth"}
+{"at": "2026-11-28T09:37:15Z", "event": "scored/pr-03", "number": 2, "phase": "done", "repo": "snazy/nessie-mammoth-prototype", "result": null, "type": "close_pr", "variant": "mammoth"}
