@@ -3,8 +3,8 @@
     "main": {
       "total_exec_s": {
         "reference": {
-          "n": 0,
-          "median": null
+          "n": 1,
+          "median": 4151.0
         },
         "mammoth": {
           "n": 0,
@@ -13,8 +13,8 @@
       },
       "critical_path_s": {
         "reference": {
-          "n": 0,
-          "median": null
+          "n": 1,
+          "median": 768.0
         },
         "mammoth": {
           "n": 0,
@@ -23,8 +23,8 @@
       },
       "cache_s": {
         "reference": {
-          "n": 0,
-          "median": null
+          "n": 1,
+          "median": 525.0
         },
         "mammoth": {
           "n": 0,
