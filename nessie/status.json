@@ -1,6 +1,6 @@
 {
  "applied_events": 6,
- "at": "2026-11-28T03:37:21Z",
+ "at": "2026-11-28T03:48:21Z",
  "current": "scored/main-02",
  "exceptions": [
   "reference: run https://github.com/snazy/nessie-mammoth-reference/actions/runs/46091488490 attempt 1 has unclassified failures in site. Inspect it; rerun the failed jobs manually to continue, or adjust failure patterns."
