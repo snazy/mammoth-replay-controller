@@ -1,6 +1,6 @@
 # Replay status (nessie)
 
-As of 2026-11-28T04:22:22Z.
+As of 2026-11-28T04:37:13Z.
 Applied in all variants: 6 of 47 CI events. Current: `scored/main-02`.
 
 ## Exceptions (mutations stopped)
