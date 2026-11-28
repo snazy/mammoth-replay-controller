@@ -1,6 +1,6 @@
 # Replay status (nessie)
 
-As of 2026-11-28T01:37:15Z.
+As of 2026-11-28T01:52:20Z.
 Applied in all variants: 6 of 47 CI events. Current: `scored/main-02`.
 
 ## Exceptions (mutations stopped)
@@ -9,6 +9,4 @@ Applied in all variants: 6 of 47 CI events. Current: `scored/main-02`.
 
 ## This tick
 
-- collected reference scored/main-02 run 46091488490 attempt 1
-- collected mammoth scored/main-02 run 46091490121 attempt 1
 - exceptions present; no mutations
