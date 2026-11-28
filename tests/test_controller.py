@@ -459,6 +459,17 @@ class TestClassify(unittest.TestCase):
         patterns = profile["controller"]["failure_patterns"]
         self.assertEqual(classify.classify("failure", classify.extract(log, patterns), patterns), "infrastructure")
 
+    def test_site_github_api_rate_limit_is_infrastructure(self):
+        # the site build lists Iceberg releases via the unauthenticated GitHub API (reference scored run 46091488490)
+        log = (
+            '2026-11-28T03:10:00.0000000Z jq: error (at <stdin>:1): Cannot index string with string "tag_name"\n'
+            "2026-11-28T03:10:30.0000000Z KeyError: '1.11.0'\n"
+            "2026-11-28T03:10:30.0000000Z make: *** [Makefile:12: build] Error 1\n"
+        )
+        profile = json.loads((Path(__file__).resolve().parent.parent / "profiles/nessie.json").read_text())
+        patterns = profile["controller"]["failure_patterns"]
+        self.assertEqual(classify.classify("failure", classify.extract(log, patterns), patterns), "infrastructure")
+
     def test_aggregator_failure_follows_producer_failure(self):
         plan = {"jobs": {"producers": ["test"], "aggregator": "store-cache"}}
 

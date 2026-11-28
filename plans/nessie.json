@@ -36,7 +36,8 @@
       "flaky_tests": [],
       "infrastructure": [
         "could not resolve plugin artifact",
-        "ContainerFetchException"
+        "ContainerFetchException",
+        "Cannot index string with string \"tag_name\""
       ]
     },
     "cache_steps": {
